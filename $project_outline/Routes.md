@@ -47,7 +47,6 @@ correct role(s) or permission(s).
 
 Returns the information about the current user that is logged in.
 
-* Require Authentication: true
 * Request
   * Method: "GET"
   * URL: "/api/user/:userId
@@ -75,7 +74,6 @@ Returns the information about the current user that is logged in.
 Logs in a current user with valid credentials and returns the current user's
 information.
 
-* Require Authentication: false
 * Request
   * Method: "POST"
   * URL: "/api/login
@@ -142,7 +140,6 @@ information.
 Creates a new user, logs them in as the current user, and returns the current
 user's information.
 
-* Require Authentication: false
 * Request
   * Method: "POST"
   * URL: "/api/signup
@@ -237,7 +234,6 @@ user's information.
 
 Returns all the servers the current user is an owner or member of.
 
-* Require Authentication: true
 * Request
   * Method: "GET"
   * URL: "/api/servers/current
@@ -251,7 +247,7 @@ Returns all the servers the current user is an owner or member of.
 
     ```json
     {
-      "Servers": [
+      "Servers": {
         {
           "server_id": 1,
           "user_id": 1,
@@ -260,7 +256,7 @@ Returns all the servers the current user is an owner or member of.
           "owner_id": 1,
           "createdAt": "2021-11-19 20:39:36",
         }
-      ]
+      }
     }
     ```
 
@@ -268,7 +264,6 @@ Returns all the servers the current user is an owner or member of.
 
 Returns the details of a spot specified by its id.
 
-* Require Authentication: false
 * Request
   * Method: "GET"
   * URL: "/api/:serverId"
@@ -286,7 +281,7 @@ Returns the details of a spot specified by its id.
       "owner_id": 1,
       "name": "Hot Dog Fan Club",
       "icon": "FakeURL.com",
-      "Channels": [
+      "Channels": {
         {
           "id": 1,
           "server_id": 1,
@@ -299,8 +294,8 @@ Returns the details of a spot specified by its id.
           "owner_id": 1,
           "name": "Mustard Maison"
         }
-      ],
-      "Server_Members": [
+      },
+      "Server_Members": {
         {
           "id": 1,
           "user_id": 1,
@@ -316,7 +311,7 @@ Returns the details of a spot specified by its id.
           "user_id": 1644,
           "server_id": 1
         },
-      ]
+      }
     }
     ```
 
@@ -337,7 +332,6 @@ Returns the details of a spot specified by its id.
 
 Creates and returns a new server.
 
-* Require Authentication: true
 * Request
   * Method: "POST"
   * URL: "/api/user/:userId"
@@ -390,7 +384,6 @@ Creates and returns a new server.
 
 Updates and returns an existing Server.
 
-* Require Authentication: true
 * Require proper authorization: Server must belong to the current user
 * Request
   * Method: "PUT"
@@ -457,7 +450,6 @@ Updates and returns an existing Server.
 
 Deletes an existing server.
 
-* Require Authentication: true
 * Require proper authorization: Server must belong to the current user
 * Request
   * Method: "DELETE"
@@ -510,16 +502,15 @@ Returns the selected channel in the current server.
 
     ```json
     {
-      "Channels": [
         {
           "id": 1,
           "server_id": 1,
           "owner_id": 1,
-          "name": "This was an awesome spot!",
-          "icon": 5,
+          "name": "Ketchup Kondo",
+          "icon": "FakeURL",
           "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36" ,
-          "Messages": [
+          "updatedAt": "2021-11-19 20:39:36",
+          "Messages": {
             {
             "id": 1,
             "server_id": 1,
@@ -527,7 +518,7 @@ Returns the selected channel in the current server.
             "owner_id": 1,
             "content": "Ketchup is kool",
             "createdAt": "2021-11-19 20:39:36",
-            "updatedAt": "2021-11-19 20:39:36" ,
+            "updatedAt": "2021-11-19 20:39:36"
             },
             {
             "id": 2,
@@ -536,166 +527,24 @@ Returns the selected channel in the current server.
             "owner_id": 5,
             "content": "This isn't the mustard channel",
             "createdAt": "2021-11-19 20:39:36",
-            "updatedAt": "2021-11-19 20:39:36" ,
-            },
-          ]
-        }
-      ]
-    }
-    ```
-
-### Get all Reviews by a Spot's id
-
-Returns all the reviews that belong to a spot specified by id.
-
-* Require Authentication: false
-* Request
-  * Method: ?
-  * URL: ?
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Reviews": [
-        {
-          "id": 1,
-          "userId": 1,
-          "spotId": 1,
-          "review": "This was an awesome spot!",
-          "stars": 5,
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36" ,
-          "User": {
-            "id": 1,
-            "firstName": "John",
-            "lastName": "Smith"
-          },
-          "ReviewImages": [
-            {
-              "id": 1,
-              "url": "image url"
+            "updatedAt": "2021-11-19 20:39:36"
             }
-          ],
+          }
         }
-      ]
     }
     ```
 
-* Error response: Couldn't find a Spot with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+### Create a new Channel
 
-    ```json
-    {
-      "message": "Spot couldn't be found",
-      "statusCode": 404
-    }
-    ```
+Creates and returns a new channel.
 
-### Create a Review for a Spot based on the Spot's id
-
-Create and return a new review for a spot specified by id.
-
-* Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
-  * Headers:
-    * Content-Type: application/json
+  * Method: "POST"
+  * URL: "/api/server/:serverId/channel
   * Body:
-
-    ```json
+      ```json
     {
-      "review": "This was an awesome spot!",
-      "stars": 5,
-    }
-    ```
-
-* Successful Response
-  * Status Code: 201
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "userId": 1,
-      "spotId": 1,
-      "review": "This was an awesome spot!",
-      "stars": 5,
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36"
-    }
-    ```
-
-* Error Response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "statusCode": 400,
-      "errors": {
-        "review": "Review text is required",
-        "stars": "Stars must be an integer from 1 to 5",
-      }
-    }
-    ```
-
-* Error response: Couldn't find a Spot with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Spot couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-* Error response: Review from the current user already exists for the Spot
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "User already has a review for this spot",
-      "statusCode": 403
-    }
-    ```
-
-### Add an Image to a Review based on the Review's id
-
-Create and return a new image for a review specified by id.
-
-* Require Authentication: true
-* Require proper authorization: Review must belong to the current user
-* Request
-  * Method: ?
-  * URL: ?
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "url": "image url"
+        "name": "Mayo Manor",
     }
     ```
 
@@ -707,615 +556,20 @@ Create and return a new image for a review specified by id.
 
     ```json
     {
-      "id": 1,
-      "url": "image url"
-    }
-    ```
-
-* Error response: Couldn't find a Review with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Review couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-* Error response: Cannot add any more images because there is a maximum of 10
-  images per resource
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Maximum number of images for this resource was reached",
-      "statusCode": 403
-    }
-    ```
-
-### Edit a Review
-
-Update and return an existing review.
-
-* Require Authentication: true
-* Require proper authorization: Review must belong to the current user
-* Request
-  * Method: ?
-  * URL: ?
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "review": "This was an awesome spot!",
-      "stars": 5,
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "userId": 1,
-      "spotId": 1,
-      "review": "This was an awesome spot!",
-      "stars": 5,
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-20 10:06:40"
-    }
-    ```
-
-* Error Response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "statusCode": 400,
-      "errors": {
-        "review": "Review text is required",
-        "stars": "Stars must be an integer from 1 to 5",
-      }
-    }
-    ```
-
-* Error response: Couldn't find a Review with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Review couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Delete a Review
-
-Delete an existing review.
-
-* Require Authentication: true
-* Require proper authorization: Review must belong to the current user
-* Request
-  * Method: ?
-  * URL: ?
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Successfully deleted",
-      "statusCode": 200
-    }
-    ```
-
-* Error response: Couldn't find a Review with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Review couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-## BOOKINGS
-
-### Get all of the Current User's Bookings
-
-Return all the bookings that the current user has made.
-
-* Require Authentication: true
-* Request
-  * Method: ?
-  * URL: ?
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Bookings": [
+      "Channels":
         {
-          "id": 1,
-          "spotId": 1,
-          "Spot": {
-            "id": 1,
-            "ownerId": 1,
-            "address": "123 Disney Lane",
-            "city": "San Francisco",
-            "state": "California",
-            "country": "United States of America",
-            "lat": 37.7645358,
-            "lng": -122.4730327,
-            "name": "App Academy",
-            "price": 123,
-            "previewImage": "image url"
-          },
-          "userId": 2,
-          "startDate": "2021-11-19",
-          "endDate": "2021-11-20",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36"
-        }
-      ]
-    }
-    ```
-
-### Get all Bookings for a Spot based on the Spot's id
-
-Return all the bookings for a spot specified by id.
-
-* Require Authentication: true
-* Request
-  * Method: ?
-  * URL: ?
-  * Body: none
-
-* Successful Response: If you ARE NOT the owner of the spot.
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Bookings": [
-        {
-          "spotId": 1,
-          "startDate": "2021-11-19",
-          "endDate": "2021-11-20"
-        }
-      ]
-    }
-    ```
-
-* Successful Response: If you ARE the owner of the spot.
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Bookings": [
-        {
-          "User": {
-            "id": 2,
-            "firstName": "John",
-            "lastName": "Smith"
-          },
-          "id": 1,
-          "spotId": 1,
-          "userId": 2,
-          "startDate": "2021-11-19",
-          "endDate": "2021-11-20",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36"
-        }
-      ]
-    }
-    ```
-
-* Error response: Couldn't find a Spot with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Spot couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Create a Booking from a Spot based on the Spot's id
-
-Create and return a new booking from a spot specified by id.
-
-* Require Authentication: true
-* Require proper authorization: Spot must NOT belong to the current user
-* Request
-  * Method: ?
-  * URL: ?
-  * Body:
-
-    ```json
-    {
-      "startDate": "2021-11-19",
-      "endDate": "2021-11-20"
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "spotId": 1,
-      "userId": 2,
-      "startDate": "2021-11-19",
-      "endDate": "2021-11-20",
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36"
-    }
-    ```
-
-* Error response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "statusCode": 400,
-      "errors": {
-        "endDate": "endDate cannot be on or before startDate"
-      }
-    }
-    ```
-
-* Error response: Couldn't find a Spot with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Spot couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-* Error response: Booking conflict
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Sorry, this spot is already booked for the specified dates",
-      "statusCode": 403,
-      "errors": {
-        "startDate": "Start date conflicts with an existing booking",
-        "endDate": "End date conflicts with an existing booking"
-      }
-    }
-    ```
-
-### Edit a Booking
-
-Update and return an existing booking.
-
-* Require Authentication: true
-* Require proper authorization: Booking must belong to the current user
-* Request
-  * Method: ?
-  * URL: ?
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "startDate": "2021-11-19",
-      "endDate": "2021-11-20"
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "spotId": 1,
-      "userId": 2,
-      "startDate": "2021-11-19",
-      "endDate": "2021-11-20",
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-20 10:06:40"
-    }
-    ```
-
-* Error response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "statusCode": 400,
-      "errors": {
-        "endDate": "endDate cannot come before startDate"
-      }
-    }
-    ```
-
-* Error response: Couldn't find a Booking with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Booking couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-* Error response: Can't edit a booking that's past the end date
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Past bookings can't be modified",
-      "statusCode": 403
-    }
-    ```
-
-* Error response: Booking conflict
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Sorry, this spot is already booked for the specified dates",
-      "statusCode": 403,
-      "errors": {
-        "startDate": "Start date conflicts with an existing booking",
-        "endDate": "End date conflicts with an existing booking"
-      }
-    }
-    ```
-
-### Delete a Booking
-
-Delete an existing booking.
-
-* Require Authentication: true
-* Require proper authorization: Booking must belong to the current user or the
-  Spot must belong to the current user
-* Request
-  * Method: ?
-  * URL: ?
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Successfully deleted",
-      "statusCode": 200
-    }
-    ```
-
-* Error response: Couldn't find a Booking with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Booking couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-* Error response: Bookings that have been started can't be deleted
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Bookings that have been started can't be deleted",
-      "statusCode": 403
-    }
-    ```
-
-## IMAGES
-
-### Delete a Spot Image
-
-Delete an existing image for a Spot.
-
-* Require Authentication: true
-* Require proper authorization: Spot must belong to the current user
-* Request
-  * Method: ?
-  * URL: ?
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Successfully deleted",
-      "statusCode": 200
-    }
-    ```
-
-* Error response: Couldn't find a Spot Image with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Spot Image couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Delete a Review Image
-
-Delete an existing image for a Review.
-
-* Require Authentication: true
-* Require proper authorization: Review must belong to the current user
-* Request
-  * Method: ?
-  * URL: ?
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Successfully deleted",
-      "statusCode": 200
-    }
-    ```
-
-* Error response: Couldn't find a Review Image with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Review Image couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-## Add Query Filters to Get All Spots
-
-Return spots filtered by query parameters.
-
-* Require Authentication: false
-* Request
-  * Method: ?
-  * URL: ?
-  * Query Parameters
-    * page: integer, minimum: 0, maximum: 10, default: 0
-    * size: integer, minimum: 0, maximum: 20, default: 20
-    * minLat: decimal, optional
-    * maxLat: decimal, optional
-    * minLng: decimal, optional
-    * maxLng: decimal, optional
-    * minPrice: decimal, optional, minimum: 0
-    * maxPrice: decimal, optional, minimum: 0
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Spots":[
-        {
-          "id": 1,
-          "ownerId": 1,
-          "address": "123 Disney Lane",
-          "city": "San Francisco",
-          "state": "California",
-          "country": "United States of America",
-          "lat": 37.7645358,
-          "lng": -122.4730327,
-          "name": "App Academy",
-          "description": "Place where web developers are created",
-          "price": 123,
+          "id": 3,
+          "server_id": 1,
+          "owner_id": 1,
+          "name": "Mayo Manor",
           "createdAt": "2021-11-19 20:39:36",
           "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
+          "Messages":
         }
-      ],
-      "page": 2,
-      "size": 25
     }
     ```
 
-* Error Response: Query parameter validation errors
+* Error Response: Body validation error
   * Status Code: 400
   * Headers:
     * Content-Type: application/json
@@ -1326,14 +580,351 @@ Return spots filtered by query parameters.
       "message": "Validation Error",
       "statusCode": 400,
       "errors": {
-        "page": "Page must be greater than or equal to 0",
-        "size": "Size must be greater than or equal to 0",
-        "maxLat": "Maximum latitude is invalid",
-        "minLat": "Minimum latitude is invalid",
-        "minLng": "Maximum longitude is invalid",
-        "maxLng": "Minimum longitude is invalid",
-        "minPrice": "Maximum price must be greater than or equal to 0",
-        "maxPrice": "Minimum price must be greater than or equal to 0"
+        "name": "Name is required",
+      }
+    }
+    ```
+
+### Edit a Channel
+
+Updates and returns an existing Channel.
+
+* Require proper authorization: Channel must belong to the current user
+* Request
+  * Method: "PUT"
+  * URL: "/api/server/:serverId/channel/:channelId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "name": "Mayonaise Manor",
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "id": 1,
+      "ownerId": 1,
+      "name": "Mayonaise Manor",
+      "createdAt": "2021-11-19 20:39:36",
+      "updatedAt": "2021-11-20 10:06:40"
+    }
+    ```
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Validation Error",
+      "statusCode": 400,
+      "errors": {
+        "name": "Name is required",
+      }
+    }
+    ```
+
+### Delete a Channel
+
+Deletes an existing channel.
+
+* Require proper authorization: Channel must belong to the current user
+* Request
+  * Method: "DELETE"
+  * URL: "/api/server/:serverId/channel/:channelId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Successfully deleted",
+      "statusCode": 200
+    }
+    ```
+
+* Error response: Couldn't find a Channel with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Channel couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+
+
+## LIVE MESSAGING
+
+### Get all of the current Channel's Messages
+
+Return all the Messages in the current Channel.
+
+* Request
+  * Method: "GET"
+  * URL: "/api/servers/:serverId/channels/:channelId/messages"
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "Messages": {
+            {
+            "id": 1,
+            "server_id": 1,
+            "channel_id": 1,
+            "owner_id": 1,
+            "content": "Ketchup is kool",
+            "createdAt": "2021-11-19 20:39:36",
+            "updatedAt": "2021-11-19 20:39:36"
+            },
+            {
+            "id": 2,
+            "server_id": 1,
+            "channel_id": 1,
+            "owner_id": 5,
+            "content": "This isn't the mustard channel",
+            "createdAt": "2021-11-19 20:39:36",
+            "updatedAt": "2021-11-19 20:39:36"
+            }
+      }
+    }
+    ```
+
+### Create a new Message
+
+Create and display a new message
+
+* Require Authentication: true
+* Request
+  * Method: "POST"
+  * URL: "/api/servers/:serverId/channels/:channelId/messages"
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+      {
+        "content": "This is a test message"
+      }
+    ```
+
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      {
+        "id": 2,
+        "server_id": 1,
+        "channel_id": 1,
+        "owner_id": 5,
+        "content": "This is a test message",
+        "createdAt": "2021-11-19 20:39:36",
+        "updatedAt": "2021-11-19 20:39:36"
+      }
+    }
+    ```
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Can't post an empty message",
+      "statusCode": 400,
+      "errors": {
+        "content": "There must be some content",
+      }
+    }
+    ```
+
+## DIRECT MESSAGES
+
+### Get all of the users you are direct messaging
+
+Return all the Messages in the current Channel.
+
+* Request
+  * Method: "GET"
+  * URL: "/api/@me"
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "Users": {
+        {
+          "id": 5,
+          "username": "Another Hot Dog Joke",
+          "avatar": "FakeURL.com",
+          "status": "Online",
+        }
+      }
+    }
+    ```
+
+### Add a new user to Direct Message with (UNFINISHED: Check with Yake on how to set up the channel)
+
+* Request
+  * Method: "POST"
+  * URL: "/api/@me"
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+# Current User will post the user.id or user.username to find another User
+    ```json
+      {
+        "id": 1
+      }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        {
+          "id": 3,
+          "server_id": 2,
+          "owner_id": 1,
+          "name": "username of found user",
+          "icon": "avatar of found user"
+        }
+    }
+    ```
+
+### Get all messages between you and a specific User
+
+* Request
+  * Method: "GET"
+  * URL: "/api/@me/chanelId"
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        {
+          "id": 2,
+          "server_id": 2,
+          "owner_id": 1,
+          "name": "username of found user",
+          "icon": "avatar of found user",
+          "Messages": {
+            {
+            "id": 3,
+            "server_id": 2,
+            "channel_id": 3,
+            "owner_id": 1,
+            "content": "Hey man, howw's it going?",
+            "createdAt": "2021-11-19 20:39:36",
+            "updatedAt": "2021-11-19 20:39:36"
+            },
+            {
+            "id": 4,
+            "server_id": 2,
+            "channel_id": 3,
+            "owner_id": 5,
+            "content": "Pretty good, thanks for messaging me",
+            "createdAt": "2021-11-19 20:39:36",
+            "updatedAt": "2021-11-19 20:39:36"
+            }
+          }
+        }
+    }
+    ```
+
+### Create a new Direct Message
+
+Create and display a new message
+
+* Require Authentication: true
+* Request
+  * Method: "POST"
+  * URL: "/api/@me/channelId"
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+      {
+        "content": "This is a test message"
+      }
+    ```
+
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      {
+        "id": 5,
+        "server_id": 2,
+        "channel_id": 3,
+        "owner_id": 5,
+        "content": "This is a test message",
+        "createdAt": "2021-11-19 20:39:36",
+        "updatedAt": "2021-11-19 20:39:36"
+      }
+    }
+    ```
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Can't post an empty message",
+      "statusCode": 400,
+      "errors": {
+        "content": "There must be some content",
       }
     }
     ```
