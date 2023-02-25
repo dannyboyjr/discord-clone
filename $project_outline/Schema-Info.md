@@ -18,6 +18,7 @@ Table server {
   owner_id integer [ref: > user.id]
   name string
   icon url
+  private boolean
   createdAt date
   updatedAt date
 }
@@ -27,6 +28,7 @@ Table channel {
   server_id integer [ref: > server.id]
   owner_id integer [ref: > user.id]
   name string
+  private boolean
   createdAt date
   updatedAt date
 }

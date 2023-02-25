@@ -802,7 +802,7 @@ Return all the Messages in the current Channel.
 
 * Request
   * Method: "POST"
-  * URL: "/api/@me"
+  * URL: "/api/dm/@me"
   * Headers:
     * Content-Type: application/json
   * Body:
