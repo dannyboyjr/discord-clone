@@ -232,7 +232,7 @@ Returns all the servers in the database.
 
 * Request
   * Method: "GET"
-  * URL: "/api/servers/current
+  * URL: "/api/servers/
   * Body: none
 
 * Successful Response
@@ -421,6 +421,21 @@ Creates and returns a new server.
       }
     }
     ```
+    
+* Error Response: Unauthroized
+  * Request: endpoints that require proper authorization
+  * Error Response: Require proper authorization
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden",
+      "statusCode": 403,
+    }
+    ```
 
 ### Edit a Server
 
@@ -484,12 +499,12 @@ Updates and returns an existing Server.
 
     ```json
     {
-      "message": "Forbidden: Only the Server Owner can edit the Server.",
+      "message": "Forbidden: Only the Server Owner can edit server.",
       "statusCode": 403
     }
     ```
 
-* Error response: Couldn't find a Server with the specified id
+* Error response: Couldn't find a Server with specified id
   * Status Code: 404
   * Headers:
     * Content-Type: application/json
@@ -525,19 +540,6 @@ Deletes an existing server.
     }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Successfully deleted",
-      "statusCode": 200
-    }
-    ```
-
 * Error response:  Only the Server Owner can delete this Server
   * Status Code: 403
   * Headers:
@@ -546,7 +548,7 @@ Deletes an existing server.
 
     ```json
     {
-      "message": "Forbidden: Only the Server Owner can delete this Server",
+      "message": "Forbidden: Only the server owner can delete this server",
       "statusCode": 403
     }
     ```
@@ -720,7 +722,7 @@ Updates and returns an existing Channel.
     }
     ```
 
-* Error response:  Only the Server Owner can edit a Channel.
+* Error response:  Only the server owner can edit server channels.
   * Status Code: 403
   * Headers:
     * Content-Type: application/json
@@ -728,7 +730,7 @@ Updates and returns an existing Channel.
 
     ```json
     {
-      "message": "Forbidden: Only the Server Owner can edit a Channel.",
+      "message": "Forbidden: Only the server owner can edit server channels.",
       "statusCode": 403
     }
     ```
@@ -741,7 +743,7 @@ Updates and returns an existing Channel.
 
     ```json
     {
-      "message": "Channel Not Found",
+      "message": "Channel not found",
       "statusCode": 404
     }
     ```
