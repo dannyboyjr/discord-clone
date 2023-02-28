@@ -15,9 +15,9 @@ class Message(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    server_id = db.Column(db.Integer, nullable=False, db.ForeignKey('server.id'))
-    channel_id = db.Column(db.Integer, nullable=False, db.ForeignKey('channel.id'))
-    owner_id = db.Column(db.Integer, nullable=False, db.ForeignKey('user.id'))
+    server_id = db.Column(db.Integer, db.ForeignKey('server.id'), nullable=False)
+    channel_id = db.Column(db.Integer, db.ForeignKey('channel.id'), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     content = db.Column(db.String(255), nullable=False)
 
     server = db.relationship('Server', back_populates='messages')

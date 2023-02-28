@@ -14,7 +14,7 @@ class Server(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    owner_id = db.Column(db.Integer, nullable=False, db.ForeignKey('user.id'))
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'),  nullable=False)
     name = db.Column(db.String(70), nullable=False)
     icon = db.Column(db.String(500), nullable=False)
     private = db.Column(db.Boolean, default=False)

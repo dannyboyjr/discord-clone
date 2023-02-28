@@ -15,8 +15,8 @@ class Server_Member(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False, db.ForeignKey('user.id'))
-    server_id = db.Column(db.Integer, nullable=False, db.ForeignKey('server.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    server_id = db.Column(db.Integer, db.ForeignKey('server.id'), nullable=False)
 
     def to_dict(self):
         return {
