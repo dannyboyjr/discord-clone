@@ -97,10 +97,10 @@ information.
     ```json
     {
       "id": 1,
-      "firstName": "John",
-      "lastName": "Smith",
       "email": "john.smith@gmail.com",
       "username": "JohnSmith",
+      "avatar": "FakeURL.com",
+      "status": "Online",
       "token": ""
     }
     ```
@@ -226,6 +226,44 @@ user's information.
 
 ## SERVERS
 
+### Get all Servers
+
+Returns all the servers in the database.
+
+* Request
+  * Method: "GET"
+  * URL: "/api/servers/current
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "Servers": {
+        {
+          "server_id": 1,
+          "owner_id": 1,
+          "name": "Hot Dog Fan Club",
+          "icon": "FakeURL.com",
+          "private": "False",
+          "createdAt": "2021-11-19 20:39:36",
+        },
+                {
+          "server_id": 6,
+          "owner_id": 99,
+          "name": "Brand New Fan Club",
+          "icon": "FakeURL.com",
+          "private": "False",
+          "createdAt": "2021-11-19 20:39:36",
+        }
+      }
+    }
+    ```
+
 ### Get all Servers the Current User owns/is a member of
 
 ## SELECT server_id FROM server_members WHERE user_ID == current.id
@@ -250,17 +288,17 @@ Returns all the servers the current user is an owner or member of.
       "Servers": {
         {
           "server_id": 1,
-          "user_id": 1,
+          "owner_id": 1,
           "name": "Hot Dog Fan Club",
           "icon": "FakeURL.com",
-          "owner_id": 1,
+          "private": "False",
           "createdAt": "2021-11-19 20:39:36",
         }
       }
     }
     ```
 
-### Get Server from id
+### Get Server from Server Id
 
 Returns the details of a spot specified by its id.
 
@@ -281,18 +319,21 @@ Returns the details of a spot specified by its id.
       "owner_id": 1,
       "name": "Hot Dog Fan Club",
       "icon": "FakeURL.com",
+      "private": "False",
       "Channels": {
         {
           "id": 1,
           "server_id": 1,
           "owner_id": 1,
-          "name": "Ketchup Kondo"
+          "name": "Ketchup Kondo",
+          "private": "False",
         },
         {
           "id": 2,
           "server_id": 1,
           "owner_id": 1,
-          "name": "Mustard Maison"
+          "name": "Mustard Maison",
+          "private": "False",
         }
       },
       "Server_Members": {
@@ -358,6 +399,7 @@ Creates and returns a new server.
       "ownerId": 1,
       "name": "Hot Dog Fan Club",
       "icon": "FakeURL.com",
+      "private": "False",
       "createdAt": "2021-11-19 20:39:36",
       "updatedAt": "2021-11-19 20:39:36"
     }
@@ -411,6 +453,7 @@ Updates and returns an existing Server.
       "ownerId": 1,
       "name": "Hot Dog Fan Club",
       "icon": "FakeURL.com",
+      "private": "False",
       "createdAt": "2021-11-19 20:39:36",
       "updatedAt": "2021-11-20 10:06:40"
     }
@@ -430,6 +473,19 @@ Updates and returns an existing Server.
         "name": "Name is required",
         "icon": "An image URL is required",
       }
+    }
+    ```
+
+* Error response:  Only the Server Owner can edit the Server.
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden: Only the Server Owner can edit the Server.",
+      "statusCode": 403
     }
     ```
 
@@ -469,22 +525,35 @@ Deletes an existing server.
     }
     ```
 
-* Error response: Couldn't find a Server with the specified id
-  * Status Code: 404
+* Successful Response
+  * Status Code: 200
   * Headers:
     * Content-Type: application/json
   * Body:
 
     ```json
     {
-      "message": "Server couldn't be found",
-      "statusCode": 404
+      "message": "Successfully deleted",
+      "statusCode": 200
+    }
+    ```
+
+* Error response:  Only the Server Owner can delete this Server
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden: Only the Server Owner can delete this Server",
+      "statusCode": 403
     }
     ```
 
 ## CHANNELS
 
-### Get Channel by Id
+### Get Channel from Channel id
 
 Returns the selected channel in the current server.
 
@@ -508,6 +577,7 @@ Returns the selected channel in the current server.
           "owner_id": 1,
           "name": "Ketchup Kondo",
           "icon": "FakeURL",
+          "private": "False",
           "createdAt": "2021-11-19 20:39:36",
           "updatedAt": "2021-11-19 20:39:36",
           "Messages": {
@@ -549,7 +619,7 @@ Creates and returns a new channel.
     ```
 
 * Successful Response
-  * Status Code: 200
+  * Status Code: 201
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -562,6 +632,7 @@ Creates and returns a new channel.
           "server_id": 1,
           "owner_id": 1,
           "name": "Mayo Manor",
+          "private": "False",
           "createdAt": "2021-11-19 20:39:36",
           "updatedAt": "2021-11-19 20:39:36",
           "Messages":
@@ -582,6 +653,19 @@ Creates and returns a new channel.
       "errors": {
         "name": "Name is required",
       }
+    }
+    ```
+
+* Error response:  Only the Server Owner can create a new Channel.
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden: Only the Server Owner can create a new Channel.",
+      "statusCode": 403
     }
     ```
 
@@ -614,6 +698,7 @@ Updates and returns an existing Channel.
       "id": 1,
       "ownerId": 1,
       "name": "Mayonaise Manor",
+      "private": "False",
       "createdAt": "2021-11-19 20:39:36",
       "updatedAt": "2021-11-20 10:06:40"
     }
@@ -634,6 +719,34 @@ Updates and returns an existing Channel.
       }
     }
     ```
+
+* Error response:  Only the Server Owner can edit a Channel.
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden: Only the Server Owner can edit a Channel.",
+      "statusCode": 403
+    }
+    ```
+
+* Error response:  Could not find the channel.
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Channel Not Found",
+      "statusCode": 404
+    }
+    ```
+
+
 
 ### Delete a Channel
 
@@ -668,6 +781,19 @@ Deletes an existing channel.
     {
       "message": "Channel couldn't be found",
       "statusCode": 404
+    }
+    ```
+
+* Error response:  Only the Server Owner can delete this Channel
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden: Only the Server Owner can delete this Channel",
+      "statusCode": 403
     }
     ```
 
@@ -712,6 +838,19 @@ Return all the Messages in the current Channel.
             "updatedAt": "2021-11-19 20:39:36"
             }
       }
+    }
+    ```
+
+* Error response:  Only Server Members can see Messages.
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden: Only Server Members can see Messages.",
+      "statusCode": 403
     }
     ```
 
@@ -765,6 +904,19 @@ Create and display a new message
       "errors": {
         "content": "There must be some content",
       }
+    }
+    ```
+
+* Error response:  Only Server Members can create Messages.
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden: Only Server Members can create Messages.",
+      "statusCode": 403
     }
     ```
 
@@ -852,6 +1004,7 @@ Return all the Messages in the current Channel.
           "owner_id": 1,
           "name": "username of found user",
           "icon": "avatar of found user",
+          "private": "False",
           "Messages": {
             {
             "id": 3,
