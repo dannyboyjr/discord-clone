@@ -371,7 +371,7 @@ Returns the details of a spot specified by its id.
 
 ### Create a Server
 
-Creates and returns a new server.
+Creates and returns a new server with a starting channel.
 
 * Request
   * Method: "POST"
@@ -401,8 +401,21 @@ Creates and returns a new server.
       "icon": "FakeURL.com",
       "private": "False",
       "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36"
+      "updatedAt": "2021-11-19 20:39:36",
+      "Channel": {
+        {
+          "id": 1,
+          "server_id": 1,
+          "owner_id": 1,
+          "name": "default channel",
+          "icon": "FakeURL",
+          "private": "False",
+          "createdAt": "2021-11-19 20:39:36",
+          "updatedAt": "2021-11-19 20:39:36",
+        },
+      }
     }
+
     ```
 
 * Error Response: Body validation error
@@ -421,7 +434,7 @@ Creates and returns a new server.
       }
     }
     ```
-    
+
 * Error Response: Unauthroized
   * Request: endpoints that require proper authorization
   * Error Response: Require proper authorization
