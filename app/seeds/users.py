@@ -8,7 +8,7 @@ def seed_users():
     marnie = User(
         id=2, username='marnie', avatar="https://www.crystalknows.com/hubfs/API/celebrities/mark_zuckerberg.jpg", hashed_password='pbkdf2:sha265:260000$Xaz4DGPnjudhxhnb$85b3e27f8f55131de02359e858a064fb36609eca9d748512115d16d7a96d80ec', email='marnie@aa.io')
     bobbie = User(
-        id=3, username='bobbie',avatar="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=1480&t=st=1677631754~exp=1677632354~hmac=d2e59414a9bc9892310dece481f11a4fcfa1b63dda5f69d6f976f4157fa4c12b", hashed_password='password', email='bobbie@aa.io')
+        id=3, username='bobbie',avatar="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=1480&t=st=1677631754~exp=1677632354~hmac=d2e59414a9bc9892310dece481f11a4fcfa1b63dda5f69d6f976f4157fa4c12b", hashed_password='pbkdf2:sha265:260000$Xaz4DGPnjudhxhnb$85b3e27f8f55131de02359e858a064fb36609eca9d748512115d16d7a96d80ec', email='bobbie@aa.io')
 
     db.session.add(demo)
     db.session.add(marnie)
