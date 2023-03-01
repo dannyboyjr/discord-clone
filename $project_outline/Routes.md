@@ -43,13 +43,73 @@ correct role(s) or permission(s).
     }
     ```
 
+### Get all Users
+
+Returns user_id, username, avatar, and status of all users
+
+* Request
+  * Method: "GET"
+  * URL: "/api/users
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "user_id": 1,
+      "username": "JSmith",
+      "avatar": "FakeURL.com",
+      "status": "Online",
+    },
+    {
+      "user_id": 2,
+      "username": "Dkimball",
+      "avatar": "coolpicURL.com",
+      "status": "offline",
+    }
+   ```
+   
+   
+* Error response: 
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "No users found",
+      "statusCode": 404,
+    }
+    ```
+    
+  * Request: endpoints that require proper authorization
+* Error Response: Require proper authorization
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden",
+      "statusCode": 403
+    }
+    ```
+
+
+
 ### Get the Current User
 
 Returns the information about the current user that is logged in.
 
 * Request
   * Method: "GET"
-  * URL: "/api/user/:userId
+  * URL: "/api/users/:userId
   * Body: none
 
 * Successful Response
@@ -223,10 +283,112 @@ user's information.
       }
     }
     ```
+    
+    ### Get user by id
+
+Returns user_id, username, avatar and status of user by id
+
+* Request
+  * Method: "GET"
+  * URL: "/api/users/:userId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "user_id": 1,
+      "username": "JSmith",
+      "avatar": "FakeURL.com",
+      "status": "Online",
+    }
+    ```
+
+* Error response: user not found
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "user by id not found",
+      "statusCode": 404,
+ 
+    }
+    ```
+* Request: endpoints that require proper authorization
+* Error Response: Require proper authorization
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden",
+      "statusCode": 403
+    }
+    ```
+
+        ### Get user by username
+
+Returns user_id, username, avatar and status of user by id
+
+* Request
+  * Method: "GET"
+  * URL: "/api/users/:username
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "user_id": 1,
+      "username": "JSmith",
+      "avatar": "FakeURL.com",
+      "status": "Online",
+    }
+    ```
+
+* Error response: user not found
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "user by username not found",
+      "statusCode": 404,
+ 
+    }
+    ```
+* Request: endpoints that require proper authorization
+* Error Response: Require proper authorization
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden",
+      "statusCode": 403
+    }
+    ```
 
 ## SERVERS
 
-### Get all Servers
+### Get all **PUBLIC** Servers
 
 Returns all the servers in the database.
 
@@ -264,7 +426,7 @@ Returns all the servers in the database.
     }
     ```
 
-### Get all Servers the Current User owns/is a member of
+### Get all **PUBLIC** Servers the Current User owns/is a member of
 
 ## SELECT server_id FROM server_members WHERE user_ID == current.id
 ## JOIN servers ON server_members.server_id = servers.id
@@ -298,7 +460,7 @@ Returns all the servers the current user is an owner or member of.
     }
     ```
 
-### Get Server from Server Id
+### Get **PUBLIC** Server from Server Id
 
 Returns the details of a spot specified by its id.
 
@@ -366,6 +528,21 @@ Returns the details of a spot specified by its id.
     {
       "message": "Server couldn't be found",
       "statusCode": 404
+    }
+    ```
+    
+  * Error Response: Unauthroized - Must be logged in
+  * Request: endpoints that require proper authorization
+  * Error Response: Require proper authorization
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Forbidden",
+      "statusCode": 403,
     }
     ```
 
@@ -816,7 +993,7 @@ Deletes an existing channel.
 
 ## LIVE MESSAGING
 
-### Get all of the current Channel's Messages
+### Get all messages by channel id
 
 Return all the Messages in the current Channel.
 
@@ -868,6 +1045,20 @@ Return all the Messages in the current Channel.
       "statusCode": 403
     }
     ```
+    
+* Error response:  Could not find the channel messages.
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Channel messages not found",
+      "statusCode": 404
+    }
+    ```
+
 
 ### Create a new Message
 
