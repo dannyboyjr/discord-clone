@@ -1,10 +1,10 @@
-from app.models import db, Message, environment, SCHEMA
+from ..models import db, Message, environment, SCHEMA
 from datetime import datetime, timedelta
 
 messages = [
     {
         "sender_id":1,
-        "recipient_id":2,
+        "recipient_id": 2,
         "message": "Demo_User says hi to Marnie_Demo",
         "time_sent": datetime.now() - timedelta(hours=12)
     },
@@ -16,7 +16,7 @@ messages = [
     },
     {
         "sender_id": 1,
-        "recipient_id": 2,
+        "recipient_id": 3,
         "message": "Demo_User says how are you Marnie_Demo",
         "time_sent": datetime.now() - timedelta(hours=10)
     },
