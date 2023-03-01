@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from flask_sqlalchemy import flask_sqlalchemy
+# from flask_sqlalchemy import flask_sqlalchemy
 
 # (WIP)
 
@@ -15,14 +15,14 @@ class Channel(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    server_id = db.Column(db.Integer, db.ForeignKey('server.id'), nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False,)
+    server_id = db.Column(db.Integer, db.ForeignKey('servers.id'), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False,)
     name = db.Column(db.String(255), nullable=False)
     private = db.Column(db.Boolean, default=False)
 
 
-    server = db.relationship('Server', back_populates='channels')
-    user = db.relationship('User', back_populates='channels')
+    server = db.relationship('Server', back_populates='channel')
+    user = db.relationship('User', back_populates='channel')
     message = db.relationship('Message', back_populates='channel')
 
     def to_dict(self):

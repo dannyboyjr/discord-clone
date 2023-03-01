@@ -3,22 +3,22 @@ from datetime import datetime, timedelta
 
 messages = [
     {
-        "sender_id":1,
-        "recipient_id": 2,
-        "content": "Demo_User says hi to Marnie_Demo",
-        "time_sent": datetime.now() - timedelta(hours=12)
+        "server_id":1,
+        "channel_id":1,
+        "owner_id":1,
+        "content": "Demo_User says hi to Marnie_Demo"
     },
     {
-        "sender_id": 2,
-        "recipient_id": 1,
-        "content": "Marnie_Demo says hi back to Demo_User",
-        "time_sent": datetime.now() - timedelta(hours=11)
+        "server_id":1,
+        "channel_id":1,
+        "owner_id": 2,
+        "content": "Marnie_Demo says hi back to Demo_User"
     },
     {
-        "sender_id": 1,
-        "recipient_id": 3,
-        "content": "Demo_User says how are you Marnie_Demo",
-        "time_sent": datetime.now() - timedelta(hours=10)
+        "server_id":1,
+        "channel_id":1,
+        "owner_id": 1,
+        "content": "Demo_User says how are you Marnie_Demo"
     },
 ]
 
@@ -37,7 +37,7 @@ def seed_messages():
 def undo_messages():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.messages RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM messages")
 

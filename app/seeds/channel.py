@@ -5,21 +5,21 @@ channel_info = [
         "id": 1,
         "server_id": 1,
         "owner_id":1,
-        "channel_name": "general",
+        "name": "general",
         "private": False
     },
     {
         "id": 2,
         "server_id": 2,
         "owner_id":2,
-        "channel_name": "awesome_rocks",
+        "name": "awesome_rocks",
         "private": False
     },
     {
         "id": 3,
         "server_id": 1,
         "owner_id":1,
-        "channel_name": "app academy reject",
+        "name": "app academy reject",
         "private": False
     },
 ]
@@ -39,7 +39,7 @@ def seed_channels():
 def undo_channels():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.channels RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM channel")
 

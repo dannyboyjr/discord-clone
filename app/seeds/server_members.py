@@ -30,11 +30,11 @@ def seed_server_members():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_channels():
+def undo_server_members():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.server_members RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM channel")
+        db.session.execute("DELETE FROM server_members")
 
     db.session.commit()

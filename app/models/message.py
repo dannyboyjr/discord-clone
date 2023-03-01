@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from flask_sqlalchemy import flask_sqlalchemy
+# from flask_sqlalchemy import flask_sqlalchemy
 
 # (WIP)
 
@@ -15,14 +15,14 @@ class Message(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    server_id = db.Column(db.Integer, db.ForeignKey('server.id'), nullable=False)
-    channel_id = db.Column(db.Integer, db.ForeignKey('channel.id'), nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    server_id = db.Column(db.Integer, db.ForeignKey('servers.id'), nullable=False)
+    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     content = db.Column(db.String(255), nullable=False)
 
-    server = db.relationship('Server', back_populates='messages')
-    channel = db.relationship('Channel', back_populates='messages')
-    user = db.relationship('User', back_populates='messages')
+    server = db.relationship('Server', back_populates='message')
+    channel = db.relationship('Channel', back_populates='message')
+    user = db.relationship('User', back_populates='message')
 
     def to_dict(self):
         return {
