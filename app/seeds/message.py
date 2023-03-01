@@ -5,19 +5,19 @@ messages = [
     {
         "sender_id":1,
         "recipient_id": 2,
-        "message": "Demo_User says hi to Marnie_Demo",
+        "content": "Demo_User says hi to Marnie_Demo",
         "time_sent": datetime.now() - timedelta(hours=12)
     },
     {
         "sender_id": 2,
         "recipient_id": 1,
-        "message": "Marnie_Demo says hi back to Demo_User",
+        "content": "Marnie_Demo says hi back to Demo_User",
         "time_sent": datetime.now() - timedelta(hours=11)
     },
     {
         "sender_id": 1,
         "recipient_id": 3,
-        "message": "Demo_User says how are you Marnie_Demo",
+        "content": "Demo_User says how are you Marnie_Demo",
         "time_sent": datetime.now() - timedelta(hours=10)
     },
 ]
