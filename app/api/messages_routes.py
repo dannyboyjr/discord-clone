@@ -5,7 +5,6 @@ from app.models import Message, db
 
 message_routes = Blueprint("messages", __name__)
 
-
 @message_routes.route("/servers/:serverId/channels/:channelId/messages")
 @login_required
 def messages():
@@ -14,7 +13,6 @@ def messages():
     """
 
     messages = Message.query.filter(
-        (Message.id == current_user.id) | (Message.owner_id ==
-                                           current_user.id).order_by(Message.created_at).all()
+        (Message.id == current_user.id) | (Message.owner_id == current_user.id).order_by(Message.created_at).all()
     )
     return {"Messages": [message.to_dict()for message in messages]}
