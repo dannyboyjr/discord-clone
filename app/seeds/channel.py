@@ -1,4 +1,5 @@
 from ..models import db, Channel, environment, SCHEMA
+from datetime import datetime
 
 channel_info = [
     {
@@ -6,21 +7,24 @@ channel_info = [
         "server_id": 1,
         "owner_id":1,
         "name": "general",
-        "private": False
+        "private": False,
+        "created_at": datetime.utcnow()
     },
     {
         "id": 2,
         "server_id": 2,
         "owner_id":2,
         "name": "awesome_rocks",
-        "private": False
+        "private": False,
+        "created_at": datetime.utcnow()
     },
     {
         "id": 3,
         "server_id": 1,
         "owner_id":1,
         "name": "app academy reject",
-        "private": False
+        "private": False,
+        "created_at": datetime.utcnow()
     },
 ]
 
