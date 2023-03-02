@@ -30,5 +30,5 @@ class Server(db.Model):
             'id':self.id,
             'owner_id': self.owner_id,
             "name": self.name,
-            "icon": self.icon
+            "icon": self.icon,
         }

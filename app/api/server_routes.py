@@ -5,6 +5,7 @@ from app.models import Server, db
 server_routes = Blueprint('server', __name__)
 
 @server_routes.route('/')
+# @login_required
 def getAllServers():
     """
     Query for all servers and returns them in a list
@@ -14,11 +15,11 @@ def getAllServers():
 
 
 
-# @user_routes.route('/<int:id>')
+@server_routes.route('/<int:id>')
 # @login_required
-# def user(id):
-#     """
-#     Query for a user by id and returns that user in a dictionary
-#     """
-#     user = User.query.get(id)
-#     return user.to_dict()
+def user(id):
+    """
+    Query for a server by id and returns that server in a dictionary
+    """
+    server = Server.query.get(id)
+    return server.to_dict()
