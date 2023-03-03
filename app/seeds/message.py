@@ -1,24 +1,27 @@
 from ..models import db, Message, environment, SCHEMA
-from datetime import datetime, timedelta
+from datetime import datetime
 
 messages = [
     {
         "server_id":1,
         "channel_id":1,
         "owner_id":1,
-        "content": "Demo_User says hi to Marnie_Demo"
+        "content": "Demo_User says hi to Marnie_Demo",
+        "created_at": datetime.utcnow()
     },
     {
         "server_id":1,
         "channel_id":1,
         "owner_id": 2,
-        "content": "Marnie_Demo says hi back to Demo_User"
+        "content": "Marnie_Demo says hi back to Demo_User",
+        "created_at": datetime.utcnow()
     },
     {
         "server_id":1,
         "channel_id":1,
         "owner_id": 1,
-        "content": "Demo_User says how are you Marnie_Demo"
+        "content": "Demo_User says how are you Marnie_Demo",
+        "created_at": datetime.utcnow()
     },
 ]
 

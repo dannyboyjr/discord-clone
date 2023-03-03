@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-# from flask_sqlalchemy import flask_sqlalchemy
+from datetime import datetime
 
 # (WIP)
 
@@ -19,6 +19,7 @@ class Channel(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False,)
     name = db.Column(db.String(255), nullable=False)
     private = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
     server = db.relationship('Server', back_populates='channel')
@@ -30,5 +31,7 @@ class Channel(db.Model):
             'id':self.id,
             "server_id": self.server_id,
             'owner_id': self.owner_id,
-            "name": self.name
+            "name": self.name,
+            "private": self.private,
+            "created_at": self.created_at
         }
