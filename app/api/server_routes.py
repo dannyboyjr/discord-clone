@@ -97,6 +97,7 @@ def delete_server(id):
     return jsonify({"success": "server was deleted"}), 200
 
 
+#get all memebers of a server
 @server_routes.route('/<int:server_id>/members', methods=['GET'])
 def get_server_members(server_id):
     server_members = Server_Member.query.filter_by(server_id=server_id).all()
@@ -138,3 +139,19 @@ def join_server(id):
     return jsonify({'success': 'User joined the server successfully'})
 
 #leave server
+@server_routes.route('/<int:server_id>/leave', methods=["DELETE"])
+@login_required
+def leave_server(server_id):
+    """
+    leave server
+    """
+    server_member = Server_Member.query.filter_by(
+        server_id=server_id, 
+        user_id=current_user.id
+        ).first()
+    if server_member:
+        db.session.delete(server_member)
+        db.session.commit()
+        return jsonify({'success': 'User left the server successfully'})
+    else:
+        return jsonify({'error': 'User is not a member of this server'}), 404
