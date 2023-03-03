@@ -33,7 +33,8 @@ def server_by_id(id):
 @server_routes.route('/current', methods=["GET"])
 @login_required
 def get_servers_of_current_user():
-    pass
+    servers = Server.query.join(Server_Member).filter(Server_Member.user_id == current_user.id).all() 
+    return jsonify([server.to_dict() for server in servers])
 
 #create server route
 @server_routes.route("/", methods=["POST"])
@@ -127,7 +128,8 @@ def join_server(id):
         return jsonify({'error': 'Server not found'}), 404
     if server.private:
         return jsonify({'error': 'Unauthroized'}), 403
-    if server in current_user.servers:
+    currentServers = Server.query.join(Server_Member).filter(Server_Member.user_id == current_user.id).all() 
+    if server in currentServers:
         return jsonify({'error': 'User is already a memeber of this server'}), 400
     member = Server_Member(user_id=current_user.id, server_id=id)
     db.session.add(member)
