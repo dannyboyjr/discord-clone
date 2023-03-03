@@ -31,9 +31,6 @@ class Server(db.Model):
             'owner_id': self.owner_id,
             "name": self.name,
             "icon": self.icon,
-<<<<<<< HEAD
-=======
             "private": self.private,
             "created_at": self.created_at
->>>>>>> dev
         }
