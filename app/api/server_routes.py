@@ -13,7 +13,7 @@ def get_all_servers():
     """
     Query for all servers and returns them in a list
     """
-    servers = Server.query.all()
+    servers = Server.query.filter(Server.private == False).all()
     return jsonify({'servers': [server.to_dict() for server in servers]})
 
 
@@ -27,16 +27,21 @@ def server_by_id(id):
     server = Server.query.get(id)
     if server is None:
         return jsonify({"error": "Server not found"}), 404
+    if server.private is True:
+        return jsonify({"error": "cannot get private server"}), 403
     return server.to_dict()
 
 #get all servers of current user
 @server_routes.route('/current', methods=["GET"])
 @login_required
 def get_servers_of_current_user():
-    servers = Server.query.join(Server_Member).filter(Server_Member.user_id == current_user.id).all() 
+    servers = Server.query.join(Server_Member).filter(
+        Server_Member.user_id == current_user.id,
+        Server.private == False
+        ).all() 
     return jsonify([server.to_dict() for server in servers])
 
-#create server route
+#create public server route
 @server_routes.route("/", methods=["POST"])
 @login_required
 def create_server():
@@ -74,6 +79,8 @@ def edit_server(id):
     if server is None:
         return jsonify({"error": "Server not found"}), 404
     data = request.get_json()
+    if server.private is True:
+        return jsonify({"error": "cannot edit private server"}), 403
     if not data or not all(key in data for key in ("name")):
         return jsonify({"error": "name of server required "}), 400
     server.name = data['name']
@@ -92,6 +99,10 @@ def delete_server(id):
     server = Server.query.get(id)
     if server is None:
         return jsonify({'error': "Server not found"}), 404
+    if server.owner_id is not current_user.id:
+        return jsonify({"error": "Cannot delete another users server"}), 403
+    if server.private is True:
+        return jsonify({"error": "Cannot delete a private server"}), 403
     db.session.delete(server)
     db.session.commit()
     return jsonify({"success": "server was deleted"}), 200
@@ -99,11 +110,14 @@ def delete_server(id):
 
 #get all memebers of a server
 @server_routes.route('/<int:server_id>/members', methods=['GET'])
+@login_required
 def get_server_members(server_id):
-    server_members = Server_Member.query.filter_by(server_id=server_id).all()
+
     """
     gets all members of a server
     """
+
+    server_members = Server_Member.query.filter_by(server_id=server_id).all()
 
     server_members_info = []
     for server_member in server_members:
