@@ -15,7 +15,7 @@ class Server(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     name = db.Column(db.String(70), nullable=False)
-    icon = db.Column(db.String(500), nullable=False)
+    icon = db.Column(db.String(500), nullable=True)
     private = db.Column(db.Boolean, default=False)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
