@@ -13,7 +13,6 @@ message_routes = Blueprint("messages", __name__)
 # #     """
 
 
-
 @message_routes.route("/channels/<int:channel_id>/messages", methods=["GET"])
 @login_required
 def get_message_channel_id(channel_id):
