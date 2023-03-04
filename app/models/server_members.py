@@ -19,7 +19,7 @@ class Server_Member(db.Model):
     server_id = db.Column(db.Integer, db.ForeignKey('servers.id'), nullable=False)
 
     server = db.relationship('Server', back_populates='server_member')
-    user = db.relationship('User', back_populates='sever_member')
+    user = db.relationship('User', back_populates='server_member')
 
     def to_dict(self):
         return {

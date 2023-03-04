@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
     server = db.relationship('Server', back_populates='user', cascade='all, delete-orphan')
     channel = db.relationship('Channel', back_populates='user', cascade='all, delete-orphan')
     message = db.relationship('Message', back_populates='user', cascade='all,delete-orphan')
-    server_members = db.relationship('Server_Members', back_populates='user', cascade='all, delete-orphan')
+    server_member = db.relationship('Server_Member', back_populates='user', cascade='all, delete-orphan')
 
     @property
     def password(self):
