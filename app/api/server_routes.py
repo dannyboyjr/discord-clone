@@ -118,7 +118,9 @@ def get_server_members(server_id):
     """
 
     server_members = Server_Member.query.filter_by(server_id=server_id).all()
-
+    server = Server.query.get(server_id)
+    if server is None:
+        return jsonify({'error': "Server doesn't exist"}), 404
     server_members_info = []
     for server_member in server_members:
         user = User.query.get(server_member.user_id)
@@ -163,6 +165,11 @@ def leave_server(server_id):
         server_id=server_id, 
         user_id=current_user.id
         ).first()
+    server = Server.query.get(server_id)
+    if server is None:
+        return jsonify({'error': "Server doesn't exist"}), 404
+    if server.owner_id == current_user.id:
+        return jsonify({'error': 'Cannot leave your own server. If you wish to leave this server you must delete server'}), 403
     if server_member:
         db.session.delete(server_member)
         db.session.commit()
