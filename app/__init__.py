@@ -7,6 +7,7 @@ from flask_login import LoginManager
 from .models import db, User, Server, Channel, Message, Server_Member
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.channel_routes import channel_routes
 from .seeds import seed_commands
 from .config import Config
 
