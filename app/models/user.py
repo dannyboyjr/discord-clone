@@ -19,9 +19,10 @@ class User(db.Model, UserMixin):
     avatar = db.Column(db.String(500), nullable=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    servers = db.relationship('Server', back_populates='user', cascade='all, delete-orphan')
+    server = db.relationship('Server', back_populates='user', cascade='all, delete-orphan')
     channel = db.relationship('Channel', back_populates='user', cascade='all, delete-orphan')
     message = db.relationship('Message', back_populates='user', cascade='all,delete-orphan')
+    server_member = db.relationship('Server_Member', back_populates='user', cascade='all, delete-orphan')
 
     @property
     def password(self):

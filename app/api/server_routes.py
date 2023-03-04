@@ -81,8 +81,8 @@ def edit_server(id):
     data = request.get_json()
     if server.private is True:
         return jsonify({"error": "cannot edit private server"}), 403
-    if not data or not all(key in data for key in ("name")):
-        return jsonify({"error": "name of server required "}), 400
+    if not data or not all(key in data for key in ("name", "icon")):
+        return jsonify({"error": "name & icon of server required "}), 400
     server.name = data['name']
     server.icon = data['icon']
     db.session.commit()
