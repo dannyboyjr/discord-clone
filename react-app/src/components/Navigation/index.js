@@ -1,40 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
 import './Navigation.css';
-
 import
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faBell, faChevronDown } from "@fortawesome/free-solid-avg-icons"
+
 
 function Navigation({ isLoaded }){
-
-	const sessionUser = useSelector(state => state.session.user);
-	const [showNotifications, setShowNotifications ] = useState(false)
-
 	const [selectedServer, setSelectedServer] = useState(null)
-	const [messages, setMessages] = useState([])
-	const [channels, setChannels] = useState([])
 
-
+	function handleServerClick(server) {
+    setSelectedServer(server);
+	}
 
 	return (
 	<>
 		<nav className='navbar'>
-			<div className='left-nav-bar'>
-				<div className='nav-logo'>
-					<img src="/discord_logo.svg" alt="Discord Logo"/>
-				</div>
-			</div>
-				<li>
-				<NavLink exact to="/">Home</NavLink>
-				</li>
-				{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
-				)}
+		    <div className="nav">
+				<ul>
+					<li onClick={() => handleServerClick('server1')}>Server 1</li>
+        			<li onClick={() => handleServerClick('server2')}>Server 2</li>
+        			<li onClick={() => handleServerClick('server3')}>Server 3</li>
+      			</ul>
+      			{selectedServer && (
+        			<>
+          				<LiveMessages server={selectedServer} />
+          				<LiveChannels server={selectedServer} />
+       				</>
+      			)}
+    		</div>
 
 		</nav>
 	</>
