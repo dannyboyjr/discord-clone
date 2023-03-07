@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -13,24 +13,11 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	const [showNotifications, setShowNotifications ] = useState(false)
 
-	const handleNotificationClick = () => {
-		setShowNotifications(!showNotifications);
-	}
+	const [selectedServer, setSelectedServer] = useState(null)
+	const [messages, setMessages] = useState([])
+	const [channels, setChannels] = useState([])
 
 
-	const [servers, setServers] = useState([])
-	const [activeServer, setActiveServer] = useState(null)
-	const [activeChannel, setActiveChannel] = useState(null)
-
-	useEffect(() => {
-		
-	})
-
-	const handleServerClick = (server_id) => {
-		setActiveServer(server_id);
-		setActiveChannel(servers.find(server => server.id === server_id).channels[0].id)
-
-	}
 
 	return (
 	<>
