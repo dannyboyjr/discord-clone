@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faChevronDown } from "@fortawesome/free-solid-avg-icons"
+
+import
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faBell, faChevronDown } from "@fortawesome/free-solid-avg-icons"
 
 function Navigation({ isLoaded }){
 
@@ -13,6 +15,21 @@ function Navigation({ isLoaded }){
 
 	const handleNotificationClick = () => {
 		setShowNotifications(!showNotifications);
+	}
+
+
+	const [servers, setServers] = useState([])
+	const [activeServer, setActiveServer] = useState(null)
+	const [activeChannel, setActiveChannel] = useState(null)
+
+	useEffect(() => {
+		
+	})
+
+	const handleServerClick = (server_id) => {
+		setActiveServer(server_id);
+		setActiveChannel(servers.find(server => server.id === server_id).channels[0].id)
+
 	}
 
 	return (
