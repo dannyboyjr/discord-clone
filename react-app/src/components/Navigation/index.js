@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
+import './servers.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faChevronDown } from "@fortawesome/free-solid-svg-icons"
 
