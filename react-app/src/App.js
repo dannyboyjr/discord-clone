@@ -19,12 +19,22 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          {/* <Route path="/" exact>
+            <HOLDERPage />
+          </Route> */}
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          {/* <Route path="/:serverId(\d+)/:channelId(\d+)">
+            <HOLDERPage />
+          </Route> */}
+          {/* <Route path="/@me">
+            <HOLDERPage />
+          </Route> */}
+
         </Switch>
       )}
     </>
