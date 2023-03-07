@@ -24,11 +24,12 @@ function Navigation({ isLoaded }){
       			{selectedServer && (
         			<>
           				<LiveMessages server={selectedServer} />
-          				<LiveChannels server={selectedServer} />
+						//need to import from LiveMessages Component
+          				<Channels server={selectedServer} />
+						//need to import from Channels Component
        				</>
       			)}
     		</div>
-
 		</nav>
 	</>
 	);
