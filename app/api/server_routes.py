@@ -29,7 +29,7 @@ def server_by_id(id):
         return jsonify({"error": "Server not found"}), 404
     if server.private is True:
         return jsonify({"error": "cannot get private server"}), 403
-    return server.to_dict()
+    return server.to_dict_members()
 
 #get all servers of current user
 @server_routes.route('/current', methods=["GET"])
