@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './serverCard';
+//import ProfileButton from "./ProfileButton"
 //import CreateServerModal from ""
 //import {} from "../../store/server";
 //import { NavLink, useHistory } from 'react-router-dom';
-
 import './Navigation.css';
 
 function Navigation({ server }){
@@ -21,13 +21,13 @@ function Navigation({ server }){
 
 	return (
 		<>
-		<div className='server-list'>
+		<div className='servers-list'>
 				{serversArr.map(server =>
 				<ServerCard server ={server}/>
         		)}
     	</div>
-		<div className='add-server'>
-
+		<div className='add-server-button'>
+		<OpenModalButton buttonText="Add Server" modalComponent={<CreateServerModal/>}/>
 		</div>
 		</>
 		//remember to import create server modal here
