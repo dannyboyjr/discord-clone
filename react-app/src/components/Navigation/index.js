@@ -1,49 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import ServerCard from './serverCard';
+//import CreateServerModal from ""
+//import {} from "../../store/server";
+//import { NavLink, useHistory } from 'react-router-dom';
+
 import './Navigation.css';
-import { getServerById, getAllServers, getUserServers, deleteServerById, editServerById } from '../../store/servers'
-import { getAllChannelsInServer, getChannelById } from '../../store/channels'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faChevronDown } from "@fortawesome/free-solid-svg-icons"
 
-function Navigation({ isLoaded }) {
+function Navigation({ server }){
+	const [isLoaded, setIsLoaded] = useState(false)
 	const dispatch = useDispatch()
+	const servers = useSelector(state => state.servers); //double check name of state for server
 
-	const sessionUser = useSelector(state => state.session.user);
-	const serverGuy = useSelector(state => state.servers.serverById)
-	const [showNotifications, setShowNotifications] = useState(false)
-
-	const [name, setName] = useState("");
-	const [icon, setIcon] = useState("");
-	const [channels, setChannels] = useState([]);
-
+	const serversArr = Object.values(servers);
 
 	useEffect(() => {
-		dispatch(getAllServers());
-		dispatch(getUserServers());
-		dispatch(getServerById(8));
+		dispatch("enter thunk here"())
+	}, [dispatch])
 
-	}, [dispatch]);
-
-	useEffect(() => {
-		if (serverGuy) {
-			setName(serverGuy.name);
-			setIcon(serverGuy.icon);
-			dispatch(getAllChannelsInServer(serverGuy));
-		}
-	}, [serverGuy]);
-
-	useEffect(() => {
-		dispatch(getChannelById(serverGuy.id, 7));
-	  }, [dispatch, serverGuy.id]);
-	
-
-
-	const handleNotificationClick = () => {
-		setShowNotifications(!showNotifications);
-	}
 
 	//-------------
 
@@ -71,52 +45,23 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<>
-			<nav className='navbar'>
-				<div className='left-nav-bar'>
-					<div className='nav-logo'>
-						<img src="/discord_logo.svg" alt="Discord Logo" />
-					</div>
-				</div>
-				<li>
-					<NavLink exact to="/">Home</NavLink>
-				</li>
-				{isLoaded && (
-					<li>
-						<ProfileButton user={sessionUser} />
-					</li>
-				)}
+		<div className='server-list'>
+				{serversArr.map(server =>
+				<ServerCard server ={server}/>
+        		)}
+    	</div>
+		<div className='add-server'>
 
-				<form className='create' onSubmit={handleSubmit}>
-
-					<label>Name:</label>
-					<input
-						type="text"
-						onChange={(e) => setName(e.target.value)}
-						value={name}
-					/>
-
-					<label>Icon: </label>
-					<input
-						type="text"
-						onChange={(e) => setIcon(e.target.value)}
-						value={icon}
-					/>
-					<button>edit Server</button>
-
-				</form>
-				<button onClick={handleDelete}>Delete server</button>
-
-
-
-
-			</nav>
-			<div>
-      {channels.map(channel => (
-        <div key={channel.id}>{channel.name}</div>
-      ))}
-    </div>
+		</div>
 		</>
-	);
+		//remember to import create server modal here
+	)
+	// dispatch that thunk in a useEffect --- which will have an empty dependency arr that will have it run once.
+
+	// then use useSelector to get all those servers for your navbar. Then map through those servers and feed that information
+
+	// for each server you're going to have a servercard and feed that into as a prop for your server
+
 }
 
 export default Navigation;
