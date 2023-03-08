@@ -1,38 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import ServerCard from './serverCard';
+//import CreateServerModal from ""
+//import {} from "../../store/server";
+//import { NavLink, useHistory } from 'react-router-dom';
+
 import './Navigation.css';
-import
 
+function Navigation({ server }){
+	const [isLoaded, setIsLoaded] = useState(false)
+	const dispatch = useDispatch()
+	const servers = useSelector(state => state.servers); //double check name of state for server
 
-function Navigation({ isLoaded }){
-	const [selectedServer, setSelectedServer] = useState(null)
+	const serversArr = Object.values(servers);
 
-	function handleServerClick(server) {
-    setSelectedServer(server);
-	}
+	useEffect(() => {
+		dispatch("enter thunk here"())
+	}, [dispatch])
+
 
 	return (
-	<>
-		<nav className='navbar'>
-		    <div className="nav">
-				<ul>
-					<li onClick={() => handleServerClick('server1')}>Server 1</li>
-        			<li onClick={() => handleServerClick('server2')}>Server 2</li>
-        			<li onClick={() => handleServerClick('server3')}>Server 3</li>
-      			</ul>
-      			{selectedServer && (
-        			<>
-          				<LiveMessages server={selectedServer} />
-						//need to import from LiveMessages Component
-          				<Channels server={selectedServer} />
-						//need to import from Channels Component
-       				</>
-      			)}
-    		</div>
-		</nav>
-	</>
-	);
+		<>
+		<div className='server-list'>
+				{serversArr.map(server =>
+				<ServerCard server ={server}/>
+        		)}
+    	</div>
+		<div className='add-server'>
+
+		</div>
+		</>
+		//remember to import create server modal here
+	)
+	// dispatch that thunk in a useEffect --- which will have an empty dependency arr that will have it run once.
+
+	// then use useSelector to get all those servers for your navbar. Then map through those servers and feed that information
+
+	// for each server you're going to have a servercard and feed that into as a prop for your server
+
 }
 
 export default Navigation;
