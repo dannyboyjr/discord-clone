@@ -35,3 +35,14 @@ class Server(db.Model):
             "private": self.private,
             "created_at": self.created_at
         }
+
+    def to_dict_members(self):
+        return {
+            'id':self.id,
+            'owner_id': self.owner_id,
+            "name": self.name,
+            "icon": self.icon,
+            "private": self.private,
+            "created_at": self.created_at,
+            "members": [member.to_dict() for member in self.server_member],
+        }

@@ -1,40 +1,42 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
-import './servers.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import ServerCard from './ServerCard';
+//import ProfileButton from "./ProfileButton"
+//import CreateServerModal from ""
+import { getUserServers } from "../../store/servers"
+import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation(){
+	const [isLoaded, setIsLoaded] = useState(false)
+	const dispatch = useDispatch()
+	const userServers = useSelector(state => state.servers.currentUserServers); //double check name of state for server
 
-	const sessionUser = useSelector(state => state.session.user);
-	const [showNotifications, setShowNotifications ] = useState(false)
+	const serversArr = Object.values(userServers);
 
-	const handleNotificationClick = () => {
-		setShowNotifications(!showNotifications);
-	}
+	useEffect(() => {
+		dispatch(getUserServers())
+	}, [dispatch])
+
 
 	return (
-	<>
-		<nav className='navbar'>
-			<div className='left-nav-bar'>
-				<div className='nav-logo'>
-					<img src="/discord_logo.svg" alt="Discord Logo"/>
-				</div>
-			</div>
-				<li>
-				<NavLink exact to="/">Home</NavLink>
-				</li>
-				{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
-				)}
+		<>
+		<div className='servers-list'>
+				{serversArr.map(server =>
+				<ServerCard server ={server}/>
+        		)}
+    	</div>
+		<div className='add-server-button'>
+		{/* <OpenModalButton buttonText="Add Server" modalComponent={<CreateServerModal/>}/> */}
+		</div>
+		</>
+		//remember to import create server modal here
+	)
+	// dispatch that thunk in a useEffect --- which will have an empty dependency arr that will have it run once.
 
-		</nav>
-	</>
-	);
+	// then use useSelector to get all those servers for your navbar. Then map through those servers and feed that information
+
+	// for each server you're going to have a servercard and feed that into as a prop for your server
+
 }
 
 export default Navigation;
