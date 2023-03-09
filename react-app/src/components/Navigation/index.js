@@ -18,7 +18,6 @@ function Navigation({ isLoaded }) {
 	}, [dispatch])
 
 	const serversArr = Object.values(userServers);
-	console.log(serversArr)
 
 	const addServer = () => {
 		console.log("ADD SERVER")

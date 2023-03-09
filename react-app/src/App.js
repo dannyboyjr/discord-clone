@@ -19,23 +19,23 @@ function App() {
     <>
       <div className="page-layout">
       <Navigation isLoaded={isLoaded} />
-      <MainComponent />
+      
 
       </div>
       {isLoaded && (
         <Switch>
-          {/* <Route path="/" exact>
-            <HOLDERPage />
-          </Route> */}
+          <Route path="/" exact>
+            <MainComponent />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          {/* <Route path="/:serverId(\d+)/:channelId(\d+)">
-            <HOLDERPage />
-          </Route> */}
+          <Route path="/:serverId(\d+)/:channelId(\d+)?">
+            <MainComponent />
+          </Route>
           {/* <Route path="/@me">
             <HOLDERPage />
           </Route> */}

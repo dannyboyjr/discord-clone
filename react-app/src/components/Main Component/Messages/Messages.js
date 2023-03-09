@@ -2,6 +2,8 @@ import React from 'react';
 import './Messages.css';
 
 function Messages() {
+  //should only render if channelId exist in useParams() 
+  //make if statement to only render jsx IF channelID is preseent. otherwise render a blank messages box
   return (
     <div className="messages-container">
 
