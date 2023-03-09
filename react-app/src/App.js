@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import MainComponent from "./components/Main Component/main";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,21 +17,25 @@ function App() {
 
   return (
     <>
+      <div className="page-layout">
       <Navigation isLoaded={isLoaded} />
+      
+
+      </div>
       {isLoaded && (
         <Switch>
-          {/* <Route path="/" exact>
-            <HOLDERPage />
-          </Route> */}
+          <Route path="/" exact>
+            <MainComponent />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          {/* <Route path="/:serverId(\d+)/:channelId(\d+)">
-            <HOLDERPage />
-          </Route> */}
+          <Route path="/:serverId(\d+)/:channelId(\d+)?">
+            <MainComponent />
+          </Route>
           {/* <Route path="/@me">
             <HOLDERPage />
           </Route> */}

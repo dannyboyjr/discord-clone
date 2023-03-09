@@ -30,8 +30,8 @@ const deleteChannel = (channelId) => ({
     channelId
 });
 
-export const getAllChannelsInServer = (server) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${server.id}/channels`);
+export const getAllChannelsInServer = (id) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${id}/channels`);
     if (response.ok) {
         const data = await response.json();
         dispatch(loadChannels(data.channels));
@@ -89,6 +89,7 @@ const channelsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_CHANNELS:
             newState = { ...state };
+            newState.allChannels = {}
             action.channels.forEach((channel) => {
                 newState.allChannels[channel.id] = channel;
             });

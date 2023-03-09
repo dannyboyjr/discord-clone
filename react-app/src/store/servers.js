@@ -95,7 +95,6 @@ export const deleteServerById = (id) => async (dispatch) => {
     });
 
     if (response.ok) {
-        const data = await response.json();
         dispatch(deleteServer(id))
     }
 };

@@ -6,7 +6,7 @@ from datetime import datetime
 
 server_routes = Blueprint('server', __name__)
 
-##get all servers 
+##get all servers
 @server_routes.route('/')
 @login_required
 def get_all_servers():
@@ -38,7 +38,7 @@ def get_servers_of_current_user():
     servers = Server.query.join(Server_Member).filter(
         Server_Member.user_id == current_user.id,
         Server.private == False
-        ).all() 
+        ).all()
     return jsonify([server.to_dict() for server in servers])
 
 #create public server route
@@ -55,10 +55,23 @@ def create_server():
         private=False,
         owner_id=current_user.id,
         created_at=datetime.utcnow()
-    )   
+    )
     #adds server to db
     db.session.add(server)
     db.session.commit()
+
+    channel_post = Channel(
+            server_id = server.id,
+            owner_id = current_user.id,
+            name = "general",
+            private=False,
+            created_at=datetime.utcnow()
+        )
+    db.session.add(channel_post)
+    db.session.commit()
+    # adds user as member of new server
+    member = Server_Member(user_id=current_user.id, server_id=server.id)
+    db.session.add(member)
 
     channel_post = Channel(
             server_id = server.id,
@@ -95,7 +108,7 @@ def edit_server(id):
     server.name = data['name']
     server.icon = data['icon']
     db.session.commit()
-    return server.to_dict() 
+    return server.to_dict()
 
 
 #delete server route
@@ -103,7 +116,7 @@ def edit_server(id):
 @login_required
 def delete_server(id):
     """
-    delete server 
+    delete server
     """
     server = Server.query.get(id)
     if server is None:
@@ -142,7 +155,7 @@ def get_server_members(server_id):
 
     return {"server_members": server_members_info}, 200
 
-#join server 
+#join server
 @server_routes.route('/<int:id>/join', methods=["POST"])
 @login_required
 def join_server(id):
@@ -154,7 +167,7 @@ def join_server(id):
         return jsonify({'error': 'Server not found'}), 404
     if server.private:
         return jsonify({'error': 'Unauthroized'}), 403
-    currentServers = Server.query.join(Server_Member).filter(Server_Member.user_id == current_user.id).all() 
+    currentServers = Server.query.join(Server_Member).filter(Server_Member.user_id == current_user.id).all()
     if server in currentServers:
         return jsonify({'error': 'User is already a memeber of this server'}), 400
     member = Server_Member(user_id=current_user.id, server_id=id)
@@ -171,7 +184,7 @@ def leave_server(server_id):
     leave server
     """
     server_member = Server_Member.query.filter_by(
-        server_id=server_id, 
+        server_id=server_id,
         user_id=current_user.id
         ).first()
     server = Server.query.get(server_id)
