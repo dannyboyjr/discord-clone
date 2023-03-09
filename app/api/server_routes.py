@@ -58,9 +58,6 @@ def create_server():
     )   
     #adds server to db
     db.session.add(server)
-<<<<<<< HEAD
-    #adds user as member of new server
-=======
     db.session.commit()
 
     channel_post = Channel(
@@ -73,7 +70,6 @@ def create_server():
     db.session.add(channel_post)
     db.session.commit()
     # adds user as member of new server
->>>>>>> channels
     member = Server_Member(user_id=current_user.id, server_id=server.id)
     db.session.add(member)
 

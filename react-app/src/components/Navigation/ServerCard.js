@@ -1,7 +1,7 @@
 import './ServerCard.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { getServerById } from '../../store/servers'
+
 
 const ServerCard = ({ server }) => {
 
