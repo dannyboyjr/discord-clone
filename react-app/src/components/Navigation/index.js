@@ -20,12 +20,13 @@ function Navigation({ isLoaded }) {
 	const serversArr = Object.values(userServers);
 	console.log(serversArr)
 
-
-
-
+	const addServer = () => {
+		console.log("ADD SERVER")
+	}
 
 	return (
 		<>
+		<div className='servers-bar'>
 			<ul>
 				<li>
 					<NavLink exact to="/">Home</NavLink>
@@ -42,9 +43,12 @@ function Navigation({ isLoaded }) {
 					<ServerCard server={server} />
 				)}
 			</div>
-			<div className='add-server-button'>
+			<div className='server-card-pic'>
 				{/* <OpenModalButton buttonText="Add Server" modalComponent={<CreateServerModal/>}/> */}
+				<img onClick={addServer} src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png' />
 			</div>
+			
+		</div>
 		</>
 		//remember to import create server modal here
 	)
