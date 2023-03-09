@@ -89,6 +89,7 @@ const channelsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_CHANNELS:
             newState = { ...state };
+            newState.allChannels = {}
             action.channels.forEach((channel) => {
                 newState.allChannels[channel.id] = channel;
             });
