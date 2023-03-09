@@ -1,0 +1,17 @@
+.server-card-pic img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .servers-list {
+    margin-top: 50px; /* adjust this value as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+  }
+  
+  .servers-list > * {
+    margin: 10px 0;
+  }

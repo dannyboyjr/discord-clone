@@ -31,7 +31,7 @@ def getChannelById(serverId, channelId):
         return jsonify({"error": "This Channel is not part of this Server"}), 404
     if channelFromId.private is True:
         return jsonify({"error": "Cannot access private channel"}), 403
-    return channelFromId.to_dict()
+    return channelFromId.to_dict_channel_messages()
 
 
 @channel_routes.route("<int:serverId>/channels", methods = ["POST"])

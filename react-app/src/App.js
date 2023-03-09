@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import MainComponent from "./components/Main Component/main";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,7 +17,11 @@ function App() {
 
   return (
     <>
+      <div className="page-layout">
       <Navigation isLoaded={isLoaded} />
+      <MainComponent />
+
+      </div>
       {isLoaded && (
         <Switch>
           {/* <Route path="/" exact>
