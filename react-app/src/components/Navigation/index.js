@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ServerCard from './serverCard';
+import ServerCard from './ServerCard';
 //import ProfileButton from "./ProfileButton"
 //import CreateServerModal from ""
-//import {} from "../../store/server";
-//import { NavLink, useHistory } from 'react-router-dom';
+import { getUserServers } from "../../store/servers"
 import './Navigation.css';
 
-function Navigation({ server }){
+function Navigation(){
 	const [isLoaded, setIsLoaded] = useState(false)
 	const dispatch = useDispatch()
-	const servers = useSelector(state => state.servers); //double check name of state for server
+	const userServers = useSelector(state => state.servers.currentUserServers); //double check name of state for server
 
-	const serversArr = Object.values(servers);
+	const serversArr = Object.values(userServers);
 
 	useEffect(() => {
-		dispatch("enter thunk here"())
+		dispatch(getUserServers())
 	}, [dispatch])
 
 
@@ -27,7 +26,7 @@ function Navigation({ server }){
         		)}
     	</div>
 		<div className='add-server-button'>
-		<OpenModalButton buttonText="Add Server" modalComponent={<CreateServerModal/>}/>
+		{/* <OpenModalButton buttonText="Add Server" modalComponent={<CreateServerModal/>}/> */}
 		</div>
 		</>
 		//remember to import create server modal here

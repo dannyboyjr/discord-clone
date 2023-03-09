@@ -24,6 +24,6 @@ class Server_Member(db.Model):
     def to_dict(self):
         return {
             'id':self.id,
-            "user_id": self.channel_id,
             "server_id": self.server_id,
+            "user": self.user.to_dict()
         }

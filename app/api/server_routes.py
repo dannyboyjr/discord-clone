@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
-from app.models import Server, Server_Member, User, db
+from app.models import Server, Server_Member,Channel, User, db
 from datetime import datetime
 
 
@@ -29,7 +29,7 @@ def server_by_id(id):
         return jsonify({"error": "Server not found"}), 404
     if server.private is True:
         return jsonify({"error": "cannot get private server"}), 403
-    return server.to_dict()
+    return server.to_dict_members()
 
 #get all servers of current user
 @server_routes.route('/current', methods=["GET"])
@@ -60,7 +60,16 @@ def create_server():
     db.session.add(server)
     db.session.commit()
 
-    #adds user as member of new server
+    channel_post = Channel(
+            server_id = server.id,
+            owner_id = current_user.id,
+            name = "general",
+            private=False,
+            created_at=datetime.utcnow()
+        )
+    db.session.add(channel_post)
+    db.session.commit()
+    # adds user as member of new server
     member = Server_Member(user_id=current_user.id, server_id=server.id)
     db.session.add(member)
     db.session.commit()

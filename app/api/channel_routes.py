@@ -8,6 +8,7 @@ from datetime import datetime
 channel_routes = Blueprint('channel', __name__)
 
 @channel_routes.route('<int:server_id>/channels', methods = ["GET"])
+@login_required
 def getChannelsInServer(server_id):
     '''
     Retrieve all channels in a server
@@ -17,6 +18,7 @@ def getChannelsInServer(server_id):
 
 
 @channel_routes.route('<int:serverId>/channels/<int:channelId>', methods = ["GET"])
+@login_required
 def getChannelById(serverId, channelId):
     '''
     Retrieve a specific channel
@@ -29,10 +31,11 @@ def getChannelById(serverId, channelId):
         return jsonify({"error": "This Channel is not part of this Server"}), 404
     if channelFromId.private is True:
         return jsonify({"error": "Cannot access private channel"}), 403
-    return channelFromId.to_dict()
+    return channelFromId.to_dict_channel_messages()
 
 
 @channel_routes.route("<int:serverId>/channels", methods = ["POST"])
+@login_required
 def createChannel(serverId):
     '''
     Create a new channel
@@ -54,6 +57,7 @@ def createChannel(serverId):
 
 
 @channel_routes.route('<int:serverId>/channels/<int:channelId>', methods = ["PUT"])
+@login_required
 def editChannel(serverId, channelId):
     '''
     Edit an existing channel that the current user owns
@@ -90,6 +94,7 @@ def editChannel(serverId, channelId):
 
 
 @channel_routes.route('<int:serverId>/channels/<int:channelId>', methods = ["DELETE"])
+@login_required
 def deleteChannel(serverId, channelId):
     '''
     Delete an existing channel that the current user owns
@@ -105,3 +110,4 @@ def deleteChannel(serverId, channelId):
     db.session.delete(channelToDelete)
     db.session.commit()
     return {'message': f'Channel {channelToDelete.name} has been deleted'}
+
