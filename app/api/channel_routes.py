@@ -64,8 +64,14 @@ def editChannel(serverId, channelId):
     '''
     serverOfChannel = Server.query.get(serverId)
     channelToUpdate = Channel.query.get(channelId)
+    if serverOfChannel is None:
+        return jsonify({"error": "Server not found"}), 404
     if channelToUpdate is None:
         return jsonify({"error": "Channel not found"}), 404
+    if channelToUpdate.server_id != serverOfChannel.id:
+        return jsonify({"error": "That channel isn't in this server"}), 404
+    if channelToUpdate.owner_id != serverOfChannel.owner_id:
+        return jsonify({"error": "Cannot edit another person's Channel"}), 403
     data = request.get_json()
     if channelToUpdate.private is True:
         return jsonify({"error": "Cannot edit a private Channel"}), 403
@@ -110,4 +116,3 @@ def deleteChannel(serverId, channelId):
     db.session.delete(channelToDelete)
     db.session.commit()
     return {'message': f'Channel {channelToDelete.name} has been deleted'}
-
