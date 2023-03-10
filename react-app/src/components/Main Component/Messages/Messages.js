@@ -14,18 +14,25 @@ const Messages = () => {
   
 
   useEffect(() => {
-    dispatch(getAllMessagesInChannel(serverId, channelId)).then(()=> setIsLoaded(true)).then(console.log(messagesArr))
+    if(serverId && channelId){
+      dispatch(getAllMessagesInChannel(serverId, channelId)).then(()=> setIsLoaded(true))
+    } else {
+      setIsLoaded(true)
+    }
   }, [dispatch, serverId, channelId]);
 
   return (
     <div className="messages-container">
       <h2>Messages</h2>
-       
+      {serverId && channelId ? (
         <ul>
-           {isLoaded && messagesArr.map((message) => (
-            <MessageCard message={message} />
+          {isLoaded && messagesArr.map((message) => (
+            <MessageCard key={message.id} message={message} />
           ))}
-          </ul>
+        </ul>
+      ) : (
+        <div>Select a server.</div>
+      )}
     </div>
   );
 };

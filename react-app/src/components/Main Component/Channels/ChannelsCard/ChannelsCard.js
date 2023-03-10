@@ -5,9 +5,8 @@ import OpenModalButton  from '../../../OpenModalButton'
 import EditChannelModal  from '../../../EditChannelModal'
 
 
-//{serverId}/${channel.id}/
 const ChannelsCard = ({ channel, serverId }) => {
-
+console.log({channel})
 
     return (
         <div>
@@ -16,15 +15,15 @@ const ChannelsCard = ({ channel, serverId }) => {
             <div className='channel-line'>
             #<li key={channel.id}>{channel.name}</li>
             </div>
-        
         </NavLink>
 
-        <div>
+        {/* cotts modal button */}
+        {/* <div>
             <OpenModalButton
                 buttonText="E"
                 modalComponent={<EditChannelModal channel={channel} />}
                 />
-        </div>
+        </div> */}
 
 
     </div>

@@ -1,10 +1,7 @@
 import './ServerCard.css'
-import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-
 const ServerCard = ({ server }) => {
-
     return (
 
             <NavLink className='server-card-pic' to={`/${server.id}/`}>
