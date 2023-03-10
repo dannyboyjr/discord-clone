@@ -72,6 +72,7 @@ def create_server():
     # adds user as member of new server
     member = Server_Member(user_id=current_user.id, server_id=server.id)
     db.session.add(member)
+    db.session.commit()
 
     return server.to_dict()
 
@@ -235,13 +236,13 @@ def create_private_server(user_id):
 
 
 
-#get all PRIVATE servers of current user
-@server_routes.route('/me', methods=["GET"])
-@login_required
-def get_private_servers_of_current_user():
-    servers = Server.query.join(Server_Member).filter(
-        Server_Member.user_id == current_user.id,
-        Server.private == True
-        ).all() 
-    return jsonify([server.to_dict() for server in servers])
+# #get all PRIVATE servers of current user
+# @server_routes.route('/me', methods=["GET"])
+# @login_required
+# def get_private_servers_of_current_user():
+#     servers = Server.query.join(Server_Member).filter(
+#         Server_Member.user_id == current_user.id,
+#         Server.private == True
+#         ).all() 
+#     return jsonify([server.to_dict() for server in servers])
 
