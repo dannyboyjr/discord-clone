@@ -9,7 +9,7 @@ function Channels() {
     const [isLoaded, setIsLoaded] = useState(false)
     const {serverId } = useParams()
     const dispatch = useDispatch();
-    const channels = useSelector(state => state.channels.allChannels)
+    const channels = useSelector(state => state.channels)
     const channelsArr = Object.values(channels);
     useEffect(() => {
         dispatch(getAllChannelsInServer(serverId)).then(() => setIsLoaded(true))
@@ -21,7 +21,6 @@ function Channels() {
     <div className="channels-container">
       <h2>Channels</h2>
       <ul>
-        <li>Hi</li>
         {isLoaded && channelsArr.map((channel)=>(
     <ChannelsCard key={channel.id} channel={channel} serverId={serverId} />
 ))}
