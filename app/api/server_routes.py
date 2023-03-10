@@ -194,3 +194,64 @@ def leave_server(server_id):
         return jsonify({'success': 'User left the server successfully'})
     else:
         return jsonify({'error': 'User is not a member of this server'}), 404
+
+
+# create private server route and add user
+@server_routes.route("/me/<int:user_id>", methods=["POST"])
+@login_required
+def create_private_server(user_id):
+    """
+    Create a private server and add current user and the user in the URL as members
+    """
+    data = request.get_json()
+    server = Server(
+        name=data['name'],
+        icon=data['icon'],
+        private=True,
+        owner_id=current_user.id,
+        created_at=datetime.utcnow()
+    )
+    #adds server to db
+    db.session.add(server)
+    db.session.commit()
+
+    # adds current user as member of new server
+    member = Server_Member(user_id=current_user.id, server_id=server.id)
+    db.session.add(member)
+    
+    # adds user found in URL as member of new server
+    friend = User.query.get(user_id)
+
+    if not friend:
+        return jsonify({"error": "User not found"}), 404
+    member = Server_Member(user_id=friend.id, server_id=server.id)
+    db.session.add(member)
+
+    # adds the general channel to new server
+    channel_name = f"{current_user.username}-{friend.username}"
+
+    channel = Channel(
+        server_id=server.id,
+        owner_id=current_user.id,
+        name=channel_name,
+        private=True,
+        created_at=datetime.utcnow()
+    )
+    db.session.add(channel)
+
+    db.session.commit()
+    return server.to_dict()
+
+
+
+
+#get all PRIVATE servers of current user
+@server_routes.route('/me', methods=["GET"])
+@login_required
+def get_private_servers_of_current_user():
+    servers = Server.query.join(Server_Member).filter(
+        Server_Member.user_id == current_user.id,
+        Server.private == True
+        ).all() 
+    return jsonify([server.to_dict() for server in servers])
+
