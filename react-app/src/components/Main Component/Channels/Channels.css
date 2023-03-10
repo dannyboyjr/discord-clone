@@ -19,3 +19,31 @@
   .channels-container li {
     margin-bottom: 5px;
   }
+
+  .server-icons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 248px;
+    height: 70px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  
+  .server-icons-container h2 {
+    font-family: 'Uni Sans', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .edit-icon, .delete-icon {
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .edit-icon:hover, .delete-icon:hover {
+    color: #ccc;
+  }
+  
