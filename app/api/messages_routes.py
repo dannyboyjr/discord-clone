@@ -25,7 +25,7 @@ def get_message_channel_id(server_id, channel_id):
         return jsonify({"error": "Channel not found"}), 404
 
     # Check if channel is private
-    if channel.private is True:
+    if channel.private is True and not Server_Member.query.filter_by(server_id=server_id, user_id=current_user.id).first():
         return jsonify({"error": "Cannot send message to private channel"}), 403
 
     #validate member
@@ -80,4 +80,12 @@ def create_message_channel_id(server_id,channel_id):
     db.session.commit()
 
     return jsonify(message.to_dict()), 201
+
+
+
+
+
+
+
+    
 

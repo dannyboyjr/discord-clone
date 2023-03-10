@@ -127,7 +127,6 @@ const serversReducer = (state = initialState, action) => {
             });
             return newState
 
-
         case LOAD_SERVER_BY_ID:
             newState = { ...state }
             newState.serverById = action.server
