@@ -1,10 +1,10 @@
 .messages-container {
     position: absolute;
     top: 0;
-    left: 370px;
-    bottom: 100px; /* or whatever value you want */
+    left: 348px;
+    bottom: 0; /* or whatever value you want */
     right: 0;
-    background-color: #f2f3f5;
+    background-color: rgb(49,51,56);
     padding: 100px;
   }
   

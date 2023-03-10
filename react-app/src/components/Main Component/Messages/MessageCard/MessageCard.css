@@ -1,0 +1,16 @@
+.message-content {
+    display: flex;
+    margin: 4px 0;
+    align-items: flex-start;
+  }
+  
+  .message-content li {
+    margin: 0;
+    padding: 8px;
+    background-color: #36393F;
+    color: #DDDEE2;
+    border-radius: 8px;
+    font-family: "Uni Sans";
+    font-size: 14px;
+    line-height: 1.5;
+  }

@@ -13,7 +13,10 @@ const ChannelsCard = ({ channel, serverId }) => {
         <div>
 
         <NavLink className='channel-card' to={`/${serverId}/${channel.id}/`}>
-        <li key={channel.id}>{channel.name}</li>
+            <div className='channel-line'>
+            #<li key={channel.id}>{channel.name}</li>
+            </div>
+        
         </NavLink>
 
         <div>
