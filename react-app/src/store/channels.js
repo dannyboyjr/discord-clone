@@ -154,11 +154,18 @@ const channelsReducer = (state = initialState, action) => {
             console.log(newState)
             return newState;
 
-        case CREATE_MESSAGE:
-            newState = { ...state };
-            const { channel_id, ...newMessage } = action.message;
-
-            return newState;
+            case CREATE_MESSAGE:
+                const { message } = action;
+                const channelId = message.channel_id;
+                return {
+                    ...state,[channelId]: {
+                        ...state[channelId],
+                        messages: {
+                            ...state[channelId].messages,
+                            [message.id]: message,
+                        },
+                    },
+                };
 
         default:
             return state;

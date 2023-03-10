@@ -1,0 +1,23 @@
+.channel-card {
+    font-family: "Uni Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    color: #989AA2;
+    text-decoration: none;
+  }
+  
+  .channel-card:hover {
+    color: rgb(243,244,245);
+  }
+
+.channel-card li {
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+
+.channel-line {
+    display: flex;
+    align-items: center;
+}

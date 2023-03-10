@@ -11,12 +11,13 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 100px;
+  width: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #5A5A5A;
-  padding: 0;
+  background-color: #1E1F22;
+
   margin: 0;
 }
+
