@@ -73,16 +73,6 @@ def create_server():
     member = Server_Member(user_id=current_user.id, server_id=server.id)
     db.session.add(member)
 
-    channel_post = Channel(
-        server_id = server.id,
-        owner_id = current_user.id,
-        name = "General",
-        private=False,
-        created_at=datetime.utcnow()
-        )
-    db.session.add(channel_post)
-    db.session.commit()
-
     return server.to_dict()
 
 
