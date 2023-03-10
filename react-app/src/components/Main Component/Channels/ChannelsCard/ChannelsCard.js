@@ -19,7 +19,7 @@ const ChannelsCard = ({ channel, serverId }) => {
         <div>
             <OpenModalButton
                 buttonText="E"
-                modalComponent={<EditChannelModal />}
+                modalComponent={<EditChannelModal channel={channel} />}
                 />
         </div>
 

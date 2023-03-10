@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-// import {  } from "../../store/channels";    import thunk from Channel store when able
+import {editChannelById} from '../../store/channels'
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import "./EditChannelModal.css";
+import { useParams } from "react-router-dom";
 
-function EditChannelModal() {
+
+function EditChannelModal({channel}) {
   const dispatch = useDispatch();
     // const selectedChannel = useSelector(state => state.spotState[parseInt(spotId)])  pull the channel id from the channel state
-  const [name, setName] = useState("");       // UseState should contain "selectedChannel.name"
+  const [name, setName] = useState(channel.name);       // UseState should contain "selectedChannel.name"
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const data = await dispatch(login(name));   replace with thunk name where it says 'login'
+    const data = await dispatch(editChannelById(channel.server_id, {channelId:channel.id, name}));  
     if (data) {
       setErrors(data);
     } else {

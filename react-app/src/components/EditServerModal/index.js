@@ -14,6 +14,7 @@ function EditServerModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     // const data = await dispatch(login(name, icon)); replace with thunk name where it says 'login'
     if (data) {
       setErrors(data);

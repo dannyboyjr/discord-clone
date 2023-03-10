@@ -70,8 +70,8 @@ export const createChannelInServer = (serverId, channel) => async (dispatch) => 
     }
 };
 
-export const editChannelById = (serverId, channel) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${serverId}/channels/${channel.id}`, {
+export const editChannelById = (serverId, channel) => async (dispatch) => {git
+    const response = await fetch(`/api/servers/${serverId}/channels/${channel.channelId}`, {
         headers: { "Content-Type": "application/json" },
         method: "PUT",
         body: JSON.stringify(channel),
