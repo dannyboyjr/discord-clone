@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import {  } from "../../store/channels";    import thunk from Channel store when able
+import { editChannelById } from "../../store/channels";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./EditChannelModal.css";
@@ -14,7 +14,7 @@ function EditChannelModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const data = await dispatch(login(name));   replace with thunk name where it says 'login'
+    const data = await dispatch(editChannelById(name));
     if (data) {
       setErrors(data);
     } else {
