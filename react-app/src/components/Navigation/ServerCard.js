@@ -8,7 +8,7 @@ const ServerCard = ({ server }) => {
     return (
 
             <NavLink className='server-card-pic' to={`/${server.id}/`}>
-                    <img  src={server.icon} alt='add default server image here'></img>
+                    <img src={server.icon} alt='add default server image here'></img>
             </NavLink>
     )
 }
