@@ -7,7 +7,8 @@ import { useParams } from "react-router-dom";
 
 function EditChannelModal({channel}) {
   const dispatch = useDispatch();
-    // const selectedChannel = useSelector(state => state.spotState[parseInt(spotId)])  pull the channel id from the channel state
+    // const selectedChannel = useSelector(state => state.spotState[parseInt(spotId)])  pull the channel id from the channel state Added for git
+
   const [name, setName] = useState(channel.name);
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
