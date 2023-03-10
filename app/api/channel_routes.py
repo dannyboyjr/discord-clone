@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, render_template, redirect, request
 from flask_login import login_required, current_user
 from app.forms import NewChannel
-from app.models import db, Server, Channel
+from app.models import db, Server, Channel, Server_Member
 from datetime import datetime
 
 
@@ -75,23 +75,6 @@ def editChannel(serverId, channelId):
     db.session.commit()
     return channelToUpdate.to_dict()
 
-    # form = NewChannel({channelToUpdate})
-    # form['csrf_token'].data = request.cookies['csrf_token']
-    # if form.validate_on_submit():
-    #     channel_update = Channel(
-    #         # id = channelId,
-    #         # server_id = channelToUpdate.server_id,
-    #         # owner_id = channelToUpdate.owner_id,
-    #         name = form.name.data,
-    #         # private=False,
-    #         # created_at=channelToUpdate.created_at
-    #     )
-    #     db.session.add(channel_update)
-    #     db.session.commit()
-    #     return channel_update.to_dict()
-    # return jsonify({'error': 'This form was not validated'})
-
-
 
 @channel_routes.route('<int:serverId>/channels/<int:channelId>', methods = ["DELETE"])
 @login_required
@@ -110,4 +93,19 @@ def deleteChannel(serverId, channelId):
     db.session.delete(channelToDelete)
     db.session.commit()
     return {'message': f'Channel {channelToDelete.name} has been deleted'}
+
+# get user DMs
+@channel_routes.route("/dms", methods=["GET"])
+@login_required
+def get_user_dms():
+    """
+        Get all private channels the current user is associated with
+    """
+    private_channels = db.session.query(Channel).join(Server_Member, Server_Member.server_id == Channel.server_id).filter(
+        Server_Member.user_id == current_user.id,
+        Channel.private == True
+    ).all()
+
+    private_channels_dict = [channel.to_dict() for channel in private_channels]
+    return jsonify(private_channels_dict)
 
