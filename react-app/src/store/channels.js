@@ -70,7 +70,7 @@ export const createChannelInServer = (serverId, channel) => async (dispatch) => 
     }
 };
 
-export const editChannelById = (serverId, channel) => async (dispatch) => {git
+export const editChannelById = (serverId, channel) => async (dispatch) => {
     const response = await fetch(`/api/servers/${serverId}/channels/${channel.channelId}`, {
         headers: { "Content-Type": "application/json" },
         method: "PUT",
@@ -115,7 +115,7 @@ export const createMessageInChannel = (serverId, channelId, message) => async (d
 
 
 const initialState = {
-    
+
 };
 
 const channelsReducer = (state = initialState, action) => {
@@ -143,7 +143,7 @@ const channelsReducer = (state = initialState, action) => {
         case DELETE_CHANNEL:
             delete newState[action.channelId];
             return newState;
-        
+
         case LOAD_MESSAGES:
             action.messages.forEach(message => {
                 if(!newState[message.channel_id].messages){
