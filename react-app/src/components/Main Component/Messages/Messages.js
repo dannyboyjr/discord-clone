@@ -1,44 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getAllMessagesInChannel } from '../../../store/channels';
+import MessageCard from './MessageCard/MessageCard'
 import './Messages.css';
 
-function Messages() {
-  //should only render if channelId exist in useParams() 
-  //make if statement to only render jsx IF channelID is preseent. otherwise render a blank messages box
+const Messages = () => {
+  const { serverId, channelId } = useParams();
+  const [isLoaded, setIsLoaded] = useState(false)
+  const dispatch = useDispatch();
+  const messages = useSelector((state) => state.channels[channelId]?.messages || {});
+  const messagesArr = Object.values(messages)
+  
+
+  useEffect(() => {
+    dispatch(getAllMessagesInChannel(serverId, channelId)).then(()=> setIsLoaded(true)).then(console.log(messagesArr))
+  }, [dispatch, serverId, channelId]);
+
   return (
     <div className="messages-container">
-
-      <div className="message">
-        <div className="avatar">
-          <img src="https://via.placeholder.com/50" alt="Avatar" />
-        </div>
-        <div className="content">
-          <div className="header">
-            <span className="username">User123</span>
-            <span className="timestamp">1 hour ago</span>
-          </div>
-          <div className="body">
-            This is hard written code that needs to be replaced with actual messages
-          </div>
-        </div>
-      </div>
-
-      <div className="message">
-        <div className="avatar">
-          <img src="https://via.placeholder.com/50" alt="Avatar" />
-        </div>
-        <div className="content">
-          <div className="header">
-            <span className="username">Cool Guy</span>
-            <span className="timestamp">30 minutes ago</span>
-          </div>
-          <div className="body">
-            please delete us
-          </div>
-        </div>
-      </div>
-
+      <h2>Messages</h2>
+       
+        <ul>
+           {isLoaded && messagesArr.map((message) => (
+            <MessageCard message={message} />
+          ))}
+          </ul>
     </div>
   );
-}
+};
 
 export default Messages;
