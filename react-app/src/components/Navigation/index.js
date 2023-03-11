@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './ServerCard';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 //import ProfileButton from "./ProfileButton"
 import OpenModalImage from '../OpenModalImage';
@@ -15,19 +15,31 @@ function Navigation({ isLoaded }) {
 	const [showModal, setShowModal] = useState(false)
 	const sessionUser = useSelector(state => state.session.user);
 	const userServers = useSelector(state => state.servers.currentUserServers); //double check name of state for server
+	const location = useLocation()
+	const history = useHistory()
+
+    useEffect(() => {
+        if (!sessionUser){
+            history.push('/')
+        }
+    }, [history])
 
 	useEffect(() => {
 		dispatch(getUserServers())
 	}, [dispatch])
 
-	const serversArr = Object.values(userServers);
-
-	const addServer = () => {
-		setShowModal(true);
+	if (location.pathname === '/login') {
+		return null
 	}
-	const handleClose = () => {
-		setShowModal(false);
-	  };
+	if (location.pathname === '/signup') {
+		return null
+	}
+	if (location.pathname === '/') {
+		return null
+	}
+
+
+	const serversArr = Object.values(userServers);
 
 	return (
 		<>
