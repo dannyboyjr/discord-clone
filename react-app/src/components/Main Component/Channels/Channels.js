@@ -28,7 +28,7 @@ function Channels({ serverId }) {
 
   const handleDelete = () => {
     dispatch(deleteServerById(currentServer.id)).then(() => {
-      history.push('@me')
+      history.push('/@me')
     });
   };
 
@@ -53,6 +53,14 @@ function Channels({ serverId }) {
               </span>
             </div>
           </div>
+          {/* <div className='create-channel-button'>
+            <OpenModalButton
+              buttonText="Add New Channel"
+              modalComponent={<CreateChanneModal server={currentServer}/>}
+            />
+          </div> */}
+
+
 
           <ul>
             {isLoaded &&

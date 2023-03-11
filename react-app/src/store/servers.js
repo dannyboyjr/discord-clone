@@ -148,9 +148,10 @@ const serversReducer = (state = initialState, action) => {
             return newState;
 
         case DELETE_SERVERS:
+            console.log('THIS IS THE ACTION:', action)
             newState = { ...state }
             delete newState.allServers[action.server.id]
-            delete newState.currentUserServers[action.server.id]
+            delete newState.currentUserServers[action.server]
             return newState
         default:
             return state;
