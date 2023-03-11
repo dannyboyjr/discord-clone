@@ -7,6 +7,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import MainComponent from "./components/Main Component/main";
+import MainDm from "./components/DMs/MainDm";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,9 +37,9 @@ function App() {
           <Route path="/:serverId(\d+)/:channelId(\d+)?">
             <MainComponent />
           </Route>
-          {/* <Route path="/@me">
-            <HOLDERPage />
-          </Route> */}
+          <Route path="/@me">
+            <MainDm />
+          </Route>
 
         </Switch>
       )}

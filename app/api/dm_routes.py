@@ -6,7 +6,6 @@ from app.models import Message, Server, Channel, Server_Member, db
 dm_routes = Blueprint("dms", __name__)
 
 
-
 @dm_routes.route("/<server_id>/<int:channel_id>", methods=["GET"])
 @login_required
 def get_private_message_channel(server_id, channel_id):
