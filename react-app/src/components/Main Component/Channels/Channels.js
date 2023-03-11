@@ -7,12 +7,17 @@ import OpenModalImage  from '../../OpenModalImage';
 import EditServerModal  from '../../EditServerModal';
 import ChannelsCard from './ChannelsCard/ChannelsCard';
 import './Channels.css';
+import ProfileButton from '../../Navigation/ProfileButton';
+import CreateDMModal from '../../CreateDMModal/CreateDMModal'
+
+
 
 function Channels({ serverId }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
   const currentServer = useSelector((state) => state.servers.serverById);
+  const sessionUser = useSelector(state => state.session.user);
   const channels = useSelector((state) => state.channels);
   const channelsArr = Object.values(channels);
 
@@ -61,6 +66,11 @@ function Channels({ serverId }) {
           </ul>
         </>
       ) : null}
+      <ul>
+				{isLoaded && (
+						<ProfileButton user={sessionUser} />
+				)}
+			</ul>
     </div>
   );
 }
