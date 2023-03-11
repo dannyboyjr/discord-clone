@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './ServerCard';
 import { NavLink } from 'react-router-dom'
 import CreateServerModal from '../CreateServerModal';
-import OpenModalImage from '../OpenModalImage';
+import OpenModalImage from '../OpenModalImage/index'
 import { getUserServers } from "../../store/servers"
 import './Navigation.css';
 
@@ -50,11 +50,6 @@ function Navigation({ isLoaded }) {
 					
 				)}
 			</div>
-			<div className='server-card-pic add-server-pic'>
-				
-				<img onClick={addServer} src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png' />
-			</div>
-			{showModal && <CreateServerModal onClose={handleClose}/>}
 			<div className='server-card-pic add-server-pic'>
             <OpenModalImage
                 buttonText="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png"
