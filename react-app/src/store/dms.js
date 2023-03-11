@@ -44,7 +44,17 @@ export const getAllDMMessagesInChannel = (serverId, channelId) => async (dispatc
 };
 
 //still need to add create server thunk
-
+export const createDirectMessage = (serverId, channelId, message) => async (dispatch) => {
+    const response = await fetch(`/api/@me/${serverId}/${channelId}`, {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify(message),
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(createPrivateMessage(data));
+    }
+};
 
 //still need to add create private message 
 
@@ -71,6 +81,19 @@ let newState = { ...state };
             newState[message.channel_id].messages[message.id] = message;
             });
         return newState;
+    case CREATE_PRIVATE_MESSAGE:
+        const { message } = action;
+        const channelId = message.channel_id;
+        return {
+            ...state,[channelId]: {
+                ...state[channelId],
+                messages: {
+                    ...state[channelId].messages,
+                    [message.id]: message,
+                },
+            },
+        };
+
 
     default:
         return state;

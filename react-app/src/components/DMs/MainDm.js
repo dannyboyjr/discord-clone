@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import DmChannels from './DmChannels/DmChannels'
-import Messages from '../Main Component/Messages/Messages';
-import ChatInput from '../Main Component/ChatInput/ChatInput';
+import DmMessages from './DmMessages/DmMessages';
+import DmChatInput from './DmChatInput';
 
 const MainDm = () => {
   const {channelId } = useParams();
@@ -11,8 +11,8 @@ const MainDm = () => {
     <div>
       <DmChannels />
       <div>
-        <Messages/>
-        {channelId && <ChatInput />}
+        <DmMessages/>
+        {channelId && <DmChatInput />}
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ function App() {
           <Route path="/:serverId(\d+)/:channelId(\d+)?">
             <MainComponent />
           </Route>
-          <Route path="/@me">
+          <Route path="/@me/:serverId(\d+)?/:channelId(\d+)?">
             <MainDm />
           </Route>
 
