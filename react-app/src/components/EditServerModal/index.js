@@ -15,7 +15,7 @@ function EditServerModal({server}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = await dispatch(editServerById(server.id, {name, icon}));
+    const data = await dispatch(editServerById(server, {name, icon}));
     if (data) {
       setErrors(data);
     } else {

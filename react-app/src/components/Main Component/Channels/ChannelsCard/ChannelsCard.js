@@ -1,7 +1,7 @@
 import './ChannelsCard.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import OpenModalButton  from '../../../OpenModalButton'
+import OpenModalImage  from '../../../OpenModalImage'
 import EditChannelModal  from '../../../EditChannelModal'
 
 
@@ -18,12 +18,12 @@ console.log({channel})
         </NavLink>
 
         {/* cotts modal button */}
-        {/* <div>
-            <OpenModalButton
-                buttonText="E"
+        <div>
+            <OpenModalImage
+                buttonText="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png"
                 modalComponent={<EditChannelModal channel={channel} />}
                 />
-        </div> */}
+        </div>
 
 
     </div>
