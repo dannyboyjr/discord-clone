@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <div className="page-layout">
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
 
 
       </div>
@@ -38,9 +38,11 @@ function App() {
           </Route>
           <ProtectedRoute>
           <Route path="/:serverId(\d+)/:channelId(\d+)?">
+          <Navigation isLoaded={isLoaded} />
               <MainComponent />
           </Route>
           <Route path="/@me/:serverId(\d+)?/:channelId(\d+)?">
+          <Navigation isLoaded={isLoaded} />
             <MainDm />
           </Route>
           </ProtectedRoute>

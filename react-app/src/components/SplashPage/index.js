@@ -15,13 +15,7 @@ function SplashPage({isLoaded}) {
 
     useEffect(() => {
         if (sessionUser){
-            if(serversArr.length > 0){
-                dispatch(getUserServers()).then((server)=>{
-                    history.push`/${server.id}`
-                })
-            }else{
                 history.push(`/@me`)
-            }
         }
     }, [dispatch, history, sessionUser, userServers, serversArr.length])
 

@@ -15,7 +15,8 @@ function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const [showModal, setShowModal] = useState(false)
 	const sessionUser = useSelector(state => state.session.user);
-	const userServers = useSelector(state => state.servers.currentUserServers); //double check name of state for server
+	const servers = useSelector(state => state.servers); //double check name of state for server
+	const userServers = servers.currentUserServers
 	const location = useLocation()
 	const history = useHistory()
 
@@ -31,16 +32,16 @@ function Navigation({ isLoaded }) {
 	const addServer = () => {
 		setShowModal(true);
 	}
-	
-	if (location.pathname === '/login') {
-		return null
-	}
-	if (location.pathname === '/signup') {
-		return null
-	}
-	if (location.pathname === '/') {
-		return null
-	}
+
+	// if (location.pathname === '/login') {
+	// 	return null
+	// }
+	// if (location.pathname === '/signup') {
+	// 	return null
+	// }
+	// if (location.pathname === '/') {
+	// 	return null
+	// }
 
 
 	return (
@@ -64,7 +65,7 @@ function Navigation({ isLoaded }) {
                 modalComponent={<CreateServerModal />}
                 />
         	</div>
-			
+
 		</div>
 		</>
 	)
