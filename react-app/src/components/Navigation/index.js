@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './ServerCard';
 import { NavLink } from 'react-router-dom'
-
-//import ProfileButton from "./ProfileButton"
 import CreateServerModal from '../CreateServerModal';
+import OpenModalImage from '../OpenModalImage';
 import { getUserServers } from "../../store/servers"
 import './Navigation.css';
 
@@ -12,14 +11,14 @@ import './Navigation.css';
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const [showModal, setShowModal] = useState(false)
-	const sessionUser = useSelector(state => state.session.user);
 	const userServers = useSelector(state => state.servers.currentUserServers)
 	
 	
 	useEffect(() => {
 		dispatch(getUserServers())
-		
 	}, [dispatch])
+
+
 
 	const serversArr = Object.values(userServers);
 
@@ -56,6 +55,12 @@ function Navigation({ isLoaded }) {
 				<img onClick={addServer} src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png' />
 			</div>
 			{showModal && <CreateServerModal onClose={handleClose}/>}
+			<div className='server-card-pic add-server-pic'>
+            <OpenModalImage
+                buttonText="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png"
+                modalComponent={<CreateServerModal />}
+                />
+        	</div>
 			
 		</div>
 		</>
