@@ -33,7 +33,7 @@ function DmChannels() {
 
         <h2>Direct Messages</h2>
         <OpenModalImage
-                buttonText="https://commons.wikimedia.org/wiki/File:Noun_project_-_plus_round.svg#/media/File:Noun_project_-_plus_round.svg"
+                buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/200px-Plus_symbol.svg.png"
                 modalComponent={<CreateDMModal />} />
         
         </div>

@@ -40,7 +40,7 @@ function Channels({ serverId }) {
             <div className="server-icons-container">
               <h2>{currentServer.name}</h2>
               <span className="edit-icon">
-               <div className='server-card-pic add-server-pic'>
+               <div className='channel-card-edit'>
                  <OpenModalImage
                    buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Font_Awesome_5_regular_edit.svg/1200px-Font_Awesome_5_regular_edit.svg.png"
                    modalComponent={<EditServerModal server={currentServer}/>}
