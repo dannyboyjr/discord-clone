@@ -49,4 +49,21 @@
   }
   
 
-  
+/* Styling for DMs channel */
+.direct-messages-container {
+  font-family: 'Uni Sans', sans-serif;
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.add-icon {
+  margin-left: 5px;
+  font-size: 1rem; /* decrease the font size to make the icon smaller */
+  color: white;
+  cursor: pointer;
+}

@@ -188,9 +188,9 @@ def leave_server(server_id):
 
 
 # create private server route and add user
-@server_routes.route("/me/<int:user_id>", methods=["POST"])
+@server_routes.route("/dm/<string:user_name>", methods=["POST"])
 @login_required
-def create_private_server(user_id):
+def create_private_server(user_name):
     """
     Create a private server and add current user and the user in the URL as members
     """
@@ -211,7 +211,7 @@ def create_private_server(user_id):
     db.session.add(member)
     
     # adds user found in URL as member of new server
-    friend = User.query.get(user_id)
+    friend = User.query.filter(User.username==user_name).first()
 
     if not friend:
         return jsonify({"error": "User not found"}), 404

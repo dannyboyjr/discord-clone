@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllPrivateChannelsOfUser  } from '../../../store/dms'
 import ChannelsCard from '../../Main Component/Channels/ChannelsCard/ChannelsCard'
 import '../../Main Component/Channels/Channels.css';
+import OpenModalImage from '../../OpenModalImage/index';
+import CreateDMModal from '../../CreateDMModal/CreateDMModal'
 
 function DmChannels() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -13,6 +15,9 @@ function DmChannels() {
   const dmChannels = useSelector(state => state.dms)
   const dmCHannelsArr = Object.values(dmChannels)
 
+  const handleSubmit = () => {
+    console.log("This worked")
+  }
 
   useEffect(() => {
     dispatch(getAllPrivateChannelsOfUser()).then(() => setIsLoaded(true));
@@ -24,11 +29,17 @@ function DmChannels() {
 
 
         <>
-          <div className="server-info-container">
-            <div className="server-icons-container">
-              <h2>Direct Messages</h2>
-            </div>
-          </div>
+        <div onClick={handleSubmit} className="direct-messages-container">
+
+        <h2>Direct Messages</h2>
+        <OpenModalImage
+                buttonText="https://commons.wikimedia.org/wiki/File:Noun_project_-_plus_round.svg#/media/File:Noun_project_-_plus_round.svg"
+                modalComponent={<CreateDMModal />} />
+        
+        </div>
+        
+
+       
 
           <ul>
             {isLoaded &&
