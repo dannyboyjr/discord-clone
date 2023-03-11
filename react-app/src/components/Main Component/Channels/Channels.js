@@ -27,7 +27,9 @@ function Channels({ serverId }) {
   }, [dispatch, serverId]);
 
   const handleDelete = () => {
-    dispatch(deleteServerById(currentServer.id)).then(() => {});
+    dispatch(deleteServerById(currentServer.id)).then(() => {
+      // history.push('/@me')    This must redirect to user's dms, double check the route with dan
+    });
   };
 
   return (
