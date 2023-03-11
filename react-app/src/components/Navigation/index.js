@@ -7,6 +7,7 @@ import ProfileButton from './ProfileButton';
 import CreateServerModal from '../CreateServerModal';
 import { getUserServers } from "../../store/servers"
 import { getAllChannelsInServer } from '../../store/channels';
+import OpenModalImage from '../OpenModalImage';
 import './Navigation.css';
 
 
