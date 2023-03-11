@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-// import {  } from "../../store/servers";     import thunk from Server store when able
+import { editServerById } from "../../store/servers";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./EditServerModal.css";
 
-function EditServerModal() {
+function EditServerModal({server}) {
   const dispatch = useDispatch();
   // const selectedServer = useSelector(state => state.spotState[parseInt(spotId)])  pull the server id from the server state
-  const [name, setName] = useState("");       // UseState should contain "selectedServer.name"
-  const [icon, setIcon] = useState("");       // UseState should contain "selectedServer.icon"
-  const [errors, setErrors] = useState([]);
+  const [name, setName] = useState(server.name);
+  const [icon, setIcon] = useState(server.icon);
+  const [errors, setErrors] = useState('');
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const data = await dispatch(login(name, icon)); replace with thunk name where it says 'login'
+    const data = await dispatch(editServerById(server, {name, icon}));
     if (data) {
-      setErrors(data);
+      const {error} = await data.json()
+      setErrors(error);
     } else {
         closeModal()
     }
@@ -28,9 +29,7 @@ function EditServerModal() {
       <h1>Edit a Server</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
+            <li>{errors}</li>
         </ul>
         <label>
           Name

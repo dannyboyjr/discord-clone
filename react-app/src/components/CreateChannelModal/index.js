@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-// import {  } from "../../store/channels";    import thunk from Channel store when able
+import { createChannelInServer } from "../../store/channels";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./CreateChannelModal.css";
 
-function CreateChannelModal() {
+function CreateChannelModal({serverId}) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
@@ -12,7 +12,7 @@ function CreateChannelModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const data = await dispatch(login(name));   replace with thunk name where it says 'login'
+    const data = await dispatch(createChannelInServer(serverId, {name}));
     if (data) {
       setErrors(data);
     } else {

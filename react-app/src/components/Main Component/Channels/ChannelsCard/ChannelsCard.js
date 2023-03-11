@@ -30,15 +30,14 @@ return (
                 />
         </div>
           </div>
-          
+
         </NavLink>
 
       )}
-      
+
     </div>
   )
 
 }
 
 export default ChannelsCard
-

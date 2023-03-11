@@ -114,7 +114,7 @@ export const createMessageInChannel = (serverId, channelId, message) => async (d
 
 
 const initialState = {
-    
+
 };
 
 const channelsReducer = (state = initialState, action) => {
@@ -142,7 +142,7 @@ const channelsReducer = (state = initialState, action) => {
         case DELETE_CHANNEL:
             delete newState[action.channelId];
             return newState;
-        
+
         case LOAD_MESSAGES:
             action.messages.forEach(message => {
                 if(!newState[message.channel_id].messages){
