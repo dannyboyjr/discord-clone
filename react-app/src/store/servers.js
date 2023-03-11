@@ -51,6 +51,7 @@ export const getUserServers = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(loadUserServers(data));
+        return data[0]
     }
 };
 
@@ -76,15 +77,16 @@ export const createAServer = (server) => async (dispatch) => {
     return response
 };
 
-export const editServerById = (server) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${server.id}`, {
+export const editServerById = (serverId, payload) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${serverId.id}`, {
         headers: { "Content-Type": "application/json" },
         method: "PUT",
-        body: JSON.stringify(server)
+        body: JSON.stringify(payload)
     });
     if (response.ok) {
         const server = await response.json();
-        return dispatch(editServer(server))
+        dispatch(editServer(server))
+        return
     }
     return response
 };
@@ -142,6 +144,7 @@ const serversReducer = (state = initialState, action) => {
             newState = { ...state };
             newState.allServers[action.server.id] = action.server;
             newState.currentUserServers[action.server.id] = action.server;
+            newState.serverById = action.server;
             return newState;
 
         case DELETE_SERVERS:

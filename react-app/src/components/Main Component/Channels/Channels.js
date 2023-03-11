@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import ProfileButton from '../../Navigation/ProfileButton'
 import { useParams } from 'react-router-dom';
-import { getUserServers } from "../../../store/servers"
-import OpenModalImage  from '../../OpenModalImage';
-import EditServerModal  from '../../EditServerModal';
-
-
 import { useSelector, useDispatch } from 'react-redux';
 import { getServerById, deleteServerById } from '../../../store/servers';
 import { getAllChannelsInServer } from '../../../store/channels';
+import OpenModalImage  from '../../OpenModalImage';
+import EditServerModal  from '../../EditServerModal';
 import ChannelsCard from './ChannelsCard/ChannelsCard';
 import './Channels.css';
 
 function Channels({ serverId }) {
-  
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false)
-	const sessionUser = useSelector(state => state.session.user);
+
   const dispatch = useDispatch();
   const currentServer = useSelector((state) => state.servers.serverById);
   const channels = useSelector((state) => state.channels);
@@ -46,13 +39,12 @@ function Channels({ serverId }) {
             <div className="server-icons-container">
               <h2>{currentServer.name}</h2>
               <span className="edit-icon">
-              <div className='server-card-pic add-server-pic'>
+               <div className='server-card-pic add-server-pic'>
                  <OpenModalImage
                    buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Font_Awesome_5_regular_edit.svg/1200px-Font_Awesome_5_regular_edit.svg.png"
                    modalComponent={<EditServerModal server={currentServer}/>}
                  />
-                 </div>
-                
+        	     </div>
               </span>
               <span className="delete-icon" onClick={handleDelete}>
                 <i className="fa fa-times"></i>
@@ -68,18 +60,6 @@ function Channels({ serverId }) {
           </ul>
         </>
       ) : null}
-
-  
-
-      {/* profile card */}
-      <div userName="profile-card" >
-      <ul>
-				{isLoaded && (
-						<ProfileButton user={sessionUser} />
-				)}
-			</ul>
-    </div>
-
     </div>
   );
 }

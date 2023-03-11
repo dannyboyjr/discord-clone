@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createAServer } from '../../store/servers';
 import { useDispatch } from 'react-redux';
 import { useModal } from "../../context/Modal";
+
 
 const CreateServerModal = () => {
   const [name, setName] = useState('');
@@ -16,9 +17,10 @@ const CreateServerModal = () => {
 
     const newServer = { name, icon };
 
-    const data = await dispatch(createAServer(newServer))
-    closeModal()
+    await dispatch(createAServer(newServer));
+    closeModal();
   };
+
 
   return (
     <div className="create-server-modal">
