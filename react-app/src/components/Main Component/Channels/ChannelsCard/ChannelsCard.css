@@ -1,4 +1,10 @@
 .channel-card {
+  display:flex;
+  flex-wrap:wrap ;
+  }
+
+
+.channel-card-name {
     font-family: "Uni Sans";
     font-size: 20px;
     font-style: normal;
@@ -6,12 +12,12 @@
     color: #989AA2;
     text-decoration: none;
   }
-  
-  .channel-card:hover {
+
+  .channel-card-name:hover {
     color: rgb(243,244,245);
   }
 
-.channel-card li {
+.channel-card-name li {
     list-style: none;
     margin: 0;
     padding:0;
@@ -20,4 +26,16 @@
 .channel-line {
     display: flex;
     align-items: center;
+}
+
+.channel-card-edit img {
+  width: 20px;
+  height: 20px;
+  transition: transform .2s;
+  overflow: hidden;
+  border-radius: 50%; /* Add initial border-radius */
+}
+
+.channel-card-edit img:hover {
+  transform: scale(1.8)
 }

@@ -9,18 +9,18 @@ const ChannelsCard = ({ channel, serverId }) => {
 console.log({channel})
 
     return (
-        <div>
+        <div className='channel-card'>
 
-        <NavLink className='channel-card' to={`/${serverId}/${channel.id}/`}>
+        <NavLink className='channel-card-name' to={`/${serverId}/${channel.id}/`}>
             <div className='channel-line'>
             #<li key={channel.id}>{channel.name}</li>
             </div>
         </NavLink>
 
         {/* cotts modal button */}
-        <div>
+        <div className='channel-card-edit'>
             <OpenModalImage
-                buttonText="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png"
+                buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Font_Awesome_5_regular_edit.svg/1200px-Font_Awesome_5_regular_edit.svg.png"
                 modalComponent={<EditChannelModal channel={channel} />}
                 />
         </div>
