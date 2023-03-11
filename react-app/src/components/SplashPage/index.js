@@ -12,10 +12,11 @@ function SplashPage({isLoaded}) {
     const serversArr = Object.values(userServers);
     const history = useHistory()
     const dispatch = useDispatch()
-console.log(serversArr[0])
+
     useEffect(() => {
         if (sessionUser){
-            dispatch(getUserServers()).then(() => history.push(`/:${serversArr[0].id}`) )
+            dispatch(getUserServers()).then((server) =>{
+                history.push(`/:${server.id}`)} )
         }
     }, [userServers])
 

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getServerById, deleteServerById } from '../../../store/servers';
 import { getAllChannelsInServer } from '../../../store/channels';
 import OpenModalImage  from '../../OpenModalImage';
-import EditServerModal  from '../../EditServerModal'
+import EditServerModal  from '../../EditServerModal';
 import ChannelsCard from './ChannelsCard/ChannelsCard';
 import './Channels.css';
 

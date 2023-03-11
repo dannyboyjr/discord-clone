@@ -18,11 +18,6 @@ function Navigation({ isLoaded }) {
 	const location = useLocation()
 	const history = useHistory()
 
-    useEffect(() => {
-        if (!sessionUser){
-            history.push('/')
-        }
-    }, [history])
 
 	useEffect(() => {
 		dispatch(getUserServers())

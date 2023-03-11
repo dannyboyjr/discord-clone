@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import MainComponent from "./components/Main Component/main";
 import SplashPage from "./components/SplashPage";
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,9 +35,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <ProtectedRoute>
           <Route path="/:serverId(\d+)/:channelId(\d+)?">
-            <MainComponent />
+              <MainComponent />
           </Route>
+          </ProtectedRoute>
           {/* <Route path="/@me">
             <HOLDERPage />
           </Route> */}
