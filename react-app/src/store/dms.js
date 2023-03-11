@@ -15,6 +15,16 @@ const loadDMMessages = (messages) => ({
     messages
 });
 
+const createPrivateServer = (server) => ({
+    type: CREATE_PRIVATE_SERVER,
+    server
+})
+
+const createPrivateMessage = (message) => ({
+    type: CREATE_PRIVATE_MESSAGE,
+    message
+})
+
 
 
 export const getAllPrivateChannelsOfUser = () => async (dispatch) => {
@@ -32,6 +42,13 @@ export const getAllDMMessagesInChannel = (serverId, channelId) => async (dispatc
         dispatch(loadDMMessages(data.Messages));
     }
 };
+
+//still need to add create server thunk
+
+
+//still need to add create private message 
+
+
 
 
 const initialState = {};
