@@ -7,15 +7,16 @@ import { useParams } from "react-router-dom";
 
 function EditChannelModal({channel}) {
   const dispatch = useDispatch();
-    // const selectedChannel = useSelector(state => state.spotState[parseInt(spotId)])  pull the channel id from the channel state
-  const [name, setName] = useState(channel.name);       // UseState should contain "selectedChannel.name"
+    // const selectedChannel = useSelector(state => state.spotState[parseInt(spotId)])  pull the channel id from the channel state Added for git
+
+  const [name, setName] = useState(channel.name);
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(editChannelById(channel.server_id, {channelId:channel.id, name}));  
+    const data = await dispatch(editChannelById(channel.server_id, channel.id, {name}));
     if (data) {
       setErrors(data);
     } else {
@@ -25,7 +26,7 @@ function EditChannelModal({channel}) {
 
   return (
     <>
-      <h1>Create a Channel</h1>
+      <h1>Edit your Channel</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (

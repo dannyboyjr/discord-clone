@@ -21,3 +21,15 @@
     display: flex;
     align-items: center;
 }
+
+.channel-card-edit img {
+  width: 20px;
+  height: 20px;
+  transition: transform .2s;
+  overflow: hidden;
+  border-radius: 50%; /* Add initial border-radius */
+}
+
+.channel-card-edit img:hover {
+  transform: scale(1.8)
+}

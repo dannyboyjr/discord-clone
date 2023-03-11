@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import ProfileButton from '../../Navigation/ProfileButton'
 import { useParams } from 'react-router-dom';
 import { getUserServers } from "../../../store/servers"
-// import CreateServerModal from '../../CreateServerModal';
+import OpenModalImage  from '../../OpenModalImage';
+import EditServerModal  from '../../EditServerModal';
 
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -45,7 +46,13 @@ function Channels({ serverId }) {
             <div className="server-icons-container">
               <h2>{currentServer.name}</h2>
               <span className="edit-icon">
-                <i className="fa fa-edit"></i>
+              <div className='server-card-pic add-server-pic'>
+                 <OpenModalImage
+                   buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Font_Awesome_5_regular_edit.svg/1200px-Font_Awesome_5_regular_edit.svg.png"
+                   modalComponent={<EditServerModal server={currentServer}/>}
+                 />
+                 </div>
+                
               </span>
               <span className="delete-icon" onClick={handleDelete}>
                 <i className="fa fa-times"></i>
@@ -61,6 +68,8 @@ function Channels({ serverId }) {
           </ul>
         </>
       ) : null}
+
+  
 
       {/* profile card */}
       <div userName="profile-card" >
