@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './ServerCard';
-import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { NavLink, useLocation, useHistory, useParams } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 //import ProfileButton from "./ProfileButton"
 import OpenModalImage from '../OpenModalImage';
 import CreateServerModal from '../CreateServerModal';
 import { getUserServers } from "../../store/servers"
+import { getAllChannelsInServer } from '../../store/channels';
 import './Navigation.css';
 
 
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const [showModal, setShowModal] = useState(false)
+	const { serverId, channelId } = useParams()
 	const sessionUser = useSelector(state => state.session.user);
 	const userServers = useSelector(state => state.servers.currentUserServers); //double check name of state for server
 	const location = useLocation()
