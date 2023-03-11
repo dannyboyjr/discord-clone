@@ -23,9 +23,9 @@ function SplashPage({isLoaded}) {
                 history.push(`/@me`)
             }
         }
-    }, [userServers])
+    }, [dispatch, history, sessionUser, userServers, serversArr.length])
 
-
+//check with dm's -- when it's completed
 
     return (
         <>

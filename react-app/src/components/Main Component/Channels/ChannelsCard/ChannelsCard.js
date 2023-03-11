@@ -34,11 +34,10 @@ return (
         </NavLink>
 
       )}
-      
+
     </div>
   )
 
 }
 
 export default ChannelsCard
-

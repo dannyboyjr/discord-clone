@@ -5,8 +5,8 @@ import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 //import ProfileButton from "./ProfileButton"
 import CreateServerModal from '../CreateServerModal';
-import OpenModalImage from '../OpenModalImage/index'
 import { getUserServers } from "../../store/servers"
+import { getAllChannelsInServer } from '../../store/channels';
 import './Navigation.css';
 
 
@@ -45,24 +45,22 @@ function Navigation({ isLoaded }) {
 	return (
 		<>
 		<div className='servers-bar'>
-			
-
-			{/* DMS */}
-			<div className='server-card-pic add-server-pic'>
-			<NavLink className='server-card-pic' to={`/@me`}>
-				<img src='https://static.thenounproject.com/png/3861763-200.png' />
-				</NavLink>
-			</div>
-
-
-
+			<ul>
+				<li>
+					<NavLink exact to="/">Home</NavLink>
+				</li>
+				{isLoaded && (
+					<li>
+						<ProfileButton user={sessionUser} />
+					</li>
+				)}
+			</ul>
 
 			<div className='servers-list'>
 				{serversArr.map(server =>
 				 <ServerCard key={server.id} server={server} />
 
 				)}
-
 			</div>
 			{/* <div className='server-card-pic add-server-pic'>
 

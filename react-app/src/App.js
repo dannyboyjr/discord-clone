@@ -7,7 +7,10 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import MainComponent from "./components/Main Component/main";
+<<<<<<< HEAD
 import MainDm from "./components/DMs/MainDm";
+=======
+>>>>>>> natalia
 import SplashPage from "./components/SplashPage";
 
 
