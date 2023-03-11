@@ -49,6 +49,7 @@ function Navigation({ isLoaded }) {
 				 <ServerCard key={server.id} server={server} />
 					
 				)}
+
 			</div>
 			<div className='server-card-pic add-server-pic'>
             <OpenModalImage
