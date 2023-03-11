@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import * as sessionActions from '../../store/session';
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -10,6 +11,9 @@ function LoginFormPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [isDemo, setIsDemo] =useState(false)
+  useEffect(() => {if ((isDemo) && (email === 'demo@aa.io') && (password === 'password')) {makeLoginRequest()}}, [isDemo, email, password] )
+
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -21,9 +25,27 @@ function LoginFormPage() {
     }
   };
 
+  const makeLoginRequest = () => {return dispatch(sessionActions.login({ email, password }))
+  .catch(async (res) => {
+    const data = await res.json();
+    if (data && data.errors) setErrors(data.errors);
+  })
+}
+
+  const demoLogin = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    setIsDemo(true)
+
+  setEmail('demo@aa.io')
+  setPassword('password')
+
+  }
+
   return (
     <>
       <h1>Log In</h1>
+      <button onClick={ demoLogin } className='button-Demo '>Demo-User Login</button>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (

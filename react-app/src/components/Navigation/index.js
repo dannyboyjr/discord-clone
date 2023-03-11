@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './ServerCard';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import ProfileButton from './ProfileButton';
+//import ProfileButton from "./ProfileButton"
 import CreateServerModal from '../CreateServerModal';
 import OpenModalImage from '../OpenModalImage/index'
 import { getUserServers } from "../../store/servers"
@@ -11,9 +13,12 @@ import './Navigation.css';
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const [showModal, setShowModal] = useState(false)
-	const userServers = useSelector(state => state.servers.currentUserServers)
-	
-	
+	const sessionUser = useSelector(state => state.session.user);
+	const userServers = useSelector(state => state.servers.currentUserServers); //double check name of state for server
+	const location = useLocation()
+	const history = useHistory()
+
+
 	useEffect(() => {
 		dispatch(getUserServers())
 	}, [dispatch])
@@ -25,9 +30,17 @@ function Navigation({ isLoaded }) {
 	const addServer = () => {
 		setShowModal(true);
 	}
-	const handleClose = () => {
-		setShowModal(false);
-	  };
+	
+	if (location.pathname === '/login') {
+		return null
+	}
+	if (location.pathname === '/signup') {
+		return null
+	}
+	if (location.pathname === '/') {
+		return null
+	}
+
 
 	return (
 		<>
@@ -47,10 +60,15 @@ function Navigation({ isLoaded }) {
 			<div className='servers-list'>
 				{serversArr.map(server =>
 				 <ServerCard key={server.id} server={server} />
-					
+
 				)}
 
 			</div>
+			{/* <div className='server-card-pic add-server-pic'>
+
+				<img onClick={addServer} src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png' />
+			</div>
+			{showModal && <CreateServerModal onClose={handleClose}/>} */}
 			<div className='server-card-pic add-server-pic'>
             <OpenModalImage
                 buttonText="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png"

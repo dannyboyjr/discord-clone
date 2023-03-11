@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getServerById, deleteServerById } from '../../../store/servers';
 import { getAllChannelsInServer } from '../../../store/channels';
@@ -15,6 +15,7 @@ function Channels({ serverId }) {
   const currentServer = useSelector((state) => state.servers.serverById);
   const channels = useSelector((state) => state.channels);
   const channelsArr = Object.values(channels);
+  const { channelId } = useParams();
 
   useEffect(() => {
     if (serverId) {
@@ -25,6 +26,8 @@ function Channels({ serverId }) {
       setIsLoaded(true);
     }
   }, [dispatch, serverId]);
+  if (isLoaded && !channelId){
+    return <Redirect to={`/${serverId}/${channelsArr[0].id}`}></Redirect>}
 
   const handleDelete = () => {
     dispatch(deleteServerById(currentServer.id))

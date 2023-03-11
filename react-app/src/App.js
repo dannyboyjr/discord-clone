@@ -8,6 +8,8 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import MainComponent from "./components/Main Component/main";
 import MainDm from "./components/DMs/MainDm";
+import SplashPage from "./components/SplashPage";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -20,13 +22,13 @@ function App() {
     <>
       <div className="page-layout">
       <Navigation isLoaded={isLoaded} />
-      
+
 
       </div>
       {isLoaded && (
         <Switch>
           <Route path="/" exact>
-            <MainComponent />
+            <SplashPage />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
@@ -34,13 +36,14 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <ProtectedRoute>
           <Route path="/:serverId(\d+)/:channelId(\d+)?">
-            <MainComponent />
+              <MainComponent />
           </Route>
           <Route path="/@me/:serverId(\d+)?/:channelId(\d+)?">
             <MainDm />
           </Route>
-
+          </ProtectedRoute>
         </Switch>
       )}
     </>

@@ -1,9 +1,9 @@
 import './ChannelsCard.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import OpenModalButton  from '../../../OpenModalButton'
+import { deleteChannelById } from '../../../../store/channels';
+import OpenModalImage  from '../../../OpenModalImage'
 import EditChannelModal  from '../../../EditChannelModal'
-import OpenModalImage  from '../../../OpenModalImage/index'
 
 const ChannelsCard = ({ channel, serverId }) => {
 

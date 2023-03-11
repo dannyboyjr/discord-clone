@@ -9,7 +9,7 @@ function EditServerModal({server}) {
   // const selectedServer = useSelector(state => state.spotState[parseInt(spotId)])  pull the server id from the server state
   const [name, setName] = useState(server.name);
   const [icon, setIcon] = useState(server.icon);
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState('');
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
@@ -17,7 +17,8 @@ function EditServerModal({server}) {
 
     const data = await dispatch(editServerById(server, {name, icon}));
     if (data) {
-      setErrors(data);
+      const {error} = await data.json()
+      setErrors(error);
     } else {
         closeModal()
     }
@@ -28,9 +29,7 @@ function EditServerModal({server}) {
       <h1>Edit a Server</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
+            <li>{errors}</li>
         </ul>
         <label>
           Name
