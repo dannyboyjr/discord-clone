@@ -46,16 +46,6 @@ function Navigation({ isLoaded }) {
 	return (
 		<>
 		<div className='servers-bar'>
-			<ul>
-				<li>
-					<NavLink exact to="/">Home</NavLink>
-				</li>
-				{isLoaded && (
-					<li>
-						<ProfileButton user={sessionUser} />
-					</li>
-				)}
-			</ul>
 
 			<div className='servers-list'>
 				{serversArr.map(server =>
