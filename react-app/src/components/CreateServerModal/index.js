@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { createAServer } from '../../store/servers';
+import { useDispatch } from 'react-redux';
+import { useModal } from "../../context/Modal";
 
-const CreateServerModal = ({ onClose }) => {
+
+const CreateServerModal = () => {
   const [name, setName] = useState('');
   const [icon, setIcon] = useState('');
   const dispatch = useDispatch();
+  const { closeModal } = useModal();
 
 
 
@@ -13,9 +16,9 @@ const CreateServerModal = ({ onClose }) => {
     e.preventDefault();
 
     const newServer = { name, icon };
-    
+
     await dispatch(createAServer(newServer));
-    onClose();
+    closeModal();
   };
 
 
@@ -48,7 +51,7 @@ const CreateServerModal = ({ onClose }) => {
           </div>
           <div className="button-container">
             <button type="submit">Create</button>
-            <button type="button" onClick={onClose}>
+            <button type="button" onClick={closeModal}>
               Close
             </button>
           </div>
