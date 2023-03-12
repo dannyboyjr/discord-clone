@@ -15,8 +15,8 @@ const CreateDMModal = ({channels}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Verify sorts through dms to check if an open dm channel exist. if it does exit user is rerouted to open dm
     const verify = channels.find(item => {
-      console.log("CONSTOLLOSDIFJDS")
       console.log(item.server.members[1].user.username == username)
       return username == item.server.members[0].user.username || username == item.server.members[1].user.username 
     })
