@@ -8,6 +8,7 @@ const AllServers = () => {
     const dispatch = useDispatch()
     const allServers = useSelector(state => state.servers.allServers);
     const allServersArr = Object.values(allServers);
+    
     useEffect(() => {
 		dispatch(getAllServers())
 	}, [dispatch])

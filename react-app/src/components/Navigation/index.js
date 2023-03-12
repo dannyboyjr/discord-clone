@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './ServerCard';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
-//import ProfileButton from "./ProfileButton"
 import CreateServerModal from '../CreateServerModal';
 import { getUserServers } from "../../store/servers"
 import { getAllChannelsInServer } from '../../store/channels';
