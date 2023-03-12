@@ -4,9 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getServerById, deleteServerById } from '../../../store/servers';
 import { getAllChannelsInServer } from '../../../store/channels';
 import OpenModalImage  from '../../OpenModalImage';
+import OpenModalButton from '../../OpenModalButton';
+import CreateChannelModal  from '../../CreateChannelModal';
 import EditServerModal  from '../../EditServerModal';
 import ChannelsCard from './ChannelsCard/ChannelsCard';
 import './Channels.css';
+
 
 function Channels({ serverId }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -58,6 +61,12 @@ function Channels({ serverId }) {
               </span>}
             </div>
           </div>
+          {isOwner && <div className='create-channel-btn'>
+          <OpenModalButton
+                   buttonText="Add Channel"
+                   modalComponent={<CreateChannelModal serverId={currentServer.id}/>}
+                 />
+          </div>}
 
           <ul>
             {isLoaded &&
