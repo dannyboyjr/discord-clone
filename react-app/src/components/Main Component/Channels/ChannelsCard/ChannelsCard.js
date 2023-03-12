@@ -8,8 +8,11 @@ import EditChannelModal  from '../../../EditChannelModal'
 const ChannelsCard = ({ channel, serverId }) => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const currentUser = useSelector((state) => state.session.user)
     const serverChannels = useSelector(state => state.channels);
     const channelsArr = Object.values(serverChannels)
+
+    const isOwner = currentUser.id === channel.owner_id
 
     const handleDelete = () => {
         console.log('channel.server_id:', channel.server_id, 'channel.id:', channel.id)
@@ -40,15 +43,15 @@ return (
           <div className='channel-line'>
             #<li key={channel.id}>{channel.name}</li>
 
-            <div className='channel-card-edit'>
+            {isOwner && <div className='channel-card-edit'>
             <OpenModalImage
                 buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Font_Awesome_5_regular_edit.svg/1200px-Font_Awesome_5_regular_edit.svg.png"
                 modalComponent={<EditChannelModal channel={channel} />}
                 />
-            </div>
-            <span className="delete-icon" onClick={handleDelete}>
+            </div>}
+            {isOwner && <span className="delete-icon" onClick={handleDelete}>
                 <i className="fa fa-times"></i>
-            </span>
+            </span>}
 
           </div>
 

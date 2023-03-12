@@ -12,10 +12,13 @@ function Channels({ serverId }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.session.user)
   const currentServer = useSelector((state) => state.servers.serverById);
   const channels = useSelector((state) => state.channels);
   const channelsArr = Object.values(channels);
   const { channelId } = useParams();
+
+  const isOwner = currentUser.id === currentServer.owner_id
 
   useEffect(() => {
     if (serverId) {
@@ -42,17 +45,17 @@ function Channels({ serverId }) {
           <div className="server-info-container">
             <div className="server-icons-container">
               <h2>{currentServer.name}</h2>
-              <span className="edit-icon">
+              {isOwner && <span className="edit-icon">
                <div className='channel-card-edit'>
                  <OpenModalImage
                    buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Font_Awesome_5_regular_edit.svg/1200px-Font_Awesome_5_regular_edit.svg.png"
                    modalComponent={<EditServerModal server={currentServer}/>}
                  />
         	     </div>
-              </span>
-              <span className="delete-icon" onClick={handleDelete}>
+              </span>}
+              {isOwner && <span className="delete-icon" onClick={handleDelete}>
                 <i className="fa fa-times"></i>
-              </span>
+              </span>}
             </div>
           </div>
 

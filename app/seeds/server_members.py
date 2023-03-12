@@ -16,6 +16,11 @@ server_members = [
         "user_id": 3,
         "server_id": 3,
     },
+    {
+        "id": 4,
+        "user_id": 1,
+        "server_id": 3
+    },
 ]
 
 

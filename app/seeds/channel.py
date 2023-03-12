@@ -26,6 +26,14 @@ channel_info = [
         "private": False,
         "created_at": datetime.utcnow()
     },
+    {
+        "id": 4,
+        "server_id": 3,
+        "owner_id":3,
+        "name": "something new",
+        "private": False,
+        "created_at": datetime.utcnow()
+    },
 ]
 
 def seed_channels():
