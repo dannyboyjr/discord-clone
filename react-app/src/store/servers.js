@@ -42,6 +42,11 @@ const joinServer = (server) => ({
     type: JOIN_SERVER,
     server
 });
+const leaveServer = (server) => ({
+    type: LEAVE_SERVER,
+    server
+});
+
 
 export const getAllServers = () => async (dispatch) => {
     const response = await fetch("/api/servers/");
@@ -119,6 +124,16 @@ export const joinServerById = (serverId) => async (dispatch) => {
     return response
 };
 
+export const leaveServerById = (id) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${id}/leave`, {
+        method: "DELETE",
+    });
+
+    if (response.ok) {
+        dispatch(leaveServer(id))
+    }
+};
+
 
 
 const initialState = {
@@ -175,6 +190,10 @@ const serversReducer = (state = initialState, action) => {
             newState.currentUserServers[action.server.id] = action.server;
             newState.serverById = action.server;
             return newState;
+        case LEAVE_SERVER:
+            newState = { ...state }
+            delete newState.currentUserServers[action.server]
+            return newState
 
         default:
             return state;
