@@ -1,18 +1,22 @@
 import './ChannelsCard.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { deleteChannelById } from '../../../../store/channels';
 import OpenModalImage  from '../../../OpenModalImage'
 import EditChannelModal  from '../../../EditChannelModal'
 
 const ChannelsCard = ({ channel, serverId }) => {
-
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const serverChannels = useSelector(state => state.channels);
     const channelsArr = Object.values(serverChannels)
 
     const handleDelete = () => {
+        console.log('channel.server_id:', channel.server_id, 'channel.id:', channel.id)
         if (channelsArr.length > 1){
-        dispatch(deleteChannelById(channel.server_id, channel.id )).then(() => {
-        })}
+        return dispatch(deleteChannelById(channel.server_id, channel.id )).then(() => history.push(`/${serverId}`))
+
+    }
         else {
             return window.alert('Cannot delete a channel from a server with only one channel')
         }

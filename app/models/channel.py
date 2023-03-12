@@ -24,7 +24,7 @@ class Channel(db.Model):
 
     server = db.relationship('Server', back_populates='channel')
     user = db.relationship('User', back_populates='channel')
-    message = db.relationship('Message', back_populates='channel')
+    message = db.relationship('Message', back_populates='channel', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
@@ -35,7 +35,7 @@ class Channel(db.Model):
             "private": self.private,
             "created_at": self.created_at
         }
-    
+
     def to_dict_channel_messages(self):
         return {
             'id':self.id,

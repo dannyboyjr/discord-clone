@@ -83,7 +83,7 @@ export const editChannelById = (serverId, channelId, channel) => async (dispatch
 };
 
 export const deleteChannelById = (serverId, channelId) => async (dispatch) => {
-    const response = await fetch(`/api/${serverId}/channels/${channelId}`, {
+    const response = await fetch(`/api/servers/${serverId}/channels/${channelId}`, {
         method: "DELETE",
     });
     if (response.ok) {
@@ -141,6 +141,7 @@ const channelsReducer = (state = initialState, action) => {
             return newState;
 
         case DELETE_CHANNEL:
+            console.log('ACTION IS COMING:', action)
             delete newState[action.channelId];
             return newState;
 
