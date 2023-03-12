@@ -32,3 +32,8 @@ border-radius: 50%; /* Add initial border-radius */
 .channel-card-edit img:hover {
 transform: scale(1.8)
 }
+
+.active-channel {
+  color:aquamarine;
+  font-weight: bold;
+}

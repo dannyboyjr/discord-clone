@@ -1,6 +1,6 @@
 import './ChannelsCard.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useHistory, useParams } from 'react-router-dom'
 import { deleteChannelById } from '../../../../store/channels';
 import OpenModalImage  from '../../../OpenModalImage'
 import EditChannelModal  from '../../../EditChannelModal'
@@ -8,6 +8,7 @@ import EditChannelModal  from '../../../EditChannelModal'
 const ChannelsCard = ({ channel, serverId }) => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const { channelId } = useParams()
     const currentUser = useSelector((state) => state.session.user)
     const serverChannels = useSelector(state => state.channels);
     const channelsArr = Object.values(serverChannels)
@@ -26,7 +27,6 @@ const ChannelsCard = ({ channel, serverId }) => {
 
     };
 
-
 return (
     <div>
       {/* Conditionally render a NavLink or a regular link based on the private property */}
@@ -39,7 +39,7 @@ return (
     </NavLink>
 
       ) : (
-        <NavLink className='channel-card' to={`/${serverId}/${channel.id}/`}>
+        <NavLink className='channel-card' activeClassName='active-channel' to={`/${serverId}/${channel.id}/`}>
           <div className='channel-line'>
             #<li key={channel.id}>{channel.name}</li>
 

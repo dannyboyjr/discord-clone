@@ -10,18 +10,19 @@ const Messages = () => {
   const { serverId, channelId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false)
   const dispatch = useDispatch();
-  const messages = useSelector((state) => state.channels[channelId]?.messages || {});
+  const messagesState = useSelector((state) => state.channels);
+  const messages = messagesState[channelId]?.messages || {}
   // const dms = useSelector((state) => state.dms[channelId]?.messages || {});
   const messagesArr = Object.values(messages)
   // const dmsArr = Object.values(dms)
-  
+
 
   useEffect(() => {
     if(serverId && channelId){
       dispatch(getAllMessagesInChannel(serverId, channelId)).then(()=> setIsLoaded(true))
     } else {
-      setIsLoaded(true)
-    }
+       setIsLoaded(true)
+     }
   }, [dispatch, serverId, channelId]);
 
   return (

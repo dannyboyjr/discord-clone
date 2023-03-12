@@ -28,7 +28,7 @@ function Channels({ serverId }) {
     } else {
       setIsLoaded(true);
     }
-  }, [dispatch, serverId]);
+  }, [dispatch, serverId, channelId]);
   if (isLoaded && !channelId){
     return <Redirect to={`/${serverId}/${channelsArr[0].id}`}></Redirect>}
 

@@ -18,9 +18,10 @@ def get_message_channel_id(server_id, channel_id):
         return jsonify({"error": "Server not found"}), 404
     if server.private is True:
         return jsonify({"error": "cannot get private server"}), 403
-    
+
     # Check if channel exists
-    channel = Channel.query.filter_by(server_id=server_id, id=channel_id).first()
+    # channel = Channel.query.filter_by(server_id=server_id, id=channel_id).first()
+    channel = Channel.query.filter(Channel.server_id == server_id and Channel.id == channel_id).first()
     if channel is None:
         return jsonify({"error": "Channel not found"}), 404
 
@@ -49,7 +50,7 @@ def create_message_channel_id(server_id,channel_id):
         return jsonify({"error": "Server not found"}), 404
     if server.private is True:
         return jsonify({"error": "cannot get private server"}), 403
-    
+
     # Check if channel exists
     channel = Channel.query.filter_by(server_id=server_id, id=channel_id).first()
     if channel is None:
@@ -80,12 +81,3 @@ def create_message_channel_id(server_id,channel_id):
     db.session.commit()
 
     return jsonify(message.to_dict()), 201
-
-
-
-
-
-
-
-    
-
