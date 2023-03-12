@@ -3,7 +3,6 @@ import { joinServerById, leaveServerById } from "../../store/servers"
 import { useHistory } from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
 
-
 const AllServerCard = ({ server }) => {
     const history = useHistory();
     const dispatch = useDispatch();  

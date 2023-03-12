@@ -1,15 +1,21 @@
 import './ServerCard.css'
 import { NavLink } from 'react-router-dom'
-
+import ServerIcon  from '../../assets/server.png'
 
 const ServerCard = ({ server }) => {
 
-        const iconUrl = server.icon ? server.icon : 'https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png';
+        const iconUrl = server.icon ? server.icon : ServerIcon
+        const handleImgError = (e) => {
+                e.target.src = ServerIcon
+            }
 
     return (
 
             <NavLink className='server-card-pic' to={`/${server.id}/`}>
-                    <img src={iconUrl} alt='add default server image here'></img>
+                    <img 
+                        src={iconUrl} 
+                        onError={handleImgError}
+                        alt='add default server image here'></img>
             </NavLink>
     )
 }
