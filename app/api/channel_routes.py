@@ -94,7 +94,7 @@ def deleteChannel(serverId, channelId):
     db.session.commit()
     return {'message': f'Channel {channelToDelete.name} has been deleted'}
 
-# get user DMs
+# get user DM channels
 @channel_routes.route("/dms", methods=["GET"])
 @login_required
 def get_user_dms():
@@ -106,6 +106,6 @@ def get_user_dms():
         Channel.private == True
     ).all()
 
-    private_channels_dict = [channel.to_dict() for channel in private_channels]
+    private_channels_dict = [channel.to_dict_dm() for channel in private_channels]
     return jsonify(private_channels_dict)
 

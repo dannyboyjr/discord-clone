@@ -231,7 +231,7 @@ def create_private_server(user_name):
     db.session.add(channel)
 
     db.session.commit()
-    return server.to_dict()
+    return channel.to_dict_dm()
 
 
 

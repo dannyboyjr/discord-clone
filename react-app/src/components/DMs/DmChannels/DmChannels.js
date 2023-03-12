@@ -13,7 +13,7 @@ function DmChannels() {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user);
   const dmChannels = useSelector(state => state.dms)
-  const dmCHannelsArr = Object.values(dmChannels)
+  const dmChannelsArr = Object.values(dmChannels)
 
   const handleSubmit = () => {
     console.log("This worked")
@@ -34,7 +34,7 @@ function DmChannels() {
         <h2>Direct Messages</h2>
         <OpenModalImage
                 buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/200px-Plus_symbol.svg.png"
-                modalComponent={<CreateDMModal />} />
+                modalComponent={<CreateDMModal channels={dmChannelsArr} />} />
         
         </div>
         
@@ -43,7 +43,7 @@ function DmChannels() {
 
           <ul>
             {isLoaded &&
-              dmCHannelsArr.map((channel) => (
+              dmChannelsArr.map((channel) => (
 
                 <ChannelsCard key={channel.id} channel={channel} serverId={channel.server_id} />
               ))}
