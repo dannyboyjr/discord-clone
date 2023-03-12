@@ -48,6 +48,15 @@ function Navigation({ isLoaded }) {
 		<>
 		<div className='servers-bar'>
 
+
+			{/* DMS */}
+			<div className='server-card-pic add-server-pic'>
+			<NavLink className='server-card-pic' to={`/@me`}>
+				<img src='https://static.thenounproject.com/png/3861763-200.png' />
+				</NavLink>
+			</div>
+
+
 			<div className='servers-list'>
 				{serversArr.map(server =>
 				 <ServerCard key={server.id} server={server} />
