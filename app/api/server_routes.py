@@ -161,7 +161,7 @@ def join_server(id):
     db.session.add(member)
     db.session.commit()
 
-    return jsonify({'success': 'User joined the server successfully'})
+    return server.to_dict()
 
 #leave server
 @server_routes.route('/<int:server_id>/leave', methods=["DELETE"])

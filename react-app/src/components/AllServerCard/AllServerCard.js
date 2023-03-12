@@ -19,7 +19,7 @@ const AllServerCard = ({ server }) => {
     
     // check to see if user is owner (option)
       const verify = userServersArr.find(item => {
-        return item.id == server.id
+        return item.id == server.id 
       })
       
 
@@ -39,7 +39,7 @@ const AllServerCard = ({ server }) => {
     }
 
 
-    return (
+    return verify ? null :(
 
             <div className="all-server-card-container">
                 <img className="all-server-card-img-container" 
@@ -48,7 +48,7 @@ const AllServerCard = ({ server }) => {
                   alt={server.name}
                 />
                 <h3 className="all-server-card-name"> {server.name}</h3>
-                {verify && <button onClick={handLeave} className="join-server-button">leave Server</button>}
+
                 {!verify && <button onClick={handleJoin} className="join-server-button">Join Server</button>}
                 {/* {owner && <button onClick={handleJoin} className="join-server-button">Delete Server</button>} */}
             </div>
