@@ -10,6 +10,7 @@ import { getAllChannelsInServer } from '../../store/channels';
 import OpenModalImage from '../OpenModalImage';
 import DiscoveryLogo from '../../assets/compass.png'
 import DiscordLogo from '../../assets/discord.png'
+import AddServerImg from '../../assets/addServer.png'
 import './Navigation.css';
 
 
@@ -54,14 +55,10 @@ function Navigation({ isLoaded }) {
 
 				)}
 			</div>
-			{/* <div className='server-card-pic add-server-pic'>
-
-				<img onClick={addServer} src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png' />
-			</div>
-			{showModal && <CreateServerModal onClose={handleClose}/>} */}
+			
 			<div className='server-card-pic add-server-pic'>
             <OpenModalImage
-                buttonText="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png"
+                buttonText={AddServerImg}
                 modalComponent={<CreateServerModal />}
                 />
         	</div>
