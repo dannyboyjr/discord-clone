@@ -33,17 +33,6 @@ function Navigation({ isLoaded }) {
 		setShowModal(true);
 	}
 
-	// if (location.pathname === '/login') {
-	// 	return null
-	// }
-	// if (location.pathname === '/signup') {
-	// 	return null
-	// }
-	// if (location.pathname === '/') {
-	// 	return null
-	// }
-
-
 	return (
 		<>
 		<div className='servers-bar'>
@@ -74,6 +63,12 @@ function Navigation({ isLoaded }) {
                 modalComponent={<CreateServerModal />}
                 />
         	</div>
+			<div>
+			<NavLink className='all-servers-btn' to={`/guild-discovery`}>
+			<button>All Servers</button>
+				</NavLink>
+				
+			</div>
 
 		</div>
 		</>

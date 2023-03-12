@@ -1,0 +1,55 @@
+.all-server-card-container {
+    width: 282px;
+    height: 320px;
+    background-color: #232328;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+  }
+  
+  .all-server-card-container:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+    background-color: #1E1E22;
+  }
+  
+  .all-server-card-img-container {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+ 
+  }
+
+  
+  .all-server-card-name {
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px;
+    text-align: center;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .join-server-button {
+    background-color: #7289da;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    margin-top: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+  }
+  
+  .join-server-button:hover {
+    background-color: #677bc4;
+    cursor: pointer;
+  }
+

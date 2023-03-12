@@ -4,8 +4,8 @@ const LOAD_SERVER_BY_ID = 'servers/loadServerById'
 const CREATE_SERVER = "servers/createServer";
 const EDIT_SERVER = 'servers/editServer'
 const DELETE_SERVERS = "servers/deleteServers";
-// const JOIN_SERVER = "servers/joinServer"
-// const LEAVE_SERVER = "servers/leaveServers"
+const JOIN_SERVER = "servers/joinServer"
+const LEAVE_SERVER = "servers/leaveServers"
 
 
 const loadServers = (servers) => ({
@@ -35,6 +35,11 @@ const editServer = (server) => ({
 
 const deleteServer = (server) => ({
     type: DELETE_SERVERS,
+    server
+});
+
+const joinServer = (server) => ({
+    type: JOIN_SERVER,
     server
 });
 
@@ -102,6 +107,19 @@ export const deleteServerById = (id) => async (dispatch) => {
 };
 
 
+export const joinServerById = (serverId) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${serverId}/join`, {
+        method: "POST",
+    });
+    if (response.ok) {
+        const server = await response.json();
+        dispatch(joinServer(server))
+        return
+    }
+    return response
+};
+
+
 
 const initialState = {
     allServers: {},
@@ -152,6 +170,12 @@ const serversReducer = (state = initialState, action) => {
             delete newState.allServers[action.server]
             delete newState.currentUserServers[action.server]
             return newState
+        case JOIN_SERVER:
+            newState = { ...state };
+            newState.currentUserServers[action.server.id] = action.server;
+            newState.serverById = action.server;
+            return newState;
+
         default:
             return state;
     }

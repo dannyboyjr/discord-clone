@@ -9,7 +9,7 @@ import Navigation from "./components/Navigation";
 import MainComponent from "./components/Main Component/main";
 import MainDm from "./components/DMs/MainDm";
 import SplashPage from "./components/SplashPage";
-
+import AllServers from "./components/AllServers/AllServers";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +44,10 @@ function App() {
           <Route path="/@me/:serverId(\d+)?/:channelId(\d+)?">
           <Navigation isLoaded={isLoaded} />
             <MainDm />
+          </Route>
+          <Route path="/guild-discovery">
+            <Navigation isLoaded={isLoaded} />
+            <AllServers />
           </Route>
           </ProtectedRoute>
         </Switch>
