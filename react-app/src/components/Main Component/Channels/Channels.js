@@ -9,6 +9,10 @@ import CreateChannelModal  from '../../CreateChannelModal';
 import EditServerModal  from '../../EditServerModal';
 import ChannelsCard from './ChannelsCard/ChannelsCard';
 import './Channels.css';
+import ProfileButton from '../../Navigation/ProfileButton';
+import CreateDMModal from '../../CreateDMModal/CreateDMModal'
+
+
 
 
 function Channels({ serverId }) {
@@ -17,6 +21,7 @@ function Channels({ serverId }) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user)
   const currentServer = useSelector((state) => state.servers.serverById);
+  const sessionUser = useSelector(state => state.session.user);
   const channels = useSelector((state) => state.channels);
   const channelsArr = Object.values(channels);
   const { channelId } = useParams();
@@ -76,6 +81,11 @@ function Channels({ serverId }) {
           </ul>
         </>
       ) : null}
+      <ul>
+				{isLoaded && (
+						<ProfileButton user={sessionUser} />
+				)}
+			</ul>
     </div>
   );
 }

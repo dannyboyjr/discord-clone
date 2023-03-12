@@ -2,18 +2,28 @@ import React, { useState } from 'react';
 import { createDMServer } from '../../store/dms';
 import { useDispatch } from 'react-redux';
 import { useModal } from "../../context/Modal";
+import {useHistory} from 'react-router-dom'
 
 
-const CreateDMModal = () => {
+const CreateDMModal = ({channels}) => {
   const [username, setUsername] = useState(" ");
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-
+  const history = useHistory()
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const verify = channels.find(item => {
+      console.log("CONSTOLLOSDIFJDS")
+      console.log(item.server.members[1].user.username == username)
+      return username == item.server.members[0].user.username || username == item.server.members[1].user.username 
+    })
+    if (verify){
+      closeModal();
+      return history.push(`/@me/${verify.server_id}/${verify.id}/`)
+    }
     const payload = {
       "name": username,
       "icon": "PrivateServer"

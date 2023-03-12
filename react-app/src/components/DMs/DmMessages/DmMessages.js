@@ -20,7 +20,6 @@ const DmMessages = () => {
       setIsLoaded(true)
     }
   }, [dispatch, serverId, channelId]);
-  console.log("THIS is begin hit!")
   console.log(serverId)
   console.log(channelId)
   return (
