@@ -8,6 +8,8 @@ import CreateServerModal from '../CreateServerModal';
 import { getUserServers } from "../../store/servers"
 import { getAllChannelsInServer } from '../../store/channels';
 import OpenModalImage from '../OpenModalImage';
+import DiscoveryLogo from '../../assets/compass.png'
+import DiscordLogo from '../../assets/discord.png'
 import './Navigation.css';
 
 
@@ -39,9 +41,9 @@ function Navigation({ isLoaded }) {
 
 
 			{/* DMS */}
-			<div className='server-card-pic add-server-pic'>
+			<div className='server-card-pic add-server-pic discord-img'>
 			<NavLink className='server-card-pic' to={`/@me`}>
-				<img src='https://static.thenounproject.com/png/3861763-200.png' />
+				<img src={DiscordLogo} />
 				</NavLink>
 			</div>
 
@@ -64,9 +66,11 @@ function Navigation({ isLoaded }) {
                 />
         	</div>
 			<div>
-			<NavLink className='all-servers-btn' to={`/guild-discovery`}>
-			<button>All Servers</button>
+			<div className='server-card-pic add-server-pic'>
+			<NavLink className='server-card-pic' to={`/guild-discovery`}>
+				<img src={DiscoveryLogo} />
 				</NavLink>
+			</div>
 				
 			</div>
 

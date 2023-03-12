@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getServerById, deleteServerById } from '../../../store/servers';
+import { getServerById, deleteServerById, leaveServerById } from '../../../store/servers';
 import { getAllChannelsInServer } from '../../../store/channels';
 import OpenModalImage  from '../../OpenModalImage';
 import OpenModalButton from '../../OpenModalButton';
@@ -11,7 +11,8 @@ import ChannelsCard from './ChannelsCard/ChannelsCard';
 import './Channels.css';
 import ProfileButton from '../../Navigation/ProfileButton';
 import CreateDMModal from '../../CreateDMModal/CreateDMModal'
-
+import leaveArrowIcon from '../../../assets/leave_arrow.png'
+import addIcon from '../../../assets/add.png'
 
 
 
@@ -37,13 +38,22 @@ function Channels({ serverId }) {
       setIsLoaded(true);
     }
   }, [dispatch, serverId, channelId]);
+
   if (isLoaded && !channelId){
-    return <Redirect to={`/${serverId}/${channelsArr[0].id}`}></Redirect>}
+    return <Redirect to={`/${serverId}/${channelsArr[0].id}`}></Redirect>
+  }
 
   const handleDelete = () => {
     dispatch(deleteServerById(currentServer.id))
     history.push('/@me');
   };
+
+  const handLeave = () => {
+    dispatch(leaveServerById(serverId))
+     history.push('/@me')
+    }
+  
+  
 
   return (
     <div className="channels-container">
@@ -68,10 +78,15 @@ function Channels({ serverId }) {
           </div>
           {isOwner && <div className='create-channel-btn'>
           <OpenModalButton
-                   buttonText="Add Channel"
+                   buttonText={"Add Channel"}
                    modalComponent={<CreateChannelModal serverId={currentServer.id}/>}
                  />
           </div>}
+          {!isOwner && 
+          <div className="leave-channel-icon" onClick={handLeave}>
+          <img src={leaveArrowIcon} alt="leave" />
+        </div>
+        }
 
           <ul>
             {isLoaded &&
