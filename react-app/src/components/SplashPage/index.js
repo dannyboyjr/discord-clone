@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { getUserServers } from "../../store/servers";
+import "./SplashPage.css"
+import splashImage from "./discord-background.jpg"
 
 
 
@@ -24,12 +26,13 @@ function SplashPage({isLoaded}) {
     return (
         <>
             <div className='splash-container'>
-                <p>
-                    Hey, this is the home page for our discord app.  You can log in to your account from here or you can join us by signing up for one.
+                <img className="discord-img" src={splashImage} alt="Splash Image"/>
+                <p className='splash-welcome-text'>
+                    Welcome to the Home Page of Discord!  You can log in to your account from here or you can join us by signing up for one.
                 </p>
                 <div  className='splash-container-links'>
-                    <NavLink to='/login'>Log In</NavLink>
-                    <NavLink to='/signup'>Sign Up</NavLink>
+                    <NavLink to='/login' className="login-button" activeClassName="active">Log In</NavLink>
+                    <NavLink to='/signup' className="signup-button" activeClassName="active">Sign Up</NavLink>
                 </div>
             </div>
         </>
