@@ -1,0 +1,28 @@
+.server-card-pic img {
+  width: 49px;
+  height: 49px;
+  overflow: hidden;
+  transition: border-radius 0.1s ease-in-out;
+  border-radius: 50%; /* Add initial border-radius */
+  border: 1px solid #313338;
+}
+
+.server-card-pic:hover img {
+  border-radius: 15px;
+}
+
+.server-card-pic:not(:hover) img {
+  border-radius: 50%;
+}
+
+.servers-list {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+}
+
+.servers-list > * {
+  margin: 5px 0;
+}

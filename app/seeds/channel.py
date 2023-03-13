@@ -1,26 +1,38 @@
 from ..models import db, Channel, environment, SCHEMA
+from datetime import datetime
 
 channel_info = [
     {
         "id": 1,
         "server_id": 1,
         "owner_id":1,
-        "channel_name": "general",
-        "private": False
+        "name": "general",
+        "private": False,
+        "created_at": datetime.utcnow()
     },
     {
         "id": 2,
         "server_id": 2,
         "owner_id":2,
-        "channel_name": "awesome_rocks",
-        "private": False
+        "name": "awesome_rocks",
+        "private": False,
+        "created_at": datetime.utcnow()
     },
     {
         "id": 3,
         "server_id": 1,
         "owner_id":1,
-        "channel_name": "app academy reject",
-        "private": False
+        "name": "app academy reject",
+        "private": False,
+        "created_at": datetime.utcnow()
+    },
+    {
+        "id": 4,
+        "server_id": 3,
+        "owner_id":3,
+        "name": "something new",
+        "private": False,
+        "created_at": datetime.utcnow()
     },
 ]
 
@@ -39,7 +51,7 @@ def seed_channels():
 def undo_channels():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.channels RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM channel")
 

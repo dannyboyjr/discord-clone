@@ -1,0 +1,52 @@
+.messages-container {
+    position: absolute;
+    top: 0;
+    left: 348px;
+    bottom: 0; /* or whatever value you want */
+    right: 0;
+    background-color: rgb(49,51,56);
+    padding: 100px;
+    overflow-y: auto;
+  }
+  
+  .message {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .messages-container h2 {
+    color: #91939B;
+  }
+  .avatar {
+    margin-right: 10px;
+  }
+  
+  .avatar img {
+    border-radius: 50%;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .username {
+    font-weight: bold;
+  }
+  
+  .timestamp {
+    color: #72767d;
+    font-size: 0.8rem;
+  }
+  
+  .body {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+  }
+

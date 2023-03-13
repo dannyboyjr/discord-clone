@@ -1,0 +1,85 @@
+.channels-container {
+  position: fixed;
+  top: 0;
+  left: 70px;
+  bottom: 0;
+  width: 248px;
+   height: 100%;
+    /* background-color: #c8e1ff; */
+  padding: 10px;
+  margin-left: 10px;
+  overflow-y: auto;
+  background-color: #2B2D31;
+  }
+  
+  .channels-container h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .channels-container li {
+    margin-bottom: 5px;
+  }
+
+  .server-icons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 248px;
+    height: 70px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  
+  .server-icons-container h2 {
+    font-family: 'Uni Sans', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .edit-icon, .delete-icon {
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .edit-icon:hover, .delete-icon:hover {
+    color: #ccc;
+  }
+  
+
+/* Styling for DMs channel */
+.direct-messages-container {
+  font-family: 'Uni Sans', sans-serif;
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.add-icon {
+  margin-left: 5px;
+  font-size: 1rem; /* decrease the font size to make the icon smaller */
+  color: white;
+  cursor: pointer;
+}
+
+.leave-channel-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.leave-channel-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+/* usercard styling */
+

@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from flask_sqlalchemy import flask_sqlalchemy
+from datetime import datetime
 
 # (WIP)
 
@@ -15,14 +15,15 @@ class Message(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    server_id = db.Column(db.Integer, db.ForeignKey('server.id'), nullable=False)
-    channel_id = db.Column(db.Integer, db.ForeignKey('channel.id'), nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    server_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('servers.id')), nullable=False)
+    channel_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('channels.id')), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     content = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    server = db.relationship('Server', back_populates='messages')
-    channel = db.relationship('Channel', back_populates='messages')
-    user = db.relationship('User', back_populates='messages')
+    server = db.relationship('Server', back_populates='message')
+    channel = db.relationship('Channel', back_populates='message')
+    user = db.relationship('User', back_populates='message')
 
     def to_dict(self):
         return {
@@ -30,5 +31,7 @@ class Message(db.Model):
             "server_id": self.server_id,
             "channel_id": self.channel_id,
             'owner_id': self.owner_id,
-            "content": self.content
+            "content": self.content,
+            "created_at": self.created_at,
+            "user": self.user.to_dict()
         }

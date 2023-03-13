@@ -5,3 +5,22 @@
 .hidden {
   display: none;
 }
+
+.servers-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #1E1F22;
+
+  margin: 0;
+}
+
+.discord-img {
+  margin-top: 25px;
+}
