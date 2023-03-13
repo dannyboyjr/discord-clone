@@ -50,6 +50,8 @@ function LoginFormPage() {
     <div className="login-container">
       <h1 className="login-text-container">Log In</h1>
       <form className="login-form-container" onSubmit={handleSubmit}>
+        <h3 className="welcome-login-text">Welcome back!</h3>
+        <p className="excited-login-text" >We're so excited to see you again!</p>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
