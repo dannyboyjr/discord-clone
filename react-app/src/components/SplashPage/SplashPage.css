@@ -85,3 +85,8 @@ body {
     transform: scale(1.1);
     border-color: black;
 }
+
+.discord-img{
+    max-width: 1300px;
+    max-height: 1300px;
+}

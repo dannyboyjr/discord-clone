@@ -28,7 +28,7 @@ function SplashPage({isLoaded}) {
             <div className='splash-container'>
                 <img className="discord-img" src={splashImage} alt="Splash Image"/>
                 <p className='splash-welcome-text'>
-                    Welcome to the Home Page of Discord!  You can log in to your account from here or you can join us by signing up for one.
+                    Welcome to Discord!  You can log in to your account from here. Don't have one? You can register below to sign up!
                 </p>
                 <div  className='splash-container-links'>
                     <NavLink to='/login' className="login-button" activeClassName="active">Log In</NavLink>

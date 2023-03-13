@@ -51,15 +51,16 @@ function LoginFormPage() {
       <img className="login-image" src={loginImage} alt="Login Image"/>
     <div className="login-container">
       <h1 className="login-text-container">Log In</h1>
-      <button onClick={ demoLogin } className='button-Demo '>Demo-User Login</button>
       <form className="login-form-container" onSubmit={handleSubmit}>
+        <h3 className="welcome-login-text">Welcome back!</h3>
+        <p className="excited-login-text" >We're so excited to see you again!</p>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
         <label className="email-login">
-          Email
+          <span>Email</span>
           <input
             type="text"
             value={email}
@@ -68,7 +69,7 @@ function LoginFormPage() {
           />
         </label>
         <label className="password-login">
-          Password
+          <span>Password</span>
           <input
             type="password"
             value={password}
@@ -77,6 +78,7 @@ function LoginFormPage() {
           />
         </label>
         <button className="submit-login-button" type="submit">Log In</button>
+        <button onClick={ demoLogin } className='button-Demo'>Demo-User Login</button>
       </form>
       </div>
     </div>
