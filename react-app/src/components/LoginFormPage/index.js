@@ -22,7 +22,9 @@ function LoginFormPage() {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
-    }
+    } else {
+      setErrors(['Incorrect credentials.  Please check your Username and Password']);
+  }
   };
 
   const makeLoginRequest = () => {return dispatch(sessionActions.login({ email, password }))

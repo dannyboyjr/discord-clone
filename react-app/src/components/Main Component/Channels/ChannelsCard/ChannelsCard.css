@@ -44,3 +44,7 @@ transform: scale(1.8)
   color:aquamarine;
   font-weight: bold;
 }
+
+.channel-edit-btn{
+  padding: 5px;
+}

@@ -4,6 +4,8 @@ import { NavLink, useHistory, useParams } from 'react-router-dom'
 import { deleteChannelById } from '../../../../store/channels';
 import OpenModalImage  from '../../../OpenModalImage'
 import EditChannelModal  from '../../../EditChannelModal'
+import EditIconImg from '../../../../assets/pencil.png'
+import DeleteImg from '../../../../assets/delete.png'
 
 const ChannelsCard = ({ channel, serverId }) => {
     const dispatch = useDispatch()
@@ -43,14 +45,14 @@ return (
           <div className='channel-line'>
             #<li key={channel.id}>{channel.name}</li>
 
-            {isOwner && <div className='channel-card-edit'>
+            {isOwner && <div className='channel-edit-btn'>
             <OpenModalImage
-                buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Font_Awesome_5_regular_edit.svg/1200px-Font_Awesome_5_regular_edit.svg.png"
+                buttonText={EditIconImg}
                 modalComponent={<EditChannelModal channel={channel} />}
                 />
             </div>}
             {isOwner && <span className="delete-icon" onClick={handleDelete}>
-                <i className="fa fa-times"></i>
+                <img src={DeleteImg} alt="delete"/>
             </span>}
 
           </div>

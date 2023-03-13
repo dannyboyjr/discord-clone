@@ -141,7 +141,6 @@ const channelsReducer = (state = initialState, action) => {
             return newState;
 
         case DELETE_CHANNEL:
-            console.log('ACTION IS COMING:', action)
             delete newState[action.channelId];
             return newState;
 

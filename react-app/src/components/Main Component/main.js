@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Channels from './Channels/Channels'
 import Messages from './Messages/Messages';
 import ChatInput from './ChatInput/ChatInput';
-
+import ProfileCard from '../ProfileCard/ProfileCard';
 const MainComponent = () => {
   const { serverId, channelId } = useParams();
 
@@ -14,7 +14,9 @@ const MainComponent = () => {
     <Messages/>
         {channelId && <ChatInput />}
       </div>
+      <ProfileCard />
     </div>
+    
   );
 };
 
