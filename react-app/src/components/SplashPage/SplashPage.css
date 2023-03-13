@@ -1,0 +1,87 @@
+body {
+    background-color: #202123;
+}
+
+.splash-container{
+    background-image: url('discord-background.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.splash-container-links{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.splash-welcome-text {
+    text-align: center;
+    position: absolute;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+    font-size: large;
+    word-break: break-all;
+}
+
+.login-button{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: white;
+    border: none;
+    border-radius: 40px;
+    color: #202123;
+    padding: 25px 35px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.signup-button{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: white;
+    border: none;
+    border-radius: 40px;
+    color: #202123;
+    padding: 25px 35px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.login-button:hover{
+    color: #3805e1;
+    transform: scale(1.1);
+    border-color: black;
+
+}
+
+.signup-button:hover{
+    color: #3805e1;
+    transform: scale(1.1);
+    border-color: black;
+}
+
+.login-button:active{
+    color: #3805e1;
+    transform: scale(1.1);
+    border-color: black;
+
+}
+
+.signup-button:active{
+    color: #3805e1;
+    transform: scale(1.1);
+    border-color: black;
+}
