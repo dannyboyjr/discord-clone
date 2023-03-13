@@ -10,7 +10,6 @@ Welcome to the Discord-clone project! This project is a recreation of the popula
 ![splashpage](./splashpage.png)
 ![login](login.png)
 ![server_channel_message](server_channel_message.png)
-![spotReview](spotReview.png)
 ![dms](dm.png)
 ![explore](explore.png)
 
