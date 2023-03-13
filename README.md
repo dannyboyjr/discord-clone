@@ -18,8 +18,6 @@ Welcome to the Discord-clone project! This project is a recreation of the popula
 <h1>CRUD Features</h1>
 The Discord-Clone project includes full CRUD (Create, Read, Update, Delete) features for both the servers and and channels sections of the website. There are partial curds for reading and sending messages for channels and private dms. Additionally, users can join and leave servers of their choosing.
 
-Technologies Used
-
 <h2 align=center>Technologies</h2>
 <div align=center>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" style=width:50px />
