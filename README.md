@@ -31,7 +31,7 @@ The Discord-Clone project includes full CRUD (Create, Read, Update, Delete) feat
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" style=width:50px /> 
   <div align=center>
 </div>
-
+ 
 
 <h1>how to get started </h1>
 
