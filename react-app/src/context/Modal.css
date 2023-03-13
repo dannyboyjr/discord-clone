@@ -1,12 +1,15 @@
 #modal {
+  /* display: none; */
+      /* Hidden by default */
   position: fixed;
-  top: 0;
-  right: 0;
+  z-index: 1;
   left: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  top: 0;
+  width: 600px;
+  height: 400px;
+  overflow: auto;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 #modal-background {
@@ -16,9 +19,27 @@
   left: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
+
 }
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+      /* Could be more or less, depending on screen size
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  width: 80%; */
+
 }
