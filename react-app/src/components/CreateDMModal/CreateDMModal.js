@@ -18,7 +18,7 @@ const CreateDMModal = ({channels}) => {
     // Verify sorts through dms to check if an open dm channel exist. if it does exit user is rerouted to open dm
     const verify = channels.find(item => {
       console.log(item.server.members[1].user.username == username)
-      return username == item.server.members[0].user.username || username == item.server.members[1].user.username 
+      return username == item.server.members[0].user.username || username == item.server.members[1].user.username
     })
     if (verify){
       closeModal();
@@ -42,7 +42,7 @@ const CreateDMModal = ({channels}) => {
         <h2>Create Dm</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-container">
-            <label htmlFor="name">username </label>
+            <label htmlFor="name">Username </label>
             <input
               type='text'
               name="username"
@@ -51,7 +51,7 @@ const CreateDMModal = ({channels}) => {
               required
             />
           </div>
-         
+
           <div className="button-container">
             <button type="submit">Create</button>
             <button type="button" onClick={closeModal}>

@@ -22,7 +22,10 @@ function CreateChannelModal({serverId}) {
 
   return (
     <>
+    <div className="create-channel-container">
+      <div className="create-channel-main">
       <h1>Create a Channel</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -40,6 +43,7 @@ function CreateChannelModal({serverId}) {
         </label>
         <button type="submit">Create</button>
       </form>
+      </div>
     </>
   );
 }
