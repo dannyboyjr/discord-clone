@@ -6,8 +6,10 @@ import "./AllServers.css"
 
 const AllServers = () => {
     const dispatch = useDispatch()
-    const allServers = useSelector(state => state.servers.allServers);
+    const allServersObj = useSelector(state => state.servers);
+    const allServers = allServersObj.allServers
     const allServersArr = Object.values(allServers);
+
     useEffect(() => {
 		dispatch(getAllServers())
 	}, [dispatch])
@@ -15,7 +17,7 @@ const AllServers = () => {
     return (
       <div>
         <div className='all-servers-list'>
-        <h1>All Servers</h1>
+        <h1>Explore Servers</h1>
         <div className='all-server-card-display'>
 				{allServersArr.map(server =>
 				 <AllServerCard key={server.id} server={server} />

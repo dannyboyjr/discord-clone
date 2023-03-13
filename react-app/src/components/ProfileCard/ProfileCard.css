@@ -1,0 +1,40 @@
+.ProfileCard {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 80px;
+    width: 248px;
+    height: 40px;
+    background-color: #232527;
+    padding: 10px;
+  }
+  
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+
+  }
+  
+  .ProfileCard div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 10px;
+  }
+  
+  .ProfileCard p {
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+.profile-id {
+    color: #75767C
+}
+
+.profile-logout {
+    margin-left: auto;
+  }

@@ -20,8 +20,6 @@ const DmMessages = () => {
       setIsLoaded(true)
     }
   }, [dispatch, serverId, channelId]);
-  console.log(serverId)
-  console.log(channelId)
   return (
     <div className="messages-container">
       <h2>Direct Messages</h2>

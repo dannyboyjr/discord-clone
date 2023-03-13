@@ -12,7 +12,9 @@ import './Channels.css';
 import ProfileButton from '../../Navigation/ProfileButton';
 import CreateDMModal from '../../CreateDMModal/CreateDMModal'
 import leaveArrowIcon from '../../../assets/leave_arrow.png'
-import addIcon from '../../../assets/add.png'
+import AddIcon from '../../../assets/evenSmallerPlus.png'
+import EditIconImg from '../../../assets/pencil.png'
+import DeleteImg from '../../../assets/delete.png'
 
 
 
@@ -62,26 +64,26 @@ function Channels({ serverId }) {
         <>
           <div className="server-info-container">
             <div className="server-icons-container">
-              <h2>{currentServer.name}</h2>
+              <h1>{currentServer.name}</h1>
+              {isOwner && <div className='create-channel-btn'>
+          <OpenModalImage
+                   buttonText={AddIcon}
+                   modalComponent={<CreateChannelModal serverId={currentServer.id}/>}
+                 />
+          </div>}
               {isOwner && <span className="edit-icon">
-               <div className='channel-card-edit'>
+               <div className=''>
                  <OpenModalImage
-                   buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Font_Awesome_5_regular_edit.svg/1200px-Font_Awesome_5_regular_edit.svg.png"
+                   buttonText={EditIconImg}
                    modalComponent={<EditServerModal server={currentServer}/>}
                  />
         	     </div>
               </span>}
               {isOwner && <span className="delete-icon" onClick={handleDelete}>
-                <i className="fa fa-times"></i>
+                <img src={DeleteImg} />
               </span>}
             </div>
           </div>
-          {isOwner && <div className='create-channel-btn'>
-          <OpenModalButton
-                   buttonText={"Add Channel"}
-                   modalComponent={<CreateChannelModal serverId={currentServer.id}/>}
-                 />
-          </div>}
           {!isOwner && 
           <div className="leave-channel-icon" onClick={handLeave}>
           <img src={leaveArrowIcon} alt="leave" />
@@ -96,11 +98,8 @@ function Channels({ serverId }) {
           </ul>
         </>
       ) : null}
-      <ul>
-				{isLoaded && (
-						<ProfileButton user={sessionUser} />
-				)}
-			</ul>
+      
+     
     </div>
   );
 }

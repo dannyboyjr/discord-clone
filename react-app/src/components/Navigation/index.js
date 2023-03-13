@@ -3,18 +3,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './ServerCard';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
-//import ProfileButton from "./ProfileButton"
 import CreateServerModal from '../CreateServerModal';
 import { getUserServers } from "../../store/servers"
 import { getAllChannelsInServer } from '../../store/channels';
 import OpenModalImage from '../OpenModalImage';
 import DiscoveryLogo from '../../assets/compass.png'
 import DiscordLogo from '../../assets/discord.png'
+import AddServerImg from '../../assets/addServer.png'
 import './Navigation.css';
 
 
-function Navigation({ isLoaded }) {
+function Navigation() {
 	const dispatch = useDispatch()
+	const [isLoaded, setIsLoaded] = useState(false)
 	const [showModal, setShowModal] = useState(false)
 	const sessionUser = useSelector(state => state.session.user);
 	const servers = useSelector(state => state.servers); //double check name of state for server
@@ -24,7 +25,7 @@ function Navigation({ isLoaded }) {
 
 
 	useEffect(() => {
-		dispatch(getUserServers())
+		dispatch(getUserServers()).then(()=>setIsLoaded(true))
 	}, [dispatch])
 
 
@@ -49,19 +50,15 @@ function Navigation({ isLoaded }) {
 
 
 			<div className='servers-list'>
-				{serversArr.map(server =>
+				{isLoaded && serversArr.map(server =>
 				 <ServerCard key={server.id} server={server} />
 
 				)}
 			</div>
-			{/* <div className='server-card-pic add-server-pic'>
-
-				<img onClick={addServer} src='https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png' />
-			</div>
-			{showModal && <CreateServerModal onClose={handleClose}/>} */}
+			
 			<div className='server-card-pic add-server-pic'>
             <OpenModalImage
-                buttonText="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png"
+                buttonText={AddServerImg}
                 modalComponent={<CreateServerModal />}
                 />
         	</div>

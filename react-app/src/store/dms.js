@@ -28,7 +28,7 @@ const createPrivateMessage = (message) => ({
 
 
 export const getAllPrivateChannelsOfUser = () => async (dispatch) => {
-    const response = await fetch('api/servers/dms');
+    const response = await fetch('/api/servers/dms');
     if (response.ok) {
         const data = await response.json();
         dispatch(loadPrivateChannelsOfUser(data));
@@ -86,6 +86,10 @@ let newState = { ...state };
     
     case LOAD_PRIVATE_MESSAGES:
         action.messages.forEach(message => {
+            if(!newState[message.channel_id]){
+                newState[message.channel_id] = {}
+                
+            }
             if(!newState[message.channel_id].messages){
                 newState[message.channel_id].messages = {}
             }

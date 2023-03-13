@@ -7,6 +7,7 @@ import ChannelsCard from '../../Main Component/Channels/ChannelsCard/ChannelsCar
 import '../../Main Component/Channels/Channels.css';
 import OpenModalImage from '../../OpenModalImage/index';
 import CreateDMModal from '../../CreateDMModal/CreateDMModal'
+import AddImg from '../../../assets/evenSmallerPlus.png'
 
 function DmChannels() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,7 +34,7 @@ function DmChannels() {
 
         <h2>Direct Messages</h2>
         <OpenModalImage
-                buttonText="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/200px-Plus_symbol.svg.png"
+                buttonText={AddImg}
                 modalComponent={<CreateDMModal channels={dmChannelsArr} />} />
         
         </div>
@@ -49,16 +50,6 @@ function DmChannels() {
               ))}
           </ul>
         </>
-     
-
-      {/* profile card */}
-      <div userName="profile-card" >
-      <ul>
-				{isLoaded && (
-						<ProfileButton user={sessionUser} />
-				)}
-			</ul>
-    </div>
 
     </div>
   );
