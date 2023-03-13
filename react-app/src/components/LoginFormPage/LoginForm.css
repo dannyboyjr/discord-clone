@@ -95,6 +95,7 @@
   color: white;
   font-weight:lighter;
   margin-bottom: 1em;
+  transition: all 0.3s ease;
 
 }
 
@@ -113,6 +114,7 @@
  color: white;
  font-weight: lighter;
  margin-bottom: 1em;
+ transition: all 0.3s ease;
 }
 
 .button-Demo:hover {
