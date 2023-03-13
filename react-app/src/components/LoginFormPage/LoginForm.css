@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #40444B;
+  background-color: #2f3237;
   padding: 2em;
   border-radius: 0.5em;
 }
@@ -61,7 +61,7 @@
   margin-bottom: 1em;
   border-radius: 0.2em;
   border: none;
-  background-color: #2F3136;
+  background-color: #1c1d20;
   color: white;
 
 }
@@ -118,7 +118,7 @@
 }
 
 
-.signup-location{
+/* .signup-location{
     position: absolute;
     width: 100vw;
     height: 80vh;
@@ -244,4 +244,4 @@
   .signup-btn:hover{
     background-color: #677bc4;
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-  }
+  } */
