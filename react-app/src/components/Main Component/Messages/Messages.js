@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getAllMessagesInChannel } from '../../../store/channels';
-import {getAllDMMessagesInChannel } from '../../../store/dms'
 import MessageCard from './MessageCard/MessageCard'
 import './Messages.css';
 
@@ -12,9 +11,8 @@ const Messages = () => {
   const dispatch = useDispatch();
   const messagesState = useSelector((state) => state.channels);
   const messages = messagesState[channelId]?.messages || {}
-  // const dms = useSelector((state) => state.dms[channelId]?.messages || {});
   const messagesArr = Object.values(messages)
-  // const dmsArr = Object.values(dms)
+
 
 
   useEffect(() => {

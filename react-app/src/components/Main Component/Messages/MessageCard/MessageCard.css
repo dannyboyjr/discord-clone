@@ -7,11 +7,19 @@
   
   .message-content li {
     margin: 0;
-    padding: 8px;
-    background-color: #36393F;
+    padding: 7px;
+
     color: #DDDEE2;
     border-radius: 8px;
     font-family: "Uni Sans";
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.5;
   }
+
+.message-username{
+  color: #50D282;
+}
+.message-time-stamp {
+  color: #82838B;
+  font-size: 12px;
+}

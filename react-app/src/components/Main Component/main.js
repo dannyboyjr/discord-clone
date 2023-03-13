@@ -11,7 +11,7 @@ const MainComponent = () => {
     <div>
       <Channels serverId={serverId} channelId={serverId}/>
       <div>
-    <Messages/>
+        <Messages/>
         {channelId && <ChatInput />}
       </div>
       <ProfileCard />

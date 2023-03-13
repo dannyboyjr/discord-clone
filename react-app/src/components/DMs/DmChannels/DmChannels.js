@@ -50,16 +50,6 @@ function DmChannels() {
               ))}
           </ul>
         </>
-     
-
-      {/* profile card */}
-      <div userName="profile-card" >
-      <ul>
-				{isLoaded && (
-						<ProfileButton user={sessionUser} />
-				)}
-			</ul>
-    </div>
 
     </div>
   );

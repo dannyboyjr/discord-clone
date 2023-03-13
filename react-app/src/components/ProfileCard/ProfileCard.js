@@ -7,13 +7,15 @@ import UserIcon from '../../assets/user.png'
 import LogoutImg from '../../assets/logout.png'
 
 const ProfileCard = () => {
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
   };
 
-  const sessionUser = useSelector(state => state.session.user);
+
   console.log(sessionUser)
   return (
     <div className="ProfileCard">
