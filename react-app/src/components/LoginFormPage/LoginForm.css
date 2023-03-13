@@ -1,3 +1,88 @@
+.login-image{
+  max-width: 120%;
+  height: auto;
+  background-image: url('discord-login.jpg');
+  background-size: cover;
+  position: relative;
+}
+
+
+.login-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 72%;
+  height: 50%;
+}
+
+.login-text-container{
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.login-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #40444B;
+  padding: 2em;
+  border-radius: 0.5em;
+}
+
+.login-form-container label {
+  color: rgb(176, 175, 175);
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.login-form-container input[type="text"],
+.login-form-container input[type="password"] {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border-radius: 0.2em;
+  border: none;
+  background-color: #2F3136;
+  color: white;
+}
+
+.submit-login-button {
+  width: 50%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 0.2em;
+  background-color: #4261d0;
+  color: white;
+  font-weight:lighter;
+  margin-bottom: 1em;
+
+}
+
+.submit-login-button:hover{
+  background-color: #677bc4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .signup-location{

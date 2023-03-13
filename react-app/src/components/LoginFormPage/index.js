@@ -4,6 +4,7 @@ import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginForm.css';
+import loginImage from "./discord-login.jpg"
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -43,16 +44,19 @@ function LoginFormPage() {
   }
 
   return (
-    <>
-      <h1>Log In</h1>
+
+    <div className="login-page-container">
+      <img className="login-image" src={loginImage} alt="Login Image"/>
+    <div className="login-container">
+      <h1 className="login-text-container">Log In</h1>
       <button onClick={ demoLogin } className='button-Demo '>Demo-User Login</button>
-      <form onSubmit={handleSubmit}>
+      <form className="login-form-container" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <label className="email-login">
           Email
           <input
             type="text"
@@ -61,7 +65,7 @@ function LoginFormPage() {
             required
           />
         </label>
-        <label>
+        <label className="password-login">
           Password
           <input
             type="password"
@@ -70,9 +74,10 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="submit-login-button" type="submit">Log In</button>
       </form>
-    </>
+      </div>
+    </div>
   );
 }
 
