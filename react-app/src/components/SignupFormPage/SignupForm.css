@@ -127,6 +127,10 @@
 
   }
 
+  .signup-input input:focus{
+      outline: none;
+  }
+
 
   .signup-input-name{
     color: #a8a8a8;

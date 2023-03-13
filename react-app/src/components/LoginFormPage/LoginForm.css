@@ -67,6 +67,10 @@
 
 }
 
+.login-form-container input:focus{
+    outline: none;
+}
+
 .login-form-container span{
   position: absolute;
   right: 100%;
