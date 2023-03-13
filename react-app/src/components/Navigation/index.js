@@ -13,8 +13,9 @@ import AddServerImg from '../../assets/addServer.png'
 import './Navigation.css';
 
 
-function Navigation({ isLoaded }) {
+function Navigation() {
 	const dispatch = useDispatch()
+	const [isLoaded, setIsLoaded] = useState(false)
 	const [showModal, setShowModal] = useState(false)
 	const sessionUser = useSelector(state => state.session.user);
 	const servers = useSelector(state => state.servers); //double check name of state for server
@@ -24,7 +25,7 @@ function Navigation({ isLoaded }) {
 
 
 	useEffect(() => {
-		dispatch(getUserServers())
+		dispatch(getUserServers()).then(()=>setIsLoaded(true))
 	}, [dispatch])
 
 
@@ -49,7 +50,7 @@ function Navigation({ isLoaded }) {
 
 
 			<div className='servers-list'>
-				{serversArr.map(server =>
+				{isLoaded && serversArr.map(server =>
 				 <ServerCard key={server.id} server={server} />
 
 				)}

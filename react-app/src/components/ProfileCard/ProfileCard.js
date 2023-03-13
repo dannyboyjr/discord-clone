@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
 import UserIcon from '../../assets/user.png'
 import LogoutImg from '../../assets/logout.png'
+import {resetServer} from '../../store/servers'
 
 const ProfileCard = () => {
   const sessionUser = useSelector(state => state.session.user);
@@ -12,7 +13,9 @@ const ProfileCard = () => {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(logout());
+    dispatch(logout()).then(()=>{
+      dispatch(resetServer())
+    })
   };
 
 

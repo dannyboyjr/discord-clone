@@ -1,11 +1,12 @@
 const LOAD_SERVERS = "servers/loadServers";
-const LOAD_USER_SERVERS = 'servers/userServers'
-const LOAD_SERVER_BY_ID = 'servers/loadServerById'
+const LOAD_USER_SERVERS = 'servers/userServers';
+const LOAD_SERVER_BY_ID = 'servers/loadServerById';
 const CREATE_SERVER = "servers/createServer";
-const EDIT_SERVER = 'servers/editServer'
+const EDIT_SERVER = 'servers/editServer';
 const DELETE_SERVERS = "servers/deleteServers";
-const JOIN_SERVER = "servers/joinServer"
-const LEAVE_SERVER = "servers/leaveServers"
+const JOIN_SERVER = "servers/joinServer";
+const LEAVE_SERVER = "servers/leaveServers";
+const RESET_SERVER = "servers/resetServers";
 
 
 const loadServers = (servers) => ({
@@ -47,6 +48,9 @@ const leaveServer = (server) => ({
     server
 });
 
+export const resetServer = () => ({
+    type: RESET_SERVER
+})
 
 export const getAllServers = () => async (dispatch) => {
     const response = await fetch("/api/servers/");
@@ -193,6 +197,13 @@ const serversReducer = (state = initialState, action) => {
         case LEAVE_SERVER:
             newState = { ...state }
             delete newState.currentUserServers[action.server]
+            return newState
+
+        case RESET_SERVER:
+            newState = { ...state }
+            newState.allServers = {}
+            newState.serverById = {}
+            newState.currentUserServers = {}
             return newState
 
         default:
