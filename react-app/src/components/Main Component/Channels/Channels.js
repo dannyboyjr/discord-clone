@@ -64,7 +64,7 @@ function Channels({ serverId }) {
         <>
           <div className="server-info-container">
             <div className="server-icons-container">
-              <h1>{currentServer.name}</h1>
+              <h2>{currentServer.name}</h2>
               {isOwner && <div className='create-channel-btn'>
           <OpenModalImage
                    buttonText={AddIcon}

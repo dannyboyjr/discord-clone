@@ -13,7 +13,9 @@
     display: flex;
     margin-bottom: 10px;
   }
-  
+  .messages-container h2 {
+    color: #91939B;
+  }
   .avatar {
     margin-right: 10px;
   }
