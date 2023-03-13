@@ -4,6 +4,7 @@
   background-image: url('discord-login.jpg');
   background-size: cover;
   position: relative;
+  float: left;
 }
 
 
