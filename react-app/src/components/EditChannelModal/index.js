@@ -3,6 +3,7 @@ import {editChannelById} from '../../store/channels'
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useParams } from "react-router-dom";
+import "./EditChannelModal.css"
 
 
 function EditChannelModal({channel}) {
@@ -26,6 +27,7 @@ function EditChannelModal({channel}) {
 
   return (
     <>
+    <div className="edit-channel-container">
       <h1>Edit your Channel</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -42,8 +44,11 @@ function EditChannelModal({channel}) {
             required
           />
         </label>
+        <div className="edit-button-container">
         <button type="submit">Edit</button>
+        </div>
       </form>
+      </div>
     </>
   );
 }

@@ -11,15 +11,21 @@
   overflow-y: auto;
   background-color: #2B2D31;
   }
-  
+
   .channels-container h2 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1.2rem;
     margin-bottom: 10px;
   }
-  
+
   .channels-container li {
     margin-bottom: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    color: #878787;
   }
+  
 
   .server-icons-container {
     display: flex;
@@ -30,24 +36,24 @@
     padding: 0 20px;
     box-sizing: border-box;
   }
-  
+
   .server-icons-container h2 {
     font-family: 'Uni Sans', sans-serif;
     font-size: 18px;
     color: #fff;
     margin: 0;
   }
-  
+
   .edit-icon, .delete-icon {
     font-size: 24px;
     color: #000;
     cursor: pointer;
   }
-  
+
   .edit-icon:hover, .delete-icon:hover {
     color: #ccc;
   }
-  
+
 
 /* Styling for DMs channel */
 .direct-messages-container {
@@ -82,4 +88,3 @@
 
 
 /* usercard styling */
-

@@ -8,7 +8,14 @@
     padding: 100px;
     overflow-y: auto;
   }
-  
+
+.messages-container h2 {
+  display: flex;
+  justify-content: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
   .message {
     display: flex;
     margin-bottom: 10px;
@@ -19,34 +26,34 @@
   .avatar {
     margin-right: 10px;
   }
-  
+
   .avatar img {
     border-radius: 50%;
   }
-  
+
   .content {
     display: flex;
     flex-direction: column;
   }
-  
+
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .username {
     font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
-  
+
   .timestamp {
     color: #72767d;
     font-size: 0.8rem;
   }
-  
+
   .body {
     margin-top: 5px;
     font-size: 0.9rem;
     white-space: pre-wrap;
   }
-

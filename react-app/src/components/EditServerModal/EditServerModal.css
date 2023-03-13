@@ -1,0 +1,52 @@
+.edit-server-container {}
+
+.edit-server-container h2 {
+    display: flex;
+    color: #000;
+    justify-content: center;
+    margin-top: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    font-size: smaller;
+}
+
+.edit-server-container label {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    color: black;
+
+}
+
+.edit-server-container input {
+    width: 82%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1 px solid grey;
+    margin-left: 5px;
+    background-color: #bebebe;
+    color: black;
+    border: 1px solid #858585;
+    outline: none;
+}
+
+.edit-server-button-container {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.edit-server-button-container button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #7289da;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-server-button-container button:hover {
+    background-color: #677bc4;
+}

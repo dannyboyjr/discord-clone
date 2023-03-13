@@ -41,7 +41,9 @@ function CreateChannelModal({serverId}) {
             required
           />
         </label>
+        <div className="channel-button-container">
         <button type="submit">Create</button>
+        </div>
       </form>
       </div>
     </>

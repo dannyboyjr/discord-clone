@@ -26,6 +26,7 @@ function EditServerModal({server}) {
 
   return (
     <>
+    <div className="edit-server-container">
       <h1>Edit a Server</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -49,8 +50,11 @@ function EditServerModal({server}) {
             required
           />
         </label>
+        <div className="edit-server-button-container">
         <button type="submit">Edit</button>
+        </div>
       </form>
+      </div>
     </>
   );
 }
