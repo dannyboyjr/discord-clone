@@ -21,16 +21,17 @@ const DmMessages = () => {
     }
   }, [dispatch, serverId, channelId]);
   return (
+
     <div className="messages-container">
+
       <h2>Direct Messages</h2>
-      {serverId && channelId ? (
+      
+      {serverId && channelId && (
         <ul>
           {isLoaded && dmsArr.map((message) => (
             <MessageCard key={message.id} message={message} />
           ))}
         </ul>
-      ) : (
-        <div>Select a server.</div>
       )}
     </div>
   );
