@@ -22,7 +22,7 @@ function LoginFormPage() {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
-    }
+    } 
   };
 
   const makeLoginRequest = () => {return dispatch(sessionActions.login({ email, password }))

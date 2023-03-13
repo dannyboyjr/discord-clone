@@ -28,7 +28,8 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-
+    if environment == "production":
+        op.execute(f"ALTER TABLE servers SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
