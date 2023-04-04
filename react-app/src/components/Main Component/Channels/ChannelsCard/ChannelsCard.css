@@ -15,7 +15,7 @@
   list-style: none;
   margin: 0;
   padding:0;
-  
+
 }
 
 .channel-line {
@@ -46,5 +46,9 @@ transform: scale(1.8)
 }
 
 .channel-edit-btn{
+  padding: 5px;
+}
+
+.channel-edit-btn:hover{
   padding: 5px;
 }

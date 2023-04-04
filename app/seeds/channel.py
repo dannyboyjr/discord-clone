@@ -3,7 +3,6 @@ from datetime import datetime
 
 channel_info = [
     {
-        "id": 1,
         "server_id": 1,
         "owner_id":1,
         "name": "general",
@@ -11,7 +10,6 @@ channel_info = [
         "created_at": datetime.utcnow()
     },
     {
-        "id": 2,
         "server_id": 2,
         "owner_id":2,
         "name": "awesome_rocks",
@@ -19,7 +17,6 @@ channel_info = [
         "created_at": datetime.utcnow()
     },
     {
-        "id": 3,
         "server_id": 1,
         "owner_id":1,
         "name": "app academy reject",
@@ -27,7 +24,6 @@ channel_info = [
         "created_at": datetime.utcnow()
     },
     {
-        "id": 4,
         "server_id": 3,
         "owner_id":3,
         "name": "something new",
