@@ -4,13 +4,13 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        id=1, username='Demo', avatar="https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/", password='password', email='demo@aa.io', )
+        username='Demo', avatar="https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/", password='password', email='demo@aa.io', )
     marnie = User(
-        id=2, username='marnie', avatar="https://www.crystalknows.com/hubfs/API/celebrities/mark_zuckerberg.jpg", password='password', email='marnie@aa.io')
+        username='marnie', avatar="https://www.crystalknows.com/hubfs/API/celebrities/mark_zuckerberg.jpg", password='password', email='marnie@aa.io')
     bobbie = User(
-        id=3, username='bobbie',avatar="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=1480&t=st=1677631754~exp=1677632354~hmac=d2e59414a9bc9892310dece481f11a4fcfa1b63dda5f69d6f976f4157fa4c12b", password='password', email='bobbie@aa.io')
+        username='bobbie',avatar="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=1480&t=st=1677631754~exp=1677632354~hmac=d2e59414a9bc9892310dece481f11a4fcfa1b63dda5f69d6f976f4157fa4c12b", password='password', email='bobbie@aa.io')
     dan = User(
-        id=4, username='Dannyboyjr',avatar="https://www.iconsdb.com/icons/preview/black/square-xxl.png", password='password', email='dan@aa.io')
+        username='Dannyboyjr',avatar="https://www.iconsdb.com/icons/preview/black/square-xxl.png", password='password', email='dan@aa.io')
 
     db.session.add(demo)
     db.session.add(marnie)
