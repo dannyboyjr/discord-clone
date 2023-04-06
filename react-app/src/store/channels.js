@@ -3,8 +3,8 @@ const LOAD_CHANNEL_BY_ID = "channels/loadChannelById";
 const CREATE_CHANNEL = "channels/createChannel";
 const EDIT_CHANNEL = "channels/editChannel";
 const DELETE_CHANNEL = "channels/deleteChannel";
-const LOAD_MESSAGES = "channels/loadMessages";
-const CREATE_MESSAGE = "channels/createMessage";
+// const LOAD_MESSAGES = "channels/loadMessages";
+// const CREATE_MESSAGE = "channels/createMessage";
 
 const loadChannels = (channels) => ({
     type: LOAD_CHANNELS,
@@ -31,15 +31,15 @@ const deleteChannel = (channelId) => ({
     channelId
 });
 
-const loadMessages = (messages) => ({
-    type: LOAD_MESSAGES,
-    messages
-});
+// const loadMessages = (messages) => ({
+//     type: LOAD_MESSAGES,
+//     messages
+// });
 
-const createMessage = (message) => ({
-    type: CREATE_MESSAGE,
-    message
-});
+// const createMessage = (message) => ({
+//     type: CREATE_MESSAGE,
+//     message
+// });
 
 
 export const getAllChannelsInServer = (id) => async (dispatch) => {
@@ -92,25 +92,25 @@ export const deleteChannelById = (serverId, channelId) => async (dispatch) => {
 };
 
 
-export const getAllMessagesInChannel = (serverId, channelId) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${serverId}/channels/${channelId}/messages`);
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(loadMessages(data.Messages));
-    }
-};
+// export const getAllMessagesInChannel = (serverId, channelId) => async (dispatch) => {
+//     const response = await fetch(`/api/servers/${serverId}/channels/${channelId}/messages`);
+//     if (response.ok) {
+//         const data = await response.json();
+//         dispatch(loadMessages(data.Messages));
+//     }
+// };
 
-export const createMessageInChannel = (serverId, channelId, message) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${serverId}/channels/${channelId}/messages`, {
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-        body: JSON.stringify(message),
-    });
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(createMessage(data));
-    }
-};
+// export const createMessageInChannel = (serverId, channelId, message) => async (dispatch) => {
+//     const response = await fetch(`/api/servers/${serverId}/channels/${channelId}/messages`, {
+//         headers: { "Content-Type": "application/json" },
+//         method: "POST",
+//         body: JSON.stringify(message),
+//     });
+//     if (response.ok) {
+//         const data = await response.json();
+//         dispatch(createMessage(data));
+//     }
+// };
 
 
 
@@ -144,28 +144,28 @@ const channelsReducer = (state = initialState, action) => {
             delete newState[action.channelId];
             return newState;
 
-        case LOAD_MESSAGES:
-            action.messages.forEach(message => {
-                if(!newState[message.channel_id].messages){
-                    newState[message.channel_id].messages = {}
-                }
-                newState[message.channel_id].messages[message.id] = message;
-            });
-            console.log(newState)
-            return newState;
+        // case LOAD_MESSAGES:
+        //     action.messages.forEach(message => {
+        //         if(!newState[message.channel_id].messages){
+        //             newState[message.channel_id].messages = {}
+        //         }
+        //         newState[message.channel_id].messages[message.id] = message;
+        //     });
+        //     console.log(newState)
+        //     return newState;
 
-            case CREATE_MESSAGE:
-                const { message } = action;
-                const channelId = message.channel_id;
-                return {
-                    ...state,[channelId]: {
-                        ...state[channelId],
-                        messages: {
-                            ...state[channelId].messages,
-                            [message.id]: message,
-                        },
-                    },
-                };
+        //     case CREATE_MESSAGE:
+        //         const { message } = action;
+        //         const channelId = message.channel_id;
+        //         return {
+        //             ...state,[channelId]: {
+        //                 ...state[channelId],
+        //                 messages: {
+        //                     ...state[channelId].messages,
+        //                     [message.id]: message,
+        //                 },
+        //             },
+        //         };
 
         default:
             return state;

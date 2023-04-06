@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createMessageInChannel } from '../../../store/channels';
+import { createMessageInChannel } from '../../../store/messages';
 import { useParams } from 'react-router-dom';
 import './ChatInput.css';
 
@@ -20,8 +20,8 @@ const sendWithEnter = (e) => {
 
   return (
     <div className="chat-input-container">
-      <input 
-        type="text" 
+      <input
+        type="text"
         placeholder="Type a message..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
