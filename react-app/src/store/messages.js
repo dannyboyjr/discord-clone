@@ -59,18 +59,22 @@ const messagesReducer = (state = initialState, action) => {
             });
             return newState;
 
+        // case CREATE_MESSAGE:
+        //     const { message } = action;
+        //     const channelId = message.channel_id;
+        //     return {
+        //         ...state,[channelId]: {
+        //             ...state[channelId],
+        //             messages: {
+        //                 ...state[channelId].messages,
+        //                 [message.id]: message,
+        //             },
+        //         },
+        //     };
+
         case CREATE_MESSAGE:
-            const { message } = action;
-            const channelId = message.channel_id;
-            return {
-                ...state,[channelId]: {
-                    ...state[channelId],
-                    messages: {
-                        ...state[channelId].messages,
-                        [message.id]: message,
-                    },
-                },
-            };
+            newState[action.message.id] = action.message;
+            return newState;
 
         default:
             return state;
