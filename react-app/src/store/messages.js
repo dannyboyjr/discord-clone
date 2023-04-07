@@ -42,27 +42,35 @@ const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case LOAD_MESSAGES:
-            action.messages.forEach(message => {
-                if(!newState[message.channel_id].messages){
-                    newState[message.channel_id].messages = {}
-                }
-                newState[message.channel_id].messages[message.id] = message;
+
+            // action.messages.forEach(message => {
+            //     if(!newState[message.channel_id]){
+            //         newState[message.channel_id] = {}
+            //     }
+            //     newState[message.channel_id]= message;
+            // });
+            // console.log(newState)
+            // return newState;
+
+        case LOAD_MESSAGES:
+            newState= {}
+            action.messages.forEach((message) => {
+                newState[message.id] = message;
             });
-            console.log(newState)
             return newState;
 
-            case CREATE_MESSAGE:
-                const { message } = action;
-                const channelId = message.channel_id;
-                return {
-                    ...state,[channelId]: {
-                        ...state[channelId],
-                        messages: {
-                            ...state[channelId].messages,
-                            [message.id]: message,
-                        },
+        case CREATE_MESSAGE:
+            const { message } = action;
+            const channelId = message.channel_id;
+            return {
+                ...state,[channelId]: {
+                    ...state[channelId],
+                    messages: {
+                        ...state[channelId].messages,
+                        [message.id]: message,
                     },
-                };
+                },
+            };
 
         default:
             return state;
