@@ -10,7 +10,6 @@ const Messages = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const dispatch = useDispatch();
   const messagesState = useSelector((state) => state.messages);
-  console.log('!!!!!!!!!!!!!!!!!!', messagesState, '!!!!!!!!!!!!!!!!!!')
   // const messages = messagesState[1] || {}
   // const messages = messagesState[channelId]?.messages || {}
   const messagesArr = Object.values(messagesState)
@@ -24,6 +23,7 @@ const Messages = () => {
        setIsLoaded(true)
      }
   }, [dispatch, serverId, channelId]);
+
 
   return (
     <div className="messages-container">

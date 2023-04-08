@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
+from flask_socketio import SocketIO
 from .models import db, User, Server, Channel, Message, Server_Member
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
@@ -15,6 +16,7 @@ from .seeds import seed_commands
 from .config import Config
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+socketio = SocketIO(app)
 
 # Setup login manager
 login = LoginManager(app)
@@ -67,6 +69,20 @@ def inject_csrf_token(response):
             'FLASK_ENV') == 'production' else None,
         httponly=True)
     return response
+
+@socketio.on('connect')
+def handle_connect():
+    print('Now connected')
+
+@socketio.on('disconnect')
+def handle_connect():
+    print('Client disconnected')
+
+
+@socketio.on('message')
+def handle_message(data):
+    print('Message received:', data)
+    socketio.emit('echo', data)
 
 
 @app.route("/api/docs")
