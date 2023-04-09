@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { io } from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import { getAllMessagesInChannel } from '../../../store/messages';
 import MessageCard from './MessageCard/MessageCard'
 import './Messages.css';
+
+let socket
 
 const Messages = () => {
   const { serverId, channelId } = useParams();
@@ -23,6 +26,17 @@ const Messages = () => {
        setIsLoaded(true)
      }
   }, [dispatch, serverId, channelId]);
+
+  useEffect(() => {
+
+    // create websocket/connect
+    socket = io();
+
+    // when component unmounts, disconnect
+    return (() => {
+        socket.disconnect()
+    })
+}, [])
 
 
   return (
