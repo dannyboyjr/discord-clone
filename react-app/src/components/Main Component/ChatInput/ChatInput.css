@@ -10,7 +10,7 @@
     align-items: center;
     padding: 0 10px;
   }
-  
+
   .chat-input-container input[type="text"] {
     flex: 1;
     border: none;
@@ -20,11 +20,11 @@
     background-color: transparent;
     color: #fff;
   }
-  
+
   .chat-input-container input[type="text"]::placeholder {
     color: #b9bbbe;
   }
-  
+
   .chat-input-container button {
     border: none;
     outline: none;
@@ -37,7 +37,7 @@
     margin-left: 10px;
     transition: all 0.2s;
   }
-  
+
   .chat-input-container button:hover {
     background-color: #3EC06F;
   }

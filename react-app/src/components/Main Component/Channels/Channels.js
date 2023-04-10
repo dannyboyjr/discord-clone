@@ -54,8 +54,8 @@ function Channels({ serverId }) {
     dispatch(leaveServerById(serverId))
      history.push('/@me')
     }
-  
-  
+
+
 
   return (
     <div className="channels-container">
@@ -84,7 +84,7 @@ function Channels({ serverId }) {
               </span>}
             </div>
           </div>
-          {!isOwner && 
+          {!isOwner &&
           <div className="leave-channel-icon" onClick={handLeave}>
           <img src={leaveArrowIcon} alt="leave" />
         </div>
@@ -98,8 +98,8 @@ function Channels({ serverId }) {
           </ul>
         </>
       ) : null}
-      
-     
+
+
     </div>
   );
 }

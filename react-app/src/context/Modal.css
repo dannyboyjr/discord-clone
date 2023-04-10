@@ -20,5 +20,7 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  background-color:#36393f;
+  height: 300px;
+  width: 300px;
 }
