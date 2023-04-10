@@ -11,9 +11,6 @@ else:
 
 socketio = SocketIO(cors_allowed_origins=origins)
 
-@socketio.on("event-type")
-def function_to_handle_event(data_included_with_event):
-    # code to follow
 
 @socketio.on("chat")
 def handle_chat(data):

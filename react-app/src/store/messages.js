@@ -41,8 +41,6 @@ const messagesReducer = (state = initialState, action) => {
     let newState = {...state};
     switch (action.type) {
 
-        case LOAD_MESSAGES:
-
             // action.messages.forEach(message => {
             //     if(!newState[message.channel_id]){
             //         newState[message.channel_id] = {}
@@ -53,7 +51,6 @@ const messagesReducer = (state = initialState, action) => {
             // return newState;
 
         case LOAD_MESSAGES:
-            newState= {}
             action.messages.forEach((message) => {
                 newState[message.id] = message;
             });

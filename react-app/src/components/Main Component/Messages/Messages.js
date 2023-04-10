@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { io } from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import { getAllMessagesInChannel } from '../../../store/messages';
 import MessageCard from './MessageCard/MessageCard'
 import './Messages.css';
 
-let socket
-
 const Messages = () => {
   const { serverId, channelId } = useParams();
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
+  // const [liveMessages, setLiveMessages] = useState([])
   const dispatch = useDispatch();
   const messagesState = useSelector((state) => state.messages);
   // const messages = messagesState[1] || {}
@@ -20,6 +18,7 @@ const Messages = () => {
 
 
   useEffect(() => {
+    // setLiveMessages(messagesArr)
     if(serverId && channelId){
       dispatch(getAllMessagesInChannel(serverId, channelId)).then(()=> setIsLoaded(true))
     } else {
@@ -27,16 +26,6 @@ const Messages = () => {
      }
   }, [dispatch, serverId, channelId]);
 
-  useEffect(() => {
-
-    // create websocket/connect
-    socket = io();
-
-    // when component unmounts, disconnect
-    return (() => {
-        socket.disconnect()
-    })
-}, [])
 
 
   return (
