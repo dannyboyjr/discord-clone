@@ -29,7 +29,9 @@ export const createMessageInChannel = (serverId, channelId, message) => async (d
     if (response.ok) {
         const data = await response.json();
         dispatch(createMessage(data));
+        return data;
     }
+
 };
 
 
