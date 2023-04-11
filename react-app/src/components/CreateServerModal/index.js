@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createAServer } from '../../store/servers';
 import { useDispatch } from 'react-redux';
 import { useModal } from "../../context/Modal";
+import './CreateServerModal.css'
 
 
 const CreateServerModal = () => {
@@ -26,7 +27,7 @@ const CreateServerModal = () => {
 
         <h2>Create a Server</h2>
         <form onSubmit={handleSubmit}>
-          <div className="input-container">
+          <div className="create-server-modal-input-container">
             <label htmlFor="name">Server Name</label>
             <input
               type="text"
@@ -37,7 +38,7 @@ const CreateServerModal = () => {
             />
 
           </div>
-          <div className="input-container">
+          <div className="create-server-modal-input-container">
             <label htmlFor="icon">Server Icon</label>
             <input
               type="text"
@@ -47,7 +48,7 @@ const CreateServerModal = () => {
             />
 
           </div>
-          <div className="button-container">
+          <div className="create-server-modal-button-container">
             <button type="submit">Create</button>
             <button type="button" onClick={closeModal}>
               Close

@@ -1,4 +1,4 @@
-.create-channel-modal {
+.create-dm-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@
     align-items: center;
   }
 
-  .create-channel-modal-content {
+  .create-dm-modal-content {
     background-color: #36393f;
     color: white;
     padding: 20px;
@@ -18,20 +18,20 @@
     border-radius: 5px;
   }
 
-  .create-channel-modal-content h2 {
+  .create-dm-modal-content h2 {
     margin-top: 0;
   }
 
-  .create-channel-modal-input-container {
+  .create-dm-modal-input-container {
     margin-bottom: 20px;
   }
 
-  .create-channel-modal-input-container label {
+  .create-dm-modal-input-container label {
     display: block;
     margin-bottom: 5px;
   }
 
-  .create-channel-modal-input-container input {
+  .create-dm-modal-input-container input {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
@@ -40,12 +40,12 @@
     color: white;
   }
 
-  .create-channel-modal-button-container {
+  .create-dm-modal-button-container {
     display: flex;
     justify-content: space-between;
   }
 
-  .create-channel-modal-button-container button {
+  .create-dm-modal-button-container button {
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -54,6 +54,6 @@
     cursor: pointer;
   }
 
-  .create-channel-modal-button-container button:hover {
+  .create-dm-modal-button-container button:hover {
     background-color: #677bc4;
   }

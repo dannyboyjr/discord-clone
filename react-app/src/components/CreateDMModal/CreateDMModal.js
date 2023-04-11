@@ -3,6 +3,7 @@ import { createDMServer } from '../../store/dms';
 import { useDispatch } from 'react-redux';
 import { useModal } from "../../context/Modal";
 import {useHistory} from 'react-router-dom'
+import "./CreateDMModal.css";
 
 
 const CreateDMModal = ({channels}) => {
@@ -18,7 +19,7 @@ const CreateDMModal = ({channels}) => {
     // Verify sorts through dms to check if an open dm channel exist. if it does exit user is rerouted to open dm
     const verify = channels.find(item => {
       console.log(item.server.members[1].user.username == username)
-      return username == item.server.members[0].user.username || username == item.server.members[1].user.username 
+      return username == item.server.members[0].user.username || username == item.server.members[1].user.username
     })
     if (verify){
       closeModal();
@@ -51,7 +52,7 @@ const CreateDMModal = ({channels}) => {
               required
             />
           </div>
-         
+
           <div className="button-container">
             <button type="submit">Create</button>
             <button type="button" onClick={closeModal}>

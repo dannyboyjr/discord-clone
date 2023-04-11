@@ -14,6 +14,7 @@
   background-color: #36393f;
   color: white;
   padding: 20px;
+  padding-right: 40px;
   border-radius: 5px;
 }
 
@@ -21,16 +22,16 @@
   margin-top: 0;
 }
 
-.input-container {
+.create-server-modal-input-container {
   margin-bottom: 20px;
 }
 
-.input-container label {
+.create-server-modal-input-container label {
   display: block;
   margin-bottom: 5px;
 }
 
-.input-container input {
+.create-server-modal-input-container input {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
@@ -39,12 +40,12 @@
   color: white;
 }
 
-.button-container {
+.create-server-modal-button-container {
   display: flex;
   justify-content: space-between;
 }
 
-.button-container button {
+.create-server-modal-button-container button {
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -53,6 +54,6 @@
   cursor: pointer;
 }
 
-.button-container button:hover {
+.create-server-modal-button-container button:hover {
   background-color: #677bc4;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LoginFormPage from "./components/LoginFormPage";
@@ -10,6 +10,7 @@ import MainComponent from "./components/Main Component/main";
 import MainDm from "./components/DMs/MainDm";
 import SplashPage from "./components/SplashPage";
 import AllServers from "./components/AllServers/AllServers";
+import './App.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -37,8 +38,11 @@ function App() {
             <SignupFormPage />
           </Route>
           <ProtectedRoute>
+          <Route path="/chat/reload">
+            <Redirect to="/:serverId(\d+)/:channelId(\d+)?"/>
+          </Route>
           <Route path="/:serverId(\d+)/:channelId(\d+)?">
-          <Navigation isLoaded={isLoaded} />
+              <Navigation isLoaded={isLoaded} />
               <MainComponent />
           </Route>
           <Route path="/@me/:serverId(\d+)?/:channelId(\d+)?">
@@ -49,6 +53,7 @@ function App() {
             <Navigation isLoaded={isLoaded} />
             <AllServers />
           </Route>
+
           </ProtectedRoute>
         </Switch>
       )}

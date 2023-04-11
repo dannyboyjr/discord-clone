@@ -1,4 +1,4 @@
-.create-server-modal {
+.delete-server-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,27 +10,28 @@
   align-items: center;
 }
 
-.create-server-modal-content {
+.delete-server-modal-content {
   background-color: #36393f;
   color: white;
   padding: 20px;
+  padding-right: 40px;
   border-radius: 5px;
 }
 
-.create-server-modal-content h2 {
+.delete-server-modal-content h2 {
   margin-top: 0;
 }
 
-.input-container {
+.delete-server-modal-input-container {
   margin-bottom: 20px;
 }
 
-.input-container label {
+.delete-server-modal-input-container label {
   display: block;
   margin-bottom: 5px;
 }
 
-.input-container input {
+.delete-server-modal-input-container input {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
@@ -39,12 +40,12 @@
   color: white;
 }
 
-.button-container {
+.delete-server-modal-button-container {
   display: flex;
   justify-content: space-between;
 }
 
-.button-container button {
+.delete-server-modal-button-container button {
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -53,6 +54,6 @@
   cursor: pointer;
 }
 
-.button-container button:hover {
+.delete-server-modal-button-container button:hover {
   background-color: #677bc4;
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { deleteAServer } from '../../store/servers';
 import { useDispatch } from 'react-redux';
 import { useModal } from "../../context/Modal";
+import './DeleteServerModal.css'
 
 //IN PROGRESS
 const DeleteServerModal = () => {

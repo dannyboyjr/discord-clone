@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { deleteChannelById } from '../../store/channels';
 import { useDispatch } from 'react-redux';
 import { useModal } from "../../context/Modal";
+import './DeleteChannelModal.css'
 
 //IN PROGRESS
 const DeleteChannelModal = () => {

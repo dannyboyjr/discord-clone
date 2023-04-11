@@ -51,6 +51,7 @@ const messagesReducer = (state = initialState, action) => {
             // return newState;
 
         case LOAD_MESSAGES:
+            newState={}
             action.messages.forEach((message) => {
                 newState[message.id] = message;
             });

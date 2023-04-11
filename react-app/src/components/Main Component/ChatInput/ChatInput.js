@@ -10,6 +10,7 @@ let socket
 function ChatInput() {
   const {serverId, channelId } = useParams()
   const [content, setContent] = useState("")
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   // const messagesState = useSelector((state) => state.messages);
 
@@ -24,7 +25,7 @@ useEffect(() => {
   // create websocket/connect
   socket = io();
 
-  socket.on("chat", ({ content }) => {
+  socket.on("chat", ({ content}) => {
     // when we recieve a chat, add it into our messages array in state
 
     // setMessages(messages => [...messages, chat])
@@ -38,7 +39,7 @@ useEffect(() => {
 
 const handleSubmit = () => {
   dispatch(createMessageInChannel(serverId, channelId, { content }));
-  socket.emit("chat", { content });
+  socket.emit("chat", { content, user: user.username });
   setContent("")
 }
 
@@ -47,6 +48,7 @@ const sendWithEnter = (e) => {
 }
 
   return (
+
     <div className="chat-input-container">
       <input
         type="text"
@@ -57,6 +59,7 @@ const sendWithEnter = (e) => {
         />
       <button onClick={handleSubmit}>Send</button>
     </div>
+  
   );
 }
 

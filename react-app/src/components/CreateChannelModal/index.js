@@ -21,26 +21,36 @@ function CreateChannelModal({serverId}) {
   };
 
   return (
-    <>
-      <h1>Create a Channel</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Create</button>
-      </form>
-    </>
+    <div className="create-channel-modal">
+      <div className="create-channel-modal-content">
+
+        <h2>Create a Channel</h2>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="create-channel-modal-input-container">
+            <label>
+              Name
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="create-server-modal-button-container">
+            <button type="submit">Create</button>
+            <button type="button" onClick={closeModal}>
+                Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 
