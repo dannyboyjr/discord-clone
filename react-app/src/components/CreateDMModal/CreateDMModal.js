@@ -37,12 +37,12 @@ const CreateDMModal = ({channels}) => {
 
 
   return (
-    <div className="create-server-modal">
-      <div className="create-server-modal-content">
+    <div className="create-dm-modal">
+      <div className="create-dm-modal-content">
 
         <h2>Create Dm</h2>
         <form onSubmit={handleSubmit}>
-          <div className="input-container">
+          <div className="create-dm-modal-input-container">
             <label htmlFor="name">username </label>
             <input
               type='text'
@@ -53,7 +53,7 @@ const CreateDMModal = ({channels}) => {
             />
           </div>
 
-          <div className="button-container">
+          <div className="create-dm-modal-button-container">
             <button type="submit">Create</button>
             <button type="button" onClick={closeModal}>
               Close

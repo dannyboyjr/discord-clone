@@ -25,26 +25,36 @@ function EditChannelModal({channel}) {
   };
 
   return (
-    <>
-      <h1>Edit your Channel</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Edit</button>
-      </form>
-    </>
+    <div className="edit-channel-modal">
+      <div className="edit-channel-modal-content">
+
+        <h2>Edit Your Channel</h2>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="edit-channel-modal-input-container">
+            <label>
+              Name
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="edit-server-modal-button-container">
+            <button type="submit">Submit</button>
+            <button type="button" onClick={closeModal}>
+                Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 

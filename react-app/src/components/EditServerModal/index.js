@@ -25,34 +25,41 @@ function EditServerModal({server}) {
   };
 
   return (
-    <>
-      <h1>Edit a Server</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-            <li>{errors}</li>
-        </ul>
-        <label>
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Icon URL
-          <input
-            type="text"
-            value={icon}
-            onChange={(e) => setIcon(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Edit</button>
-      </form>
-    </>
-  );
-}
+    <div className="edit-server-modal">
+      <div className="edit-server-modal-content">
 
+        <h2>Edit Your Server</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="edit-server-modal-input-container">
+            <label htmlFor="name">Server Name</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+
+          </div>
+          <div className="edit-server-modal-input-container">
+            <label htmlFor="icon">Server Icon</label>
+            <input
+              type="text"
+              name="icon"
+              value={icon}
+              onChange={(e) => setIcon(e.target.value)}
+            />
+
+          </div>
+          <div className="edit-server-modal-button-container">
+            <button type="submit">Submit</button>
+            <button type="button" onClick={closeModal}>
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 export default EditServerModal;
