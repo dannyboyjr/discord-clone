@@ -6,7 +6,7 @@ const loadMessages = (messages) => ({
     messages
 });
 
-const createMessage = (message) => ({
+export const createMessage = (message) => ({
     type: CREATE_MESSAGE,
     message
 });
