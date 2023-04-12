@@ -30,7 +30,7 @@ useEffect(() => {
     console.log('!!!!!!!!!!!!!!!!!!!!!!!!!hey there!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     console.log(content)
     console.log('------------------')
-    dispatch(getAllMessagesInChannel(serverId, channelId))
+    // dispatch(getAllMessagesInChannel(serverId, channelId))
     // when we recieve a chat, add it into our messages array in state
     // messageState
     // setMessages(messages => [...messages, chat])
@@ -46,6 +46,7 @@ const handleSubmit = () => {
   dispatch(createMessageInChannel(serverId, channelId, { content })); // figure out proper callback to return data from createMessageInChannel
   console.log(content)
   socket.emit("chat", { content, user: user.username });
+  dispatch(getAllMessagesInChannel(serverId, channelId))
   setContent("")
 }
 
