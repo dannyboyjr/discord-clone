@@ -1,122 +1,63 @@
-.signup-location{
-    position: absolute;
-    width: 100vw;
-    height: 80vh;
-    display: grid;
-    place-items: center;
-  }
+.signup-image{
+  width: 120%;
+  height: auto;
+  background-image: url('signup-image.jpg');
+  background-size: cover;
+  position: relative;
+  float: left;
+}
+
 
 .signup-container{
-    width: 790px;
-    max-width: 90vw;
-    padding: 32px;
-    background-color: #2a2b38;
-    background: #363940;
-    border-radius: 6px;
-    left: 0;
-    top: 0;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 72%;
+  height: 50%;
+}
 
-  .signup-wrapper{
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-weight: inherit;
-    font-style: inherit;
-    font-family: inherit;
-    font-size: 100%;
-    vertical-align: baseline;
-    flex: 1 1 auto;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: flex;
-  }
+.signup-text-container{
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: xx-large;
+}
 
-.signup-framing{
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    background: #363940;
-  }
+.signup-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2f3237;
+  padding: 2em;
+  border-radius: 0.5em;
+}
 
-.signup-header{
-    color: #fff;
-    font-size: 20px;
-    line-height: 30px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    background: #363940;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
+.signup-form-container h3{
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-bottom: 1px;
 
-  .signup-input{
-    color: #98999c;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 8px;
-    font-size: 12px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: 600;
-    line-height: 16px;
-    text-transform: uppercase;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    cursor: default;
-    background: #363940;
+}
 
-  }
+.signup-form-container p {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  color: rgb(153, 153, 153);
+  padding-top: 1px;
+}
 
-  .signup-input span {
-    position: absolute;
-    right: 60%;
-    margin-top: 20px;
-    transform: translateY(-50%);
-    margin-right: 10px;
-    font-size: 12px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-
-  .signup-input span::after{
-    content: '*';
-    color: red;
-    margin-left: 5px;
-    font-size: 14px;
-  }
-
-  .signup-input input{
+.signup-form-container label {
+  position: relative;
+  color: rgb(176, 175, 175);
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.signup-form-container input[type="email"],
+.signup-form-container input[type="text"],
+.signup-form-container input[type="password"] {
   width: 100%;
   padding: 0.5em;
   margin-bottom: 1em;
@@ -125,46 +66,66 @@
   background-color: #1c1d20;
   color: white;
 
-  }
+}
 
-  .signup-input input:focus{
-      outline: none;
-  }
+.signup-input{
+  width: 225px;
+}
 
-
-  .signup-input-name{
-    color: #a8a8a8;
-    margin-bottom: 10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: small;
-  }
-
-  .signup-btn{
-    text-decoration: none;
-    border-radius: 4px;
-    height: 44px;
-    width: 100%;
-    margin-bottom: 10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    text-transform: capitalize;
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: none;
+.signup-form-container input:focus{
     outline: none;
-    background-color: #4f6bd1;
-    color: white;
-    cursor: pointer;
-  }
+}
 
-  .signup-btn:hover{
-    background-color: #314caf;
-    box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-  }
+.signup-form-container span{
+  position: absolute;
+  right: 100%;
+  margin-top: 20px;
+  transform: translateY(-50%);
+  margin-right: 10px;
+  font-size: 12px;
+
+}
+
+.signup-form-container span::after{
+  content: '*';
+  color: red;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+
+
+.submit-signup-button {
+  width: 50%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 0.2em;
+  background-color: #677bc4;
+  color: white;
+  font-weight:lighter;
+  margin-bottom: 1em;
+  transition: all 0.3s ease;
+
+}
+
+.submit-signup-button:hover{
+  background-color: #4261d0;
+
+}
+
+
+.button-Demo{
+ width: 50%;
+ padding: 0.5em;
+ border: none;
+ border-radius: 0.2em;
+ background-color: #677bc4;
+ color: white;
+ font-weight: lighter;
+ margin-bottom: 1em;
+ transition: all 0.3s ease;
+}
+
+.button-Demo:hover {
+  background-color: #4261d0;
+}

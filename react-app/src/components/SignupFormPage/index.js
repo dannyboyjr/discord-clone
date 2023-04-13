@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
+import signupImage from "./signup-image.jpg"
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -28,19 +29,21 @@ function SignupFormPage() {
   };
 
   return (
-    <div className='signup-location'>
-      <form className='signup-container' onSubmit={handleSubmit}>
-        <div className='signup-wrapper'>
-          <div className='signup-framing'>
-      <div className="signup-header">Create an account</div>
+    <div className='signup-page-container'>
+      <img className="signup-image" src={signupImage} alt="Signup Image"/>
+    <div className='signup-container'>
+      <h1 className="signup-text-container">Sign Up Here!</h1>
+    <form className='signup-form-container' onSubmit={handleSubmit}>
+      <h3 className="signup-header-text">Create an account</h3>
       <div className='signup-input'>
         <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
         </ul>
         <label className='signup-input-name'>
           <span>Email</span>
           <input
-            className='signup-input-box'
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -75,10 +78,9 @@ function SignupFormPage() {
           />
         </label>
         </div>
-          <button className='signup-btn' type="submit">Sign Up</button>
-        </div>
-      </div>
+          <button className='submit-signup-button' type="submit">Sign Up</button>
       </form>
+      </div>
      </div>
   );
 }
