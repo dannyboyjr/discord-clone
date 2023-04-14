@@ -20,9 +20,21 @@
 
 .channel-line {
   display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  padding-bottom:7px;
+}
+
+.channel-line-tools {
+  display: flex;
   align-items: center;
+}
+
+.channel-delete-icon {
+  display:flex;
 
 }
+
 .channel-line li {
   text-overflow: ellipsis;
   overflow: hidden;

@@ -92,7 +92,7 @@ function Channels({ serverId }) {
         </div>
         }
 
-          <ul>
+          <ul className='channel-card-container'>
             {isLoaded &&
               channelsArr.map((channel) => (
                 <ChannelsCard key={channel.id} channel={channel} serverId={serverId} />

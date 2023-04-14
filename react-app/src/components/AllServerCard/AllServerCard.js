@@ -5,7 +5,7 @@ import {useDispatch, useSelector } from 'react-redux';
 
 const AllServerCard = ({ server }) => {
     const history = useHistory();
-    const dispatch = useDispatch();  
+    const dispatch = useDispatch();
     const userServers = useSelector(state => state.servers.currentUserServers)
     const sessionUser = useSelector(state => state.session.user);
     const userServersArr = Object.values(userServers)
@@ -16,25 +16,25 @@ const AllServerCard = ({ server }) => {
       e.target.src = 'https://www.online-tech-tips.com/wp-content/uploads/2021/04/1-Discord-Stream-No-Sound-Featured.png';
   }
     //check to see if user is already in server && doesn't own server. (option to leave server)
-    
+
     // check to see if user is owner (option)
       const verify = userServersArr.find(item => {
-        return item.id == server.id 
+        return item.id == server.id
       })
-      
+
 
     const handleJoin = (e) => {
         if (server.id){
         e.preventDefault();
         dispatch(joinServerById(server.id)).then(()=> history.push('/@me'))
-        
+
         }
     }
     const handLeave = (e) => {
         if (server.id){
         e.preventDefault();
         dispatch(leaveServerById(server.id)).then(()=> history.push('/@me'))
-        
+
         }
     }
 
@@ -42,7 +42,7 @@ const AllServerCard = ({ server }) => {
     return verify ? null :(
 
             <div className="all-server-card-container">
-                <img className="all-server-card-img-container" 
+                <img className="all-server-card-img-container"
                   src={iconUrl}
                   onError={handleImgError}
                   alt={server.name}

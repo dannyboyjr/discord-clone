@@ -18,8 +18,20 @@
     margin-bottom: 10px;
   }
 
+
   .channels-container li {
     margin-bottom: 5px;
+    margin-left:0px
+  }
+
+  .channel-card-container{
+    padding-left:20px;
+  }
+
+  .channel-line div{
+    display: flex;
+    /* align-items:center;
+    justify-content: center; */
   }
 
   .server-icons-container {

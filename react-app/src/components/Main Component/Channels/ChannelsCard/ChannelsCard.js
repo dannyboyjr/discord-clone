@@ -16,6 +16,7 @@ const ChannelsCard = ({ channel, serverId }) => {
     const channelsArr = Object.values(serverChannels)
 
     const isOwner = currentUser.id === channel.owner_id
+    const currentChannel = parseInt(channelId) === channel.id
 
     const handleDelete = () => {
         console.log('channel.server_id:', channel.server_id, 'channel.id:', channel.id)
@@ -43,18 +44,19 @@ return (
       ) : (
         <NavLink className='channel-card' activeClassName='active-channel' to={`/${serverId}/${channel.id}/`}>
           <div className='channel-line'>
-            #<li key={channel.id}>{channel.name}</li>
+            <li className='channel-line-name' key={channel.id}>#{channel.name}</li>
 
-            {isOwner && <div className='channel-edit-btn'>
+            <div className='channel-line-tools'>
+            {isOwner && currentChannel && <div className='channel-edit-btn'>
             <OpenModalImage
                 buttonText={EditIconImg}
                 modalComponent={<EditChannelModal channel={channel} />}
                 />
             </div>}
-            {isOwner && <span className="delete-icon" onClick={handleDelete}>
+            {isOwner && currentChannel && <div className="channel-delete-icon" onClick={handleDelete}>
                 <img src={DeleteImg} alt="delete"/>
-            </span>}
-
+            </div>}
+            </div>
           </div>
 
         </NavLink>
