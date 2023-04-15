@@ -29,7 +29,7 @@ function SplashPage({isLoaded}) {
                 <img className="discord-img" src={splashImage} alt="Splash Image"/>
                 <div className='splash-welcome-text'>
                     <h1 className='splash-title'>Galloping Griffs</h1>
-                    <h4>Welcome to Discord!  You can log in to your account from here. Don't have one? You can register below to sign up!</h4>
+                    <h4>Welcome to our app!  You can log in to your account from here. Don't have one? You can register below to sign up!</h4>
                 </div>
 
                 <div  className='splash-container-links'>
