@@ -8,6 +8,7 @@ import '../../Main Component/Channels/Channels.css';
 import OpenModalImage from '../../OpenModalImage/index';
 import CreateDMModal from '../../CreateDMModal/CreateDMModal'
 import AddImg from '../../../assets/evenSmallerPlus.png'
+import './DmChannels.css'
 
 function DmChannels() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -22,7 +23,7 @@ function DmChannels() {
 
   useEffect(() => {
     dispatch(getAllPrivateChannelsOfUser()).then(() => setIsLoaded(true));
-    
+
   }, [dispatch])
 
   return (
@@ -36,13 +37,13 @@ function DmChannels() {
         <OpenModalImage
                 buttonText={AddImg}
                 modalComponent={<CreateDMModal channels={dmChannelsArr} />} />
-        
+
         </div>
-        
 
-       
 
-          <ul>
+
+
+          <ul className='dm-channels'>
             {isLoaded &&
               dmChannelsArr.map((channel) => (
 

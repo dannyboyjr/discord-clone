@@ -1,4 +1,4 @@
-from flask_socketio import SocketIO, emit, join_room
+from flask_socketio import SocketIO, emit, join_room, leave_room
 import os
 import json
 from app.models import Message, db
@@ -38,3 +38,11 @@ def on_join(data):
     join_room(room)
     print(username + ' has joined room ' + room)
     send(username + ' has entered the room.', to=room)
+
+@socketio.on("leave")
+def on_leave(data):
+    username = data['username']
+    room = data['channelId']
+    leave_room(room)
+    print(username + ' has left room ' + room)
+    send(username + ' has left the room.', to=room)

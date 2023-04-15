@@ -12,6 +12,7 @@ function ChatInput() {
   const [content, setContent] = useState("")
   const messageState = useSelector((state) => state.messages);
   const user = useSelector((state) => state.session.user);
+  const [currentChannel, setCurrentChannel] = useState(channelId)
   const dispatch = useDispatch();
   // const messagesState = useSelector((state) => state.messages);
 
@@ -44,6 +45,14 @@ useEffect(() => {
       socket.disconnect()
   })
 }, [])
+
+useEffect(() => {
+  if (channelId !== currentChannel) {
+    socket.emit('leave', {channelId: currentChannel, username: user.username })
+    socket.emit('join', { channelId: channelId, username: user.username });
+    setCurrentChannel(channelId)
+  }
+}, [channelId])
 
 const handleSubmit = () => {
   // dispatch(createMessageInChannel(serverId, channelId, { content })); // figure out proper callback to return data from createMessageInChannel
