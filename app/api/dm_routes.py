@@ -26,7 +26,7 @@ def get_private_message_channel(server_id, channel_id):
         return jsonify({"error": "Cannot go snooping around"}), 403
 
 
-@dm_routes.route("/<server_id>/<int:channel_id>", methods=["POST"])
+@dm_routes.route("/<int:server_id>/<int:channel_id>", methods=["POST"])
 @login_required
 def create_private_message(server_id, channel_id):
     """
@@ -40,7 +40,7 @@ def create_private_message(server_id, channel_id):
 
     if channel.private is True and Server_Member.query.filter_by(server_id=server_id, user_id=current_user.id).first():
         data = request.get_json()
-        
+
     #json can only contain {"conent": "message"}
     data = request.get_json()
     if set(data.keys()) != {'content'}:

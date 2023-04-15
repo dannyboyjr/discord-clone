@@ -20,7 +20,7 @@ const createPrivateServer = (server) => ({
     server
 })
 
-const createPrivateMessage = (message) => ({
+export const createPrivateMessage = (message) => ({
     type: CREATE_PRIVATE_MESSAGE,
     message
 })
@@ -43,7 +43,7 @@ export const getAllDMMessagesInChannel = (serverId, channelId) => async (dispatc
     }
 };
 
-export const createDirectMessage = (serverId, channelId, message) => async (dispatch) => {
+export const createDirectMessage = ({serverId, channelId, message}) => async (dispatch) => {
     const response = await fetch(`/api/@me/${serverId}/${channelId}`, {
         headers: { "Content-Type": "application/json" },
         method: "POST",
@@ -52,6 +52,7 @@ export const createDirectMessage = (serverId, channelId, message) => async (disp
     if (response.ok) {
         const data = await response.json();
         dispatch(createPrivateMessage(data));
+        return data
     }
 };
 
@@ -105,18 +106,22 @@ let newState = { ...state };
         newState[action.server.id] = action.server
         return newState;
 
+    // case CREATE_PRIVATE_MESSAGE:
+    //     const { message } = action;
+    //     const channelId = message.channel_id;
+    //     return {
+    //         ...state,[channelId]: {
+    //             ...state[channelId],
+    //             messages: {
+    //                 ...state[channelId].messages,
+    //                 [message.id]: message,
+    //             },
+    //         },
+    //     };
+
     case CREATE_PRIVATE_MESSAGE:
-        const { message } = action;
-        const channelId = message.channel_id;
-        return {
-            ...state,[channelId]: {
-                ...state[channelId],
-                messages: {
-                    ...state[channelId].messages,
-                    [message.id]: message,
-                },
-            },
-        };
+            newState[action.message.id] = action.message;
+            return newState;
 
 
     default:

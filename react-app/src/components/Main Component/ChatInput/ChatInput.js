@@ -14,8 +14,6 @@ function ChatInput() {
   const user = useSelector((state) => state.session.user);
   const [currentChannel, setCurrentChannel] = useState(channelId)
   const dispatch = useDispatch();
-  // const messagesState = useSelector((state) => state.messages);
-
 
 // const handleSubmit = () => {
 //     dispatch(createMessageInChannel(serverId, channelId, { content }));
@@ -23,7 +21,6 @@ function ChatInput() {
 //   }
 
 useEffect(() => {
-
   // create websocket/connect
   socket = io();
   socket.emit('join', { channelId: channelId, username: user.username });
