@@ -37,7 +37,7 @@ return (
 
         <NavLink className='channel-card' to={`/@me/${serverId}/${channel.id}/`}>
         <div className='channel-line'>
-        #<li key={channel.id}>{channel.name}</li>
+        <li key={channel.id}>#{channel.name}</li>
         </div>
     </NavLink>
 
