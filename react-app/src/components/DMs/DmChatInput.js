@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { io } from 'socket.io-client';
-import { createPrivateMessage } from '../../store/dms';
+import { createMessage } from '../../store/messages';
 import { useParams } from 'react-router-dom';
 import '../Main Component/ChatInput/ChatInput.css'
 
@@ -24,7 +24,7 @@ function DmChatInput() {
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!hey there!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
       console.log(content)
       console.log('------------------')
-      dispatch(createPrivateMessage(content))
+      dispatch(createMessage(content))
       // dispatch(getAllMessagesInChannel(serverId, channelId))
       // when we recieve a chat, add it into our messages array in state
       // messageState

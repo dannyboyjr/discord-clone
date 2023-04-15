@@ -16,8 +16,8 @@ def get_message_channel_id(server_id, channel_id):
     server = Server.query.get(server_id)
     if server is None:
         return jsonify({"error": "Server not found"}), 404
-    if server.private is True:
-        return jsonify({"error": "cannot get private server"}), 403
+    # if server.private is True:
+    #     return jsonify({"error": "cannot get private server"}), 403
 
     # Check if channel exists
     # channel = Channel.query.filter_by(server_id=server_id, id=channel_id).first()
@@ -25,9 +25,9 @@ def get_message_channel_id(server_id, channel_id):
     if channel is None:
         return jsonify({"error": "Channel not found"}), 404
 
-    # Check if channel is private
-    if channel.private is True and not Server_Member.query.filter_by(server_id=server_id, user_id=current_user.id).first():
-        return jsonify({"error": "Cannot send message to private channel"}), 403
+    # # Check if channel is private
+    # if channel.private is True and not Server_Member.query.filter_by(server_id=server_id, user_id=current_user.id).first():
+    #     return jsonify({"error": "Cannot send message to private channel"}), 403
 
     #validate member
     server_member = Server_Member.query.filter_by(server_id=server_id, user_id=current_user.id).first()
@@ -57,8 +57,8 @@ def create_message_channel_id(server_id,channel_id):
         return jsonify({"error": "Channel not found"}), 404
 
     # Check if channel is private
-    if channel.private is True:
-        return jsonify({"error": "Cannot send message to private channel"}), 403
+    # if channel.private is True:
+    #     return jsonify({"error": "Cannot send message to private channel"}), 403
 
     #check if member of server
     server_member = Server_Member.query.filter_by(server_id=server_id, user_id=current_user.id).first()

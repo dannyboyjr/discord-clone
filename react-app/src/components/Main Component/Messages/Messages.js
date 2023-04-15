@@ -8,12 +8,8 @@ import './Messages.css';
 const Messages = () => {
   const { serverId, channelId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
-
-  // const [liveMessages, setLiveMessages] = useState([])
   const dispatch = useDispatch();
   const messagesState = useSelector((state) => state.messages);
-  // const messages = messagesState[1] || {}
-  // const messages = messagesState[channelId]?.messages || {}
   const messagesArr = Object.values(messagesState)
 
 
