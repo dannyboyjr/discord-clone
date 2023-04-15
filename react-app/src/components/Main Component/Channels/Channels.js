@@ -74,6 +74,11 @@ function Channels({ serverId }) {
                    modalComponent={<CreateChannelModal serverId={currentServer.id}/>}
                  />
           </div>}
+          {!isOwner &&
+          <div className="leave-channel-icon" onClick={handLeave}>
+          <img src={leaveArrowIcon} alt="leave" />
+        </div>
+        }
               {isOwner && <span className="edit-icon">
                <div className=''>
                  <OpenModalImage
@@ -88,11 +93,6 @@ function Channels({ serverId }) {
               </div>
             </div>
           </div>
-          {!isOwner &&
-          <div className="leave-channel-icon" onClick={handLeave}>
-          <img src={leaveArrowIcon} alt="leave" />
-        </div>
-        }
 
           <ul className='channel-card-container'>
             {isLoaded &&
