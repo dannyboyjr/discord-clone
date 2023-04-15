@@ -65,8 +65,9 @@ function Channels({ serverId }) {
       {serverId ? (
         <>
           <div className="server-info-container">
-            <div className="server-icons-container">
+            <div className="server-header-container">
               <h2>{currentServer.name}</h2>
+              <div className='server-header-tools'>
               {isOwner && <div className='create-channel-btn'>
           <OpenModalImage
                    buttonText={AddIcon}
@@ -84,6 +85,7 @@ function Channels({ serverId }) {
               {isOwner && <span className="delete-icon" onClick={handleDelete}>
                 <img src={DeleteImg} />
               </span>}
+              </div>
             </div>
           </div>
           {!isOwner &&

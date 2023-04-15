@@ -43,7 +43,7 @@ function DmChannels() {
 
 
 
-          <ul className='dm-channels'>
+          <ul className='dm-channels' >
             {isLoaded &&
               dmChannelsArr.map((channel) => (
 

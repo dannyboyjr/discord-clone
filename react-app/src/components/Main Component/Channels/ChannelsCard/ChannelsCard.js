@@ -35,9 +35,9 @@ return (
       {/* Conditionally render a NavLink or a regular link based on the private property */}
       {channel.private ? (
 
-        <NavLink className='channel-card' to={`/@me/${serverId}/${channel.id}/`}>
+        <NavLink className='channel-card' activeClassName='active-channel' to={`/@me/${serverId}/${channel.id}/`}>
         <div className='channel-line'>
-        <li key={channel.id}>#{channel.name}</li>
+        <li className='channel-line-name' key={channel.id}>#{channel.name}</li>
         </div>
     </NavLink>
 

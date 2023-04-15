@@ -34,26 +34,33 @@
     justify-content: center; */
   }
 
-  .server-icons-container {
+  .server-header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 248px;
     height: 70px;
-    padding: 0 20px;
+    padding: 0px 0px 0px 20px;
     box-sizing: border-box;
   }
 
-  .server-icons-container h2 {
+  .server-header-container h2 {
     font-family: 'Uni Sans', sans-serif;
     font-size: 18px;
     color: #fff;
     margin: 0;
   }
 
+  .server-header-tools {
+    display:flex;
+    flex:row;
+    align-items: center;
+  }
+
   .edit-icon, .delete-icon {
     font-size: 24px;
     color: #000;
+    padding:0px 2px 0px 0px;
     cursor: pointer;
   }
 
