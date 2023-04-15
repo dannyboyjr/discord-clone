@@ -55,7 +55,7 @@ export const createDirectMessage = (serverId, channelId, message) => async (disp
     }
 };
 
-//still need to add create private message 
+//still need to add create private message
 export const createDMServer = (username, server) => async (dispatch) => {
     const response = await fetch(`/api/servers/dm/${username}`, {
         headers: { "Content-Type": "application/json" },
@@ -66,6 +66,9 @@ export const createDMServer = (username, server) => async (dispatch) => {
         const server = await response.json();
         return dispatch(createPrivateServer(server))
     }
+    else(
+        console.log('Cannot find user!')
+    )
     return response
 };
 
@@ -83,12 +86,12 @@ let newState = { ...state };
             newState[channel.id] = channel;
         });
         return newState
-    
+
     case LOAD_PRIVATE_MESSAGES:
         action.messages.forEach(message => {
             if(!newState[message.channel_id]){
                 newState[message.channel_id] = {}
-                
+
             }
             if(!newState[message.channel_id].messages){
                 newState[message.channel_id].messages = {}
@@ -101,7 +104,7 @@ let newState = { ...state };
         newState = { ...state }
         newState[action.server.id] = action.server
         return newState;
-        
+
     case CREATE_PRIVATE_MESSAGE:
         const { message } = action;
         const channelId = message.channel_id;
@@ -120,5 +123,5 @@ let newState = { ...state };
         return state;
     }
   };
-  
+
   export default dmReducer;
