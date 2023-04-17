@@ -30,7 +30,7 @@ function SignupFormPage() {
 
   return (
     <div className='signup-page-container'>
-      <img className="signup-image" src={signupImage} alt="Signup Image"/>
+      <img className="signup-image" src={signupImage} alt="Signup"/>
     <div className='signup-container'>
       <h1 className="signup-text-container">Sign Up Here!</h1>
     <form className='signup-form-container' onSubmit={handleSubmit}>

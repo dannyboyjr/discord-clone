@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import ProfileButton from '../../Navigation/ProfileButton'
+// import ProfileButton from '../../Navigation/ProfileButton'
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllPrivateChannelsOfUser  } from '../../../store/dms'
 import ChannelsCard from '../../Main Component/Channels/ChannelsCard/ChannelsCard'
@@ -13,7 +12,7 @@ import './DmChannels.css'
 function DmChannels() {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch()
-  const sessionUser = useSelector(state => state.session.user);
+  // const sessionUser = useSelector(state => state.session.user);
   const dmChannels = useSelector(state => state.dms)
   const dmChannelsArr = Object.values(dmChannels)
 

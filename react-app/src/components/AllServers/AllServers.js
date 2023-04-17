@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllServers } from "../../store/servers"
 import AllServerCard from '../AllServerCard/AllServerCard';
@@ -27,7 +27,7 @@ const AllServers = () => {
         </div>
       </div>
     );
-  
+
 }
 
 export default AllServers;

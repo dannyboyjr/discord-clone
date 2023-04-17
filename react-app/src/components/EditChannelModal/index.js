@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {editChannelById} from '../../store/channels'
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { useParams } from "react-router-dom";
 import './EditChannelModal.css'
 
 function EditChannelModal({channel}) {

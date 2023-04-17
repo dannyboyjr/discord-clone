@@ -35,7 +35,7 @@ function DmChatInput() {
     return (() => {
         socket.disconnect()
     })
-  }, [])
+  }, [channelId, dispatch, user.username])
 
   useEffect(() => {
     if (channelId !== currentChannel) {
@@ -43,7 +43,7 @@ function DmChatInput() {
       socket.emit('join', { channelId: channelId, username: user.username });
       setCurrentChannel(channelId)
     }
-  }, [channelId])
+  }, [channelId, currentChannel, user.username])
 
 
   const handleSubmit = () => {

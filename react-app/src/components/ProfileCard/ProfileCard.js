@@ -23,7 +23,7 @@ const ProfileCard = () => {
   return (
     <div className="ProfileCard">
 
-      <img className="profile-avatar"src={UserIcon} />
+      <img className="profile-avatar"src={UserIcon} alt='avatar'/>
       <div>
         <p>{sessionUser.username}</p>
         <span className='profile-id'>#{sessionUser.id}</span>

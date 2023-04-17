@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './ServerCard';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
-import ProfileButton from './ProfileButton';
+// import ProfileButton from './ProfileButton';
 import CreateServerModal from '../CreateServerModal';
 import { getUserServers } from "../../store/servers"
-import { getAllChannelsInServer } from '../../store/channels';
+// import { getAllChannelsInServer } from '../../store/channels';
 import OpenModalImage from '../OpenModalImage';
 import DiscoveryLogo from '../../assets/compass.png'
 import DiscordLogo from '../../assets/discord.png'
@@ -44,7 +44,7 @@ function Navigation() {
 			{/* DMS */}
 			<div className='server-card-pic add-server-pic discord-img'>
 			<NavLink className='server-card-pic' to={`/@me`}>
-				<img src={DiscordLogo} />
+				<img src={DiscordLogo} alt='Logo'/>
 				</NavLink>
 			</div>
 
@@ -55,7 +55,7 @@ function Navigation() {
 
 				)}
 			</div>
-			
+
 			<div className='server-card-pic add-server-pic'>
             <OpenModalImage
                 buttonText={AddServerImg}
@@ -65,10 +65,10 @@ function Navigation() {
 			<div>
 			<div className='server-card-pic add-server-pic'>
 			<NavLink className='server-card-pic' to={`/guild-discovery`}>
-				<img src={DiscoveryLogo} />
+				<img src={DiscoveryLogo} alt='Logo'/>
 				</NavLink>
 			</div>
-				
+
 			</div>
 
 		</div>

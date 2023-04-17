@@ -18,7 +18,7 @@ const AllServerCard = ({ server }) => {
 
     // check to see if user is owner (option)
       const verify = userServersArr.find(item => {
-        return item.id == server.id
+        return item.id === server.id
       })
 
 

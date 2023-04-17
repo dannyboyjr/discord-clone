@@ -16,7 +16,7 @@ function OpenModalImage({
   };
 
   return (
-    <img onClick={onClick} src={buttonText} alt='Bad Image'></img>
+    <img onClick={onClick} src={buttonText} alt='Bad'></img>
   );
 }
 
