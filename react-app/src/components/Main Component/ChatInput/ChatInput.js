@@ -52,7 +52,10 @@ useEffect(() => {
 }, [channelId])
 
 const handleSubmit = () => {
-  // dispatch(createMessageInChannel(serverId, channelId, { content })); // figure out proper callback to return data from createMessageInChannel
+  // Check to make sure the message isn't empty or made entirely of spaces
+  if (!content.trim().length) {
+    return console.log('no, bad')
+  }
   console.log(content)
   socket.emit("chat", { content, owner_id:user.id, channel_id:channelId, server_id:serverId });
   // socket.emit("chat", { content, user: user.username });
