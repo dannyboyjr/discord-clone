@@ -1,5 +1,5 @@
 import './AllServerCard.css'
-import { joinServerById, leaveServerById } from "../../store/servers"
+import { joinServerById } from "../../store/servers"
 import { useHistory } from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
 
@@ -7,7 +7,6 @@ const AllServerCard = ({ server }) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const userServers = useSelector(state => state.servers.currentUserServers)
-    const sessionUser = useSelector(state => state.session.user);
     const userServersArr = Object.values(userServers)
 
     const iconUrl = server.icon ? server.icon : 'https://www.online-tech-tips.com/wp-content/uploads/2021/04/1-Discord-Stream-No-Sound-Featured.png';
@@ -30,13 +29,13 @@ const AllServerCard = ({ server }) => {
 
         }
     }
-    const handLeave = (e) => {
-        if (server.id){
-        e.preventDefault();
-        dispatch(leaveServerById(server.id)).then(()=> history.push('/@me'))
+    // const handLeave = (e) => {
+    //     if (server.id){
+    //     e.preventDefault();
+    //     dispatch(leaveServerById(server.id)).then(()=> history.push('/@me'))
 
-        }
-    }
+    //     }
+    // }
 
 
     return verify ? null :(

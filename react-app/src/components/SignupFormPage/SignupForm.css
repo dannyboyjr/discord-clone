@@ -68,6 +68,10 @@
 
 }
 
+.signup-form-container ul{
+  color:red
+}
+
 .signup-input{
   width: 225px;
 }
