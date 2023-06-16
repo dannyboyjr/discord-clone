@@ -7,17 +7,27 @@
      height: 100%;
     padding: 10px;
     overflow-y: auto;
+    justify-content: center;
     background-color: #313338;
+    }
+
+    .all-servers-container{
+      display: flex;
+  align-items: center;
+  justify-content: center;
     }
 
     .all-server-card-display {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 40px;
+      justify-content: flex-start;
+      gap: 60px;
       padding: 10px;
-
-      width: 90%;
+      width: 80%;
+    }
+    
+    .all-server-card-display .server-card {
+      flex: 0 0 
     }
 .all-servers-list h1 {
   color: white;

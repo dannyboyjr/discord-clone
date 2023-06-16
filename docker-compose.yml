@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    image: dannyboyjr/discord_clone_backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "5000:5000"
+    container_name: discord_clone_backend_container
+    restart: always
+
+  frontend:
+    build: ./react-app
+    image: dannyboyjr/discord_clone_frontend
+    env_file:
+      - ./react-app/.env
+    ports:
+      - "3000:3000"
+    container_name: discord_clone_frontend_container
+    restart: always
+   

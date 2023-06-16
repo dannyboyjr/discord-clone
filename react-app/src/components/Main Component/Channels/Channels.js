@@ -4,13 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getServerById, deleteServerById, leaveServerById } from '../../../store/servers';
 import { getAllChannelsInServer } from '../../../store/channels';
 import OpenModalImage  from '../../OpenModalImage';
-import OpenModalButton from '../../OpenModalButton';
 import CreateChannelModal  from '../../CreateChannelModal';
 import EditServerModal  from '../../EditServerModal';
 import ChannelsCard from './ChannelsCard/ChannelsCard';
 import './Channels.css';
-import ProfileButton from '../../Navigation/ProfileButton';
-import CreateDMModal from '../../CreateDMModal/CreateDMModal'
 import leaveArrowIcon from '../../../assets/leave_arrow.png'
 import AddIcon from '../../../assets/evenSmallerPlus.png'
 import EditIconImg from '../../../assets/pencil.png'
@@ -24,7 +21,6 @@ function Channels({ serverId }) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user)
   const currentServer = useSelector((state) => state.servers.serverById);
-  const sessionUser = useSelector(state => state.session.user);
   const channels = useSelector((state) => state.channels);
   const channelsArr = Object.values(channels);
   const { channelId } = useParams();
@@ -88,7 +84,7 @@ function Channels({ serverId }) {
         	     </div>
               </span>}
               {isOwner && <span className="delete-icon" onClick={handleDelete}>
-                <img src={DeleteImg} />
+                <img src={DeleteImg} alt="delete" />
               </span>}
               </div>
             </div>

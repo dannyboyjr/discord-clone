@@ -18,11 +18,13 @@ const AllServers = () => {
       <div>
         <div className='all-servers-list'>
         <h1>Explore Servers</h1>
+        <div className="all-servers-container">
         <div className='all-server-card-display'>
 				{allServersArr.map(server =>
 				 <AllServerCard key={server.id} server={server} />
 
 				)}
+        </div>
         </div>
         </div>
       </div>

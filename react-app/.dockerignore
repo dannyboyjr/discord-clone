@@ -1,0 +1,17 @@
+# Files and directories to ignore when building the Docker image for the frontend
+
+# Ignore development-related files
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Ignore build output
+build
+
+# Ignore source control files
+.git
+.gitignore
+
+# Ignore editor-specific files
+.vscode
+*.swp

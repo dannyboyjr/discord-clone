@@ -1,0 +1,36 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore local development files and directories
+venv/
+.env
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+
+# Ignore Git-related files
+.git/
+.gitignore
+
+# Ignore any log files
+*.log
+
+# Ignore any build artifacts
+*.pyc
+*.pyo
+
+# Ignore any sensitive or confidential files
+secrets.txt
+config.ini
+private_key.pem
+
+# Ignore any temporary or backup files
+*.swp
+*.bak
+*.tmp
+
+# Ignore any large or unnecessary files
+node_modules/
+dist/

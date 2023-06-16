@@ -1,5 +1,3 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import './MessageCard.css'
 
 

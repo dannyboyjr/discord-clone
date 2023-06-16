@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ServerCard from './ServerCard';
-import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 // import ProfileButton from './ProfileButton';
 import CreateServerModal from '../CreateServerModal';
 import { getUserServers } from "../../store/servers"
@@ -12,17 +12,11 @@ import DiscordLogo from '../../assets/discord.png'
 import AddServerImg from '../../assets/addServer.png'
 import './Navigation.css';
 
-
 function Navigation() {
 	const dispatch = useDispatch()
 	const [isLoaded, setIsLoaded] = useState(false)
-	const [showModal, setShowModal] = useState(false)
-	const sessionUser = useSelector(state => state.session.user);
 	const servers = useSelector(state => state.servers); //double check name of state for server
 	const userServers = servers.currentUserServers
-	const location = useLocation()
-	const history = useHistory()
-
 
 	useEffect(() => {
 		dispatch(getUserServers()).then(()=>setIsLoaded(true))
@@ -32,9 +26,6 @@ function Navigation() {
 
 	const serversArr = Object.values(userServers);
 
-	const addServer = () => {
-		setShowModal(true);
-	}
 
 	return (
 		<>

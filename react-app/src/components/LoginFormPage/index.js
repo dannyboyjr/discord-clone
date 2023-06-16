@@ -48,7 +48,7 @@ function LoginFormPage() {
   return (
 
     <div className="login-page-container">
-      <img className="login-image" src={loginImage} alt="Login Image"/>
+      <img className="login-image" src={loginImage} alt="Login"/>
     <div className="login-container">
       <h1 className="login-text-container">Log In Here!</h1>
       <form className="login-form-container" onSubmit={handleSubmit}>

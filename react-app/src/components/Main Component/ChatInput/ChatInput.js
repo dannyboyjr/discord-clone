@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { io } from 'socket.io-client';
-import { createMessageInChannel, getAllMessagesInChannel, createMessage } from '../../../store/messages';
+import {createMessage } from '../../../store/messages';
 import { useParams } from 'react-router-dom';
 import './ChatInput.css';
 
@@ -10,15 +10,10 @@ let socket
 function ChatInput() {
   const {serverId, channelId } = useParams()
   const [content, setContent] = useState("")
-  const messageState = useSelector((state) => state.messages);
   const user = useSelector((state) => state.session.user);
   const [currentChannel, setCurrentChannel] = useState(channelId)
   const dispatch = useDispatch();
 
-// const handleSubmit = () => {
-//     dispatch(createMessageInChannel(serverId, channelId, { content }));
-//     setContent("")
-//   }
 
 useEffect(() => {
   // create websocket/connect
@@ -27,9 +22,6 @@ useEffect(() => {
 
   socket.on("chat", ( content ) => {
     content = JSON.parse(content)
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!hey there!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-    console.log(content)
-    console.log('------------------')
     dispatch(createMessage(content))
     // dispatch(getAllMessagesInChannel(serverId, channelId))
     // when we recieve a chat, add it into our messages array in state
@@ -56,7 +48,6 @@ const handleSubmit = () => {
   if (!content.trim().length) {
     return console.log('no, bad')
   }
-  console.log(content)
   socket.emit("chat", { content, owner_id:user.id, channel_id:channelId, server_id:serverId });
   // socket.emit("chat", { content, user: user.username });
   // dispatch(getAllMessagesInChannel(serverId, channelId))

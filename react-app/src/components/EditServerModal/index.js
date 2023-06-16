@@ -30,6 +30,11 @@ function EditServerModal({server}) {
 
         <h2>Edit Your Server</h2>
         <form onSubmit={handleSubmit}>
+        <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
           <div className="edit-server-modal-input-container">
             <label htmlFor="name">Server Name</label>
             <input

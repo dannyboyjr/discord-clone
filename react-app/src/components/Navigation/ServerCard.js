@@ -15,7 +15,7 @@ const ServerCard = ({ server }) => {
                     <img 
                         src={iconUrl} 
                         onError={handleImgError}
-                        alt='add default server image here'></img>
+                        alt='add default here'></img>
             </NavLink>
     )
 }
